@@ -1,0 +1,124 @@
+# Stamina V2 — Legacy Encoding Resolution
+
+## Summary
+
+- Encoding equivalent: **87**
+- Manual encoding review: **25**
+
+## Encoding-equivalent moves
+
+- `MOVE_PAY_DAY` — old cost **1** — residual: none
+- `MOVE_FIRE_PUNCH` — old cost **3** — residual: damage_category_changed
+- `MOVE_ICE_PUNCH` — old cost **3** — residual: damage_category_changed
+- `MOVE_THUNDER_PUNCH` — old cost **3** — residual: damage_category_changed
+- `MOVE_SWORDS_DANCE` — old cost **3** — residual: none
+- `MOVE_ROLLING_KICK` — old cost **3** — residual: none
+- `MOVE_SAND_ATTACK` — old cost **3** — residual: none
+- `MOVE_HEADBUTT` — old cost **4** — residual: none
+- `MOVE_BODY_SLAM` — old cost **4** — residual: none
+- `MOVE_TAIL_WHIP` — old cost **3** — residual: none
+- `MOVE_POISON_STING` — old cost **2** — residual: none
+- `MOVE_TWINEEDLE` — old cost **2** — residual: none
+- `MOVE_LEER` — old cost **3** — residual: none
+- `MOVE_BITE` — old cost **3** — residual: damage_category_changed
+- `MOVE_GROWL` — old cost **3** — residual: none
+- `MOVE_EMBER` — old cost **1** — residual: none
+- `MOVE_FLAMETHROWER` — old cost **4** — residual: power_changed
+- `MOVE_ICE_BEAM` — old cost **4** — residual: power_changed
+- `MOVE_BLIZZARD` — old cost **5** — residual: power_changed
+- `MOVE_PSYBEAM` — old cost **3** — residual: none
+- `MOVE_BUBBLE_BEAM` — old cost **3** — residual: none
+- `MOVE_AURORA_BEAM` — old cost **3** — residual: none
+- `MOVE_HYPER_BEAM` — old cost **5** — residual: damage_category_changed
+- `MOVE_THUNDER_SHOCK` — old cost **1** — residual: none
+- `MOVE_THUNDERBOLT` — old cost **4** — residual: power_changed
+- `MOVE_CONFUSION` — old cost **2** — residual: none
+- `MOVE_PSYCHIC` — old cost **4** — residual: none
+- `MOVE_MEDITATE` — old cost **3** — residual: none
+- `MOVE_AGILITY` — old cost **3** — residual: none
+- `MOVE_SCREECH` — old cost **3** — residual: none
+- `MOVE_DOUBLE_TEAM` — old cost **3** — residual: none
+- `MOVE_HARDEN` — old cost **3** — residual: none
+- `MOVE_SMOKESCREEN` — old cost **3** — residual: none
+- `MOVE_WITHDRAW` — old cost **3** — residual: none
+- `MOVE_BARRIER` — old cost **3** — residual: none
+- `MOVE_SLUDGE` — old cost **4** — residual: damage_category_changed
+- `MOVE_BONE_CLUB` — old cost **3** — residual: none
+- `MOVE_FIRE_BLAST` — old cost **5** — residual: power_changed
+- `MOVE_CONSTRICT` — old cost **1** — residual: none
+- `MOVE_AMNESIA` — old cost **3** — residual: none
+- `MOVE_KINESIS` — old cost **2** — residual: none
+- `MOVE_DIZZY_PUNCH` — old cost **3** — residual: none
+- `MOVE_ACID_ARMOR` — old cost **3** — residual: none
+- `MOVE_ROCK_SLIDE` — old cost **4** — residual: none
+- `MOVE_HYPER_FANG` — old cost **3** — residual: none
+- `MOVE_SHARPEN` — old cost **3** — residual: none
+- `MOVE_FLAME_WHEEL` — old cost **2** — residual: damage_category_changed
+- `MOVE_POWDER_SNOW` — old cost **2** — residual: none
+- `MOVE_SCARY_FACE` — old cost **3** — residual: accuracy_changed
+- `MOVE_SLUDGE_BOMB` — old cost **4** — residual: damage_category_changed
+- `MOVE_MUD_SLAP` — old cost **2** — residual: damage_category_changed
+- `MOVE_OCTAZOOKA` — old cost **3** — residual: none
+- `MOVE_ICY_WIND` — old cost **3** — residual: none
+- `MOVE_SPARK` — old cost **4** — residual: damage_category_changed
+- `MOVE_STEEL_WING` — old cost **3** — residual: none
+- `MOVE_SACRED_FIRE` — old cost **4** — residual: damage_category_changed
+- `MOVE_DYNAMIC_PUNCH` — old cost **4** — residual: none
+- `MOVE_DRAGON_BREATH` — old cost **3** — residual: none
+- `MOVE_IRON_TAIL` — old cost **4** — residual: none
+- `MOVE_METAL_CLAW` — old cost **2** — residual: none
+- `MOVE_ANCIENT_POWER` — old cost **2** — residual: damage_category_changed
+- `MOVE_SHADOW_BALL` — old cost **3** — residual: damage_category_changed
+- `MOVE_HEAT_WAVE` — old cost **5** — residual: power_changed
+- `MOVE_SUPERPOWER` — old cost **4** — residual: none
+- `MOVE_BRICK_BREAK` — old cost **3** — residual: none
+- `MOVE_FEATHER_DANCE` — old cost **3** — residual: none
+- `MOVE_CRUSH_CLAW` — old cost **3** — residual: none
+- `MOVE_BLAST_BURN` — old cost **5** — residual: none
+- `MOVE_HYDRO_CANNON` — old cost **5** — residual: none
+- `MOVE_METEOR_MASH` — old cost **4** — residual: power_changed, accuracy_changed
+- `MOVE_FAKE_TEARS` — old cost **3** — residual: none
+- `MOVE_OVERHEAT` — old cost **4** — residual: power_changed
+- `MOVE_ROCK_TOMB` — old cost **2** — residual: power_changed, accuracy_changed
+- `MOVE_SILVER_WIND` — old cost **2** — residual: damage_category_changed
+- `MOVE_METAL_SOUND` — old cost **3** — residual: none
+- `MOVE_TICKLE` — old cost **3** — residual: none
+- `MOVE_COSMIC_POWER` — old cost **3** — residual: none
+- `MOVE_SIGNAL_BEAM` — old cost **3** — residual: damage_category_changed
+- `MOVE_MUDDY_WATER` — old cost **5** — residual: power_changed
+- `MOVE_IRON_DEFENSE` — old cost **3** — residual: none
+- `MOVE_FRENZY_PLANT` — old cost **5** — residual: none
+- `MOVE_BULK_UP` — old cost **3** — residual: none
+- `MOVE_MUD_SHOT` — old cost **2** — residual: damage_category_changed
+- `MOVE_CALM_MIND` — old cost **3** — residual: none
+- `MOVE_DRAGON_DANCE` — old cost **3** — residual: none
+- `MOVE_WATER_PULSE` — old cost **2** — residual: none
+- `MOVE_PSYCHO_BOOST` — old cost **5** — residual: none
+
+## Remaining manual encoding review
+
+- `MOVE_BIND` — EFFECT_TRAP → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_STOMP` — EFFECT_FLINCH_MINIMIZE_HIT → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_WRAP` — EFFECT_TRAP → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_ACID` — EFFECT_DEFENSE_DOWN_HIT → EFFECT_HIT — `additional_effect_fields_mismatch`
+- `MOVE_ABSORB` — EFFECT_ABSORB → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_MEGA_DRAIN` — EFFECT_ABSORB → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_GROWTH` — EFFECT_SPECIAL_ATTACK_UP → EFFECT_GROWTH — `no_strict_equivalence_rule`
+- `MOVE_STRING_SHOT` — EFFECT_SPEED_DOWN → EFFECT_STAT_CHANGE — `additional_effect_fields_mismatch`
+- `MOVE_THUNDER` — EFFECT_THUNDER → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_RAGE` — EFFECT_RAGE → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_CLAMP` — EFFECT_TRAP → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_SKY_ATTACK` — EFFECT_SKY_ATTACK → EFFECT_TWO_TURNS_ATTACK — `no_strict_equivalence_rule`
+- `MOVE_TRI_ATTACK` — EFFECT_TRI_ATTACK → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_SWEET_SCENT` — EFFECT_EVASION_DOWN → EFFECT_STAT_CHANGE — `additional_effect_fields_mismatch`
+- `MOVE_TWISTER` — EFFECT_TWISTER → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_CRUNCH` — EFFECT_SPECIAL_DEFENSE_DOWN_HIT → EFFECT_HIT — `additional_effect_fields_mismatch`
+- `MOVE_FLATTER` — EFFECT_FLATTER → EFFECT_SWAGGER — `no_strict_equivalence_rule`
+- `MOVE_SMELLING_SALTS` — EFFECT_SMELLINGSALT → EFFECT_DOUBLE_POWER_ON_ARG_STATUS — `no_strict_equivalence_rule`
+- `MOVE_BLAZE_KICK` — EFFECT_BLAZE_KICK → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_NEEDLE_ARM` — EFFECT_FLINCH_MINIMIZE_HIT → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_POISON_FANG` — EFFECT_POISON_FANG → EFFECT_HIT — `chance_mismatch_v1_30_v2_50`
+- `MOVE_ASTONISH` — EFFECT_FLINCH_MINIMIZE_HIT → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_EXTRASENSORY` — EFFECT_FLINCH_MINIMIZE_HIT → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_POISON_TAIL` — EFFECT_POISON_TAIL → EFFECT_HIT — `no_strict_equivalence_rule`
+- `MOVE_VOLT_TACKLE` — EFFECT_DOUBLE_EDGE → EFFECT_RECOIL — `no_strict_equivalence_rule`

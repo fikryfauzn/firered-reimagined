@@ -1,0 +1,494 @@
+# Stamina V2 — Final Legacy Review Queue
+
+## Summary
+
+- Review required: **110**
+- Review watchlist: **5**
+- Carry forward: **240**
+- Legacy total: **355**
+
+## Review-family counts
+
+- `MAJOR_NUMERIC_PROFILE`: **71**
+- `TACTICAL_SEMANTICS`: **29**
+- `MECHANIC_MODERNIZATION`: **10**
+- `MECHANIC_IDENTITY`: **5**
+
+## Review required
+
+- `MOVE_WHIRLWIND` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_FLY` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed
+- `MOVE_VINE_WHIP` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed
+- `MOVE_JUMP_KICK` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed
+- `MOVE_THRASH` — V1 cost **5** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_PIN_MISSILE` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, accuracy_changed, effect_representation_changed
+- `MOVE_ROAR` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_DISABLE` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_ACID` — V1 cost **2** — `MECHANIC_MODERNIZATION`
+  - damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SURF` — V1 cost **4** — `TACTICAL_SEMANTICS`
+  - power_changed, target_changed
+- `MOVE_GROWTH` — V1 cost **3** — `MECHANIC_MODERNIZATION`
+  - effect_representation_changed, v2_additional_effects
+- `MOVE_PETAL_DANCE` — V1 cost **5** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_STRING_SHOT` — V1 cost **3** — `MECHANIC_MODERNIZATION`
+  - effect_representation_changed, v2_additional_effects
+- `MOVE_FIRE_SPIN` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_DIG` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed
+- `MOVE_TELEPORT` — V1 cost **1** — `TACTICAL_SEMANTICS`
+  - priority_changed
+- `MOVE_MIMIC` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_HAZE` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - target_changed
+- `MOVE_BIDE` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - accuracy_changed, priority_changed
+- `MOVE_LICK` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SMOG` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SKULL_BASH` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SOFT_BOILED` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_HIGH_JUMP_KICK` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed
+- `MOVE_GLARE` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed, effect_representation_changed
+- `MOVE_POISON_GAS` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - accuracy_changed, target_changed, effect_representation_changed
+- `MOVE_LEECH_LIFE` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_BUBBLE` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FLASH` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_PSYWAVE` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_THIEF` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_SPIDER_WEB` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_MIND_READER` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_SNORE` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, v2_additional_effects
+- `MOVE_CURSE` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - type_changed, v2_additional_effects
+- `MOVE_CONVERSION_2` — V1 cost **1** — `TACTICAL_SEMANTICS`
+  - accuracy_changed, target_changed
+- `MOVE_COTTON_SPORE` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - accuracy_changed, target_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_PROTECT` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - priority_changed
+- `MOVE_SWEET_KISS` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - type_changed
+- `MOVE_ZAP_CANNON` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FORESIGHT` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_PERISH_SONG` — V1 cost **4** — `TACTICAL_SEMANTICS`
+  - target_changed
+- `MOVE_DETECT` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - priority_changed
+- `MOVE_LOCK_ON` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_OUTRAGE` — V1 cost **5** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SANDSTORM` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - target_changed, effect_representation_changed
+- `MOVE_GIGA_DRAIN` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_ENDURE` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - priority_changed
+- `MOVE_CHARM` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - type_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FURY_CUTTER` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed
+- `MOVE_MEAN_LOOK` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_HEAL_BELL` — V1 cost **4** — `TACTICAL_SEMANTICS`
+  - target_changed
+- `MOVE_PAIN_SPLIT` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_RAPID_SPIN` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, v2_additional_effects
+- `MOVE_SWEET_SCENT` — V1 cost **3** — `MECHANIC_MODERNIZATION`
+  - effect_representation_changed, v2_additional_effects
+- `MOVE_VITAL_THROW` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed, effect_representation_changed
+- `MOVE_MOONLIGHT` — V1 cost **4** — `TACTICAL_SEMANTICS`
+  - type_changed
+- `MOVE_HIDDEN_POWER` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed
+- `MOVE_RAIN_DANCE` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - target_changed, effect_representation_changed
+- `MOVE_SUNNY_DAY` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - target_changed, effect_representation_changed
+- `MOVE_CRUNCH` — V1 cost **3** — `MECHANIC_MODERNIZATION`
+  - damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_EXTREME_SPEED` — V1 cost **4** — `TACTICAL_SEMANTICS`
+  - priority_changed, effect_representation_changed
+- `MOVE_FUTURE_SIGHT` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, accuracy_changed
+- `MOVE_ROCK_SMASH` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_WHIRLPOOL` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_BEAT_UP` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, v2_additional_effects
+- `MOVE_FAKE_OUT` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - priority_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_UPROAR` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SPIT_UP` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed
+- `MOVE_HAIL` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - target_changed, effect_representation_changed
+- `MOVE_FOLLOW_ME` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - accuracy_changed, priority_changed
+- `MOVE_NATURE_POWER` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - power_changed, target_changed
+- `MOVE_CHARGE` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed, v2_additional_effects
+- `MOVE_HELPING_HAND` — V1 cost **2** — `TACTICAL_SEMANTICS`
+  - accuracy_changed, target_changed
+- `MOVE_ROLE_PLAY` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_WISH` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_ASSIST` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_INGRAIN` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_MAGIC_COAT` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_RECYCLE` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_YAWN` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_KNOCK_OFF` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed
+- `MOVE_SKILL_SWAP` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_IMPRISON` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_REFRESH` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_GRUDGE` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_SNATCH` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_DIVE` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed
+- `MOVE_CAMOUFLAGE` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_TAIL_GLOW` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_LUSTER_PURGE` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_MIST_BALL` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_MUD_SPORT` — V1 cost **1** — `TACTICAL_SEMANTICS`
+  - accuracy_changed, target_changed
+- `MOVE_NEEDLE_ARM` — V1 cost **3** — `MECHANIC_MODERNIZATION`
+  - damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SLACK_OFF` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_POISON_FANG` — V1 cost **3** — `MECHANIC_MODERNIZATION`
+  - effect_representation_changed, v2_additional_effects
+- `MOVE_ASTONISH` — V1 cost **2** — `MECHANIC_MODERNIZATION`
+  - effect_representation_changed, v2_additional_effects
+- `MOVE_AROMATHERAPY` — V1 cost **4** — `TACTICAL_SEMANTICS`
+  - target_changed
+- `MOVE_ODOR_SLEUTH` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_EXTRASENSORY` — V1 cost **3** — `MECHANIC_MODERNIZATION`
+  - effect_representation_changed, v2_additional_effects
+- `MOVE_SAND_TOMB` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_BULLET_SEED` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_ICICLE_SPEAR` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_BLOCK` — V1 cost **2** — `MAJOR_NUMERIC_PROFILE`
+  - accuracy_changed
+- `MOVE_HOWL` — V1 cost **3** — `TACTICAL_SEMANTICS`
+  - target_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_COVET` — V1 cost **1** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, effect_representation_changed
+- `MOVE_VOLT_TACKLE` — V1 cost **4** — `MECHANIC_MODERNIZATION`
+  - damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_WATER_SPORT` — V1 cost **1** — `TACTICAL_SEMANTICS`
+  - accuracy_changed, target_changed
+- `MOVE_LEAF_BLADE` — V1 cost **3** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_DOOM_DESIRE` — V1 cost **4** — `MAJOR_NUMERIC_PROFILE`
+  - power_changed, accuracy_changed, damage_category_changed
+
+## Review watchlist
+
+- `MOVE_BIND` — V1 cost **2**
+  - accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_WRAP` — V1 cost **2**
+  - accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_THUNDER` — V1 cost **5**
+  - power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_CLAMP` — V1 cost **2**
+  - accuracy_changed, damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SMELLING_SALTS` — V1 cost **2**
+  - power_changed, effect_representation_changed, v2_additional_effects
+
+## Carry-forward candidates
+
+- `MOVE_NONE` — candidate cost **0**
+- `MOVE_POUND` — candidate cost **1**
+- `MOVE_KARATE_CHOP` — candidate cost **2**
+- `MOVE_DOUBLE_SLAP` — candidate cost **2**
+- `MOVE_COMET_PUNCH` — candidate cost **2**
+- `MOVE_MEGA_PUNCH` — candidate cost **3**
+- `MOVE_PAY_DAY` — candidate cost **1**
+- `MOVE_FIRE_PUNCH` — candidate cost **3**
+- `MOVE_ICE_PUNCH` — candidate cost **3**
+- `MOVE_THUNDER_PUNCH` — candidate cost **3**
+- `MOVE_SCRATCH` — candidate cost **1**
+- `MOVE_VISE_GRIP` — candidate cost **2**
+- `MOVE_GUILLOTINE` — candidate cost **5**
+- `MOVE_RAZOR_WIND` — candidate cost **3**
+- `MOVE_SWORDS_DANCE` — candidate cost **3**
+- `MOVE_CUT` — candidate cost **2**
+- `MOVE_GUST` — candidate cost **1**
+- `MOVE_WING_ATTACK` — candidate cost **2**
+- `MOVE_SLAM` — candidate cost **3**
+- `MOVE_STOMP` — candidate cost **4**
+- `MOVE_DOUBLE_KICK` — candidate cost **2**
+- `MOVE_MEGA_KICK` — candidate cost **4**
+- `MOVE_ROLLING_KICK` — candidate cost **3**
+- `MOVE_SAND_ATTACK` — candidate cost **3**
+- `MOVE_HEADBUTT` — candidate cost **4**
+- `MOVE_HORN_ATTACK` — candidate cost **3**
+- `MOVE_FURY_ATTACK` — candidate cost **2**
+- `MOVE_HORN_DRILL` — candidate cost **5**
+- `MOVE_TACKLE` — candidate cost **1**
+- `MOVE_BODY_SLAM` — candidate cost **4**
+- `MOVE_TAKE_DOWN` — candidate cost **3**
+- `MOVE_DOUBLE_EDGE` — candidate cost **4**
+- `MOVE_TAIL_WHIP` — candidate cost **3**
+- `MOVE_POISON_STING` — candidate cost **2**
+- `MOVE_TWINEEDLE` — candidate cost **2**
+- `MOVE_LEER` — candidate cost **3**
+- `MOVE_BITE` — candidate cost **3**
+- `MOVE_GROWL` — candidate cost **3**
+- `MOVE_SING` — candidate cost **3**
+- `MOVE_SUPERSONIC` — candidate cost **2**
+- `MOVE_SONIC_BOOM` — candidate cost **2**
+- `MOVE_EMBER` — candidate cost **1**
+- `MOVE_FLAMETHROWER` — candidate cost **4**
+- `MOVE_MIST` — candidate cost **2**
+- `MOVE_WATER_GUN` — candidate cost **1**
+- `MOVE_HYDRO_PUMP` — candidate cost **4**
+- `MOVE_ICE_BEAM` — candidate cost **4**
+- `MOVE_BLIZZARD` — candidate cost **5**
+- `MOVE_PSYBEAM` — candidate cost **3**
+- `MOVE_BUBBLE_BEAM` — candidate cost **3**
+- `MOVE_AURORA_BEAM` — candidate cost **3**
+- `MOVE_HYPER_BEAM` — candidate cost **5**
+- `MOVE_PECK` — candidate cost **1**
+- `MOVE_DRILL_PECK` — candidate cost **3**
+- `MOVE_SUBMISSION` — candidate cost **2**
+- `MOVE_LOW_KICK` — candidate cost **3**
+- `MOVE_COUNTER` — candidate cost **4**
+- `MOVE_SEISMIC_TOSS` — candidate cost **3**
+- `MOVE_STRENGTH` — candidate cost **3**
+- `MOVE_ABSORB` — candidate cost **2**
+- `MOVE_MEGA_DRAIN` — candidate cost **2**
+- `MOVE_LEECH_SEED` — candidate cost **3**
+- `MOVE_RAZOR_LEAF` — candidate cost **3**
+- `MOVE_SOLAR_BEAM` — candidate cost **5**
+- `MOVE_POISON_POWDER` — candidate cost **2**
+- `MOVE_STUN_SPORE` — candidate cost **3**
+- `MOVE_SLEEP_POWDER` — candidate cost **4**
+- `MOVE_DRAGON_RAGE` — candidate cost **2**
+- `MOVE_THUNDER_SHOCK` — candidate cost **1**
+- `MOVE_THUNDERBOLT` — candidate cost **4**
+- `MOVE_THUNDER_WAVE` — candidate cost **3**
+- `MOVE_ROCK_THROW` — candidate cost **2**
+- `MOVE_EARTHQUAKE` — candidate cost **4**
+- `MOVE_FISSURE` — candidate cost **5**
+- `MOVE_TOXIC` — candidate cost **4**
+- `MOVE_CONFUSION` — candidate cost **2**
+- `MOVE_PSYCHIC` — candidate cost **4**
+- `MOVE_HYPNOSIS` — candidate cost **3**
+- `MOVE_MEDITATE` — candidate cost **3**
+- `MOVE_AGILITY` — candidate cost **3**
+- `MOVE_QUICK_ATTACK` — candidate cost **2**
+- `MOVE_RAGE` — candidate cost **2**
+- `MOVE_NIGHT_SHADE` — candidate cost **3**
+- `MOVE_SCREECH` — candidate cost **3**
+- `MOVE_DOUBLE_TEAM` — candidate cost **3**
+- `MOVE_RECOVER` — candidate cost **4**
+- `MOVE_HARDEN` — candidate cost **3**
+- `MOVE_MINIMIZE` — candidate cost **4**
+- `MOVE_SMOKESCREEN` — candidate cost **3**
+- `MOVE_CONFUSE_RAY` — candidate cost **3**
+- `MOVE_WITHDRAW` — candidate cost **3**
+- `MOVE_DEFENSE_CURL` — candidate cost **3**
+- `MOVE_BARRIER` — candidate cost **3**
+- `MOVE_LIGHT_SCREEN` — candidate cost **3**
+- `MOVE_REFLECT` — candidate cost **3**
+- `MOVE_FOCUS_ENERGY` — candidate cost **2**
+- `MOVE_METRONOME` — candidate cost **3**
+- `MOVE_MIRROR_MOVE` — candidate cost **3**
+- `MOVE_SELF_DESTRUCT` — candidate cost **5**
+- `MOVE_EGG_BOMB` — candidate cost **4**
+- `MOVE_SLUDGE` — candidate cost **4**
+- `MOVE_BONE_CLUB` — candidate cost **3**
+- `MOVE_FIRE_BLAST` — candidate cost **5**
+- `MOVE_WATERFALL` — candidate cost **3**
+- `MOVE_SWIFT` — candidate cost **4**
+- `MOVE_SPIKE_CANNON` — candidate cost **2**
+- `MOVE_CONSTRICT` — candidate cost **1**
+- `MOVE_AMNESIA` — candidate cost **3**
+- `MOVE_KINESIS` — candidate cost **2**
+- `MOVE_DREAM_EATER` — candidate cost **4**
+- `MOVE_BARRAGE` — candidate cost **2**
+- `MOVE_LOVELY_KISS` — candidate cost **4**
+- `MOVE_SKY_ATTACK` — candidate cost **5**
+- `MOVE_TRANSFORM` — candidate cost **3**
+- `MOVE_DIZZY_PUNCH` — candidate cost **3**
+- `MOVE_SPORE` — candidate cost **5**
+- `MOVE_SPLASH` — candidate cost **1**
+- `MOVE_ACID_ARMOR` — candidate cost **3**
+- `MOVE_CRABHAMMER` — candidate cost **4**
+- `MOVE_EXPLOSION` — candidate cost **5**
+- `MOVE_FURY_SWIPES` — candidate cost **2**
+- `MOVE_BONEMERANG` — candidate cost **4**
+- `MOVE_REST` — candidate cost **3**
+- `MOVE_ROCK_SLIDE` — candidate cost **4**
+- `MOVE_HYPER_FANG` — candidate cost **3**
+- `MOVE_SHARPEN` — candidate cost **3**
+- `MOVE_CONVERSION` — candidate cost **1**
+- `MOVE_TRI_ATTACK` — candidate cost **3**
+- `MOVE_SUPER_FANG` — candidate cost **4**
+- `MOVE_SLASH` — candidate cost **3**
+- `MOVE_SUBSTITUTE` — candidate cost **3**
+- `MOVE_STRUGGLE` — candidate cost **0**
+- `MOVE_SKETCH` — candidate cost **3**
+- `MOVE_TRIPLE_KICK` — candidate cost **3**
+- `MOVE_NIGHTMARE` — candidate cost **3**
+- `MOVE_FLAME_WHEEL` — candidate cost **2**
+- `MOVE_FLAIL` — candidate cost **3**
+- `MOVE_AEROBLAST` — candidate cost **4**
+- `MOVE_REVERSAL` — candidate cost **3**
+- `MOVE_SPITE` — candidate cost **2**
+- `MOVE_POWDER_SNOW` — candidate cost **2**
+- `MOVE_MACH_PUNCH` — candidate cost **2**
+- `MOVE_SCARY_FACE` — candidate cost **3**
+- `MOVE_FEINT_ATTACK` — candidate cost **3**
+- `MOVE_BELLY_DRUM` — candidate cost **4**
+- `MOVE_SLUDGE_BOMB` — candidate cost **4**
+- `MOVE_MUD_SLAP` — candidate cost **2**
+- `MOVE_OCTAZOOKA` — candidate cost **3**
+- `MOVE_SPIKES` — candidate cost **3**
+- `MOVE_DESTINY_BOND` — candidate cost **4**
+- `MOVE_ICY_WIND` — candidate cost **3**
+- `MOVE_BONE_RUSH` — candidate cost **3**
+- `MOVE_ROLLOUT` — candidate cost **5**
+- `MOVE_FALSE_SWIPE` — candidate cost **1**
+- `MOVE_SWAGGER` — candidate cost **2**
+- `MOVE_MILK_DRINK` — candidate cost **4**
+- `MOVE_SPARK` — candidate cost **4**
+- `MOVE_STEEL_WING` — candidate cost **3**
+- `MOVE_ATTRACT` — candidate cost **2**
+- `MOVE_SLEEP_TALK` — candidate cost **2**
+- `MOVE_RETURN` — candidate cost **4**
+- `MOVE_PRESENT` — candidate cost **2**
+- `MOVE_FRUSTRATION` — candidate cost **4**
+- `MOVE_SAFEGUARD` — candidate cost **2**
+- `MOVE_SACRED_FIRE` — candidate cost **4**
+- `MOVE_MAGNITUDE` — candidate cost **3**
+- `MOVE_DYNAMIC_PUNCH` — candidate cost **4**
+- `MOVE_MEGAHORN` — candidate cost **5**
+- `MOVE_DRAGON_BREATH` — candidate cost **3**
+- `MOVE_BATON_PASS` — candidate cost **3**
+- `MOVE_ENCORE` — candidate cost **3**
+- `MOVE_PURSUIT` — candidate cost **1**
+- `MOVE_IRON_TAIL` — candidate cost **4**
+- `MOVE_METAL_CLAW` — candidate cost **2**
+- `MOVE_MORNING_SUN` — candidate cost **4**
+- `MOVE_SYNTHESIS` — candidate cost **4**
+- `MOVE_CROSS_CHOP` — candidate cost **4**
+- `MOVE_TWISTER` — candidate cost **2**
+- `MOVE_MIRROR_COAT` — candidate cost **4**
+- `MOVE_PSYCH_UP` — candidate cost **2**
+- `MOVE_ANCIENT_POWER` — candidate cost **2**
+- `MOVE_SHADOW_BALL` — candidate cost **3**
+- `MOVE_STOCKPILE` — candidate cost **2**
+- `MOVE_SWALLOW` — candidate cost **3**
+- `MOVE_HEAT_WAVE` — candidate cost **5**
+- `MOVE_TORMENT` — candidate cost **2**
+- `MOVE_FLATTER` — candidate cost **2**
+- `MOVE_WILL_O_WISP` — candidate cost **3**
+- `MOVE_MEMENTO` — candidate cost **3**
+- `MOVE_FACADE` — candidate cost **3**
+- `MOVE_FOCUS_PUNCH` — candidate cost **5**
+- `MOVE_TAUNT` — candidate cost **2**
+- `MOVE_TRICK` — candidate cost **2**
+- `MOVE_SUPERPOWER` — candidate cost **4**
+- `MOVE_REVENGE` — candidate cost **2**
+- `MOVE_BRICK_BREAK` — candidate cost **3**
+- `MOVE_ENDEAVOR` — candidate cost **4**
+- `MOVE_ERUPTION` — candidate cost **6**
+- `MOVE_SECRET_POWER` — candidate cost **3**
+- `MOVE_ARM_THRUST` — candidate cost **2**
+- `MOVE_FEATHER_DANCE` — candidate cost **3**
+- `MOVE_TEETER_DANCE` — candidate cost **3**
+- `MOVE_BLAZE_KICK` — candidate cost **4**
+- `MOVE_ICE_BALL` — candidate cost **5**
+- `MOVE_HYPER_VOICE` — candidate cost **5**
+- `MOVE_CRUSH_CLAW` — candidate cost **3**
+- `MOVE_BLAST_BURN` — candidate cost **5**
+- `MOVE_HYDRO_CANNON` — candidate cost **5**
+- `MOVE_METEOR_MASH` — candidate cost **4**
+- `MOVE_WEATHER_BALL` — candidate cost **3**
+- `MOVE_FAKE_TEARS` — candidate cost **3**
+- `MOVE_AIR_CUTTER` — candidate cost **3**
+- `MOVE_OVERHEAT` — candidate cost **4**
+- `MOVE_ROCK_TOMB` — candidate cost **2**
+- `MOVE_SILVER_WIND` — candidate cost **2**
+- `MOVE_METAL_SOUND` — candidate cost **3**
+- `MOVE_GRASS_WHISTLE` — candidate cost **3**
+- `MOVE_TICKLE` — candidate cost **3**
+- `MOVE_COSMIC_POWER` — candidate cost **3**
+- `MOVE_WATER_SPOUT` — candidate cost **6**
+- `MOVE_SIGNAL_BEAM` — candidate cost **3**
+- `MOVE_SHADOW_PUNCH` — candidate cost **3**
+- `MOVE_SKY_UPPERCUT` — candidate cost **4**
+- `MOVE_SHEER_COLD` — candidate cost **5**
+- `MOVE_MUDDY_WATER` — candidate cost **5**
+- `MOVE_AERIAL_ACE` — candidate cost **3**
+- `MOVE_IRON_DEFENSE` — candidate cost **3**
+- `MOVE_DRAGON_CLAW` — candidate cost **3**
+- `MOVE_FRENZY_PLANT` — candidate cost **5**
+- `MOVE_BULK_UP` — candidate cost **3**
+- `MOVE_BOUNCE` — candidate cost **4**
+- `MOVE_MUD_SHOT` — candidate cost **2**
+- `MOVE_POISON_TAIL` — candidate cost **2**
+- `MOVE_MAGICAL_LEAF` — candidate cost **3**
+- `MOVE_CALM_MIND` — candidate cost **3**
+- `MOVE_DRAGON_DANCE` — candidate cost **3**
+- `MOVE_ROCK_BLAST` — candidate cost **3**
+- `MOVE_SHOCK_WAVE` — candidate cost **3**
+- `MOVE_WATER_PULSE` — candidate cost **2**
+- `MOVE_PSYCHO_BOOST` — candidate cost **5**
