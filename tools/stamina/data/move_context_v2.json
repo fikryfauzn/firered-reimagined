@@ -2,7 +2,7 @@
   "schema": "firered-reimagined.stamina.move_context.v2",
   "schema_version": 1,
   "source": {
-    "git_commit": "2cfbd9a89167687b9562f7a534a0753c870c27e3",
+    "git_commit": "a3cf2460e7677734ae83d74c607d2f6b4c5871b0",
     "active_levelup_generation": 9,
     "files": [
       "src/data/pokemon/level_up_learnsets/gen_9.h",

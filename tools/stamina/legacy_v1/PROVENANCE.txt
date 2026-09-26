@@ -1,0 +1,14 @@
+FireRed Stamina V1 legacy dataset
+
+Old repository:
+../pokefirered
+
+Old repository HEAD at migration:
+6aba2480ea45223c4582f344b71e41b208b722d4
+
+stamina_moves.json source snapshot:
+c75f352304d529f6ba92d4f74b9cf8b5c3810788
+
+Purpose:
+Historical source for Stamina V2 migration.
+Do not edit these files.

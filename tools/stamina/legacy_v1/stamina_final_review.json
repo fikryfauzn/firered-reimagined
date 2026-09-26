@@ -1,0 +1,1255 @@
+{
+  "schema_version": 1,
+  "dataset": "FireRed Stamina 00E final integrity review",
+  "status": "PASS",
+  "counts": {
+    "source_moves": 355,
+    "draft_moves": 355,
+    "cost_distribution": {
+      "0": 2,
+      "1": 29,
+      "2": 99,
+      "3": 133,
+      "4": 63,
+      "5": 27,
+      "6": 2
+    },
+    "cost_1_moves": 29,
+    "cost_6_moves": 2,
+    "special_case_moves": 64,
+    "role_baseline_assignments": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "errors": [],
+  "warnings": [],
+  "cost_0_moves": [
+    "MOVE_NONE",
+    "MOVE_STRUGGLE"
+  ],
+  "cost_1_moves": [
+    {
+      "move": "MOVE_FORESIGHT",
+      "effect": "EFFECT_FORESIGHT",
+      "role": "setup",
+      "power": 0,
+      "accuracy": 100,
+      "trainer_occurrences": 42,
+      "learnable_species": 31,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "accuracy/evasion/type interaction utility"
+      ],
+      "attention_reasons": [
+        "non-damage/utility role: setup"
+      ]
+    },
+    {
+      "move": "MOVE_EMBER",
+      "effect": "EFFECT_BURN_HIT",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 34,
+      "learnable_species": 31,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": [
+        "contains tactical-control/setup/recovery tag"
+      ]
+    },
+    {
+      "move": "MOVE_MUD_SPORT",
+      "effect": "EFFECT_MUD_SPORT",
+      "role": "field",
+      "power": 0,
+      "accuracy": 100,
+      "trainer_occurrences": 24,
+      "learnable_species": 24,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "situational field modifier"
+      ],
+      "attention_reasons": [
+        "non-damage/utility role: field"
+      ]
+    },
+    {
+      "move": "MOVE_ODOR_SLEUTH",
+      "effect": "EFFECT_FORESIGHT",
+      "role": "setup",
+      "power": 0,
+      "accuracy": 100,
+      "trainer_occurrences": 24,
+      "learnable_species": 18,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "accuracy/evasion/type interaction utility"
+      ],
+      "attention_reasons": [
+        "non-damage/utility role: setup"
+      ]
+    },
+    {
+      "move": "MOVE_THUNDER_SHOCK",
+      "effect": "EFFECT_PARALYZE_HIT",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 23,
+      "learnable_species": 11,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": [
+        "contains tactical-control/setup/recovery tag"
+      ]
+    },
+    {
+      "move": "MOVE_WATER_SPORT",
+      "effect": "EFFECT_WATER_SPORT",
+      "role": "field",
+      "power": 0,
+      "accuracy": 100,
+      "trainer_occurrences": 18,
+      "learnable_species": 18,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "situational field modifier"
+      ],
+      "attention_reasons": [
+        "non-damage/utility role: field"
+      ]
+    },
+    {
+      "move": "MOVE_TACKLE",
+      "effect": "EFFECT_HIT",
+      "role": "damage",
+      "power": 35,
+      "accuracy": 95,
+      "trainer_occurrences": 181,
+      "learnable_species": 129,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 35"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_PURSUIT",
+      "effect": "EFFECT_PURSUIT",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 88,
+      "learnable_species": 41,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_WATER_GUN",
+      "effect": "EFFECT_HIT",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 78,
+      "learnable_species": 52,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_GUST",
+      "effect": "EFFECT_GUST",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 68,
+      "learnable_species": 18,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_SCRATCH",
+      "effect": "EFFECT_HIT",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 34,
+      "learnable_species": 44,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_PAY_DAY",
+      "effect": "EFFECT_PAY_DAY",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 30,
+      "learnable_species": 2,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_RAPID_SPIN",
+      "effect": "EFFECT_RAPID_SPIN",
+      "role": "damage",
+      "power": 20,
+      "accuracy": 100,
+      "trainer_occurrences": 26,
+      "learnable_species": 18,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 20"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_CONSTRICT",
+      "effect": "EFFECT_SPEED_DOWN_HIT",
+      "role": "damage",
+      "power": 10,
+      "accuracy": 100,
+      "trainer_occurrences": 19,
+      "learnable_species": 11,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 10"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_SPLASH",
+      "effect": "EFFECT_SPLASH",
+      "role": "utility",
+      "power": 0,
+      "accuracy": 0,
+      "trainer_occurrences": 14,
+      "learnable_species": 16,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "intentional no-effect action"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_ICICLE_SPEAR",
+      "effect": "EFFECT_MULTI_HIT",
+      "role": "damage",
+      "power": 10,
+      "accuracy": 100,
+      "trainer_occurrences": 13,
+      "learnable_species": 4,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 30"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_TELEPORT",
+      "effect": "EFFECT_TELEPORT",
+      "role": "utility",
+      "power": 0,
+      "accuracy": 0,
+      "trainer_occurrences": 12,
+      "learnable_species": 10,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "battle escape utility"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_VINE_WHIP",
+      "effect": "EFFECT_HIT",
+      "role": "damage",
+      "power": 35,
+      "accuracy": 100,
+      "trainer_occurrences": 12,
+      "learnable_species": 8,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 35"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_PECK",
+      "effect": "EFFECT_HIT",
+      "role": "damage",
+      "power": 35,
+      "accuracy": 100,
+      "trainer_occurrences": 11,
+      "learnable_species": 25,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 35"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_CAMOUFLAGE",
+      "effect": "EFFECT_CAMOUFLAGE",
+      "role": "utility",
+      "power": 0,
+      "accuracy": 100,
+      "trainer_occurrences": 9,
+      "learnable_species": 1,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "terrain-based self type change"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_POUND",
+      "effect": "EFFECT_HIT",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 8,
+      "learnable_species": 24,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_FALSE_SWIPE",
+      "effect": "EFFECT_FALSE_SWIPE",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 6,
+      "learnable_species": 16,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_KNOCK_OFF",
+      "effect": "EFFECT_KNOCK_OFF",
+      "role": "damage",
+      "power": 20,
+      "accuracy": 100,
+      "trainer_occurrences": 5,
+      "learnable_species": 13,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 20"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_SNORE",
+      "effect": "EFFECT_SNORE",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 4,
+      "learnable_species": 17,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_BULLET_SEED",
+      "effect": "EFFECT_MULTI_HIT",
+      "role": "damage",
+      "power": 10,
+      "accuracy": 100,
+      "trainer_occurrences": 1,
+      "learnable_species": 44,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 30"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_CONVERSION",
+      "effect": "EFFECT_CONVERSION",
+      "role": "utility",
+      "power": 0,
+      "accuracy": 0,
+      "trainer_occurrences": 1,
+      "learnable_species": 2,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "self type change"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_THIEF",
+      "effect": "EFFECT_THIEF",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 0,
+      "learnable_species": 173,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_COVET",
+      "effect": "EFFECT_THIEF",
+      "role": "damage",
+      "power": 40,
+      "accuracy": 100,
+      "trainer_occurrences": 0,
+      "learnable_species": 9,
+      "assignment_source": "damage_model",
+      "rationale": [
+        "damage baseline from effective power 40"
+      ],
+      "attention_reasons": []
+    },
+    {
+      "move": "MOVE_CONVERSION_2",
+      "effect": "EFFECT_CONVERSION_2",
+      "role": "utility",
+      "power": 0,
+      "accuracy": 100,
+      "trainer_occurrences": 0,
+      "learnable_species": 2,
+      "assignment_source": "explicit_non_damage_effect",
+      "rationale": [
+        "reactive self type change"
+      ],
+      "attention_reasons": []
+    }
+  ],
+  "cost_6_moves": [
+    {
+      "move": "MOVE_ERUPTION",
+      "effect": "EFFECT_ERUPTION",
+      "role": "damage",
+      "power": 150,
+      "accuracy": 100,
+      "trainer_occurrences": 0,
+      "learnable_species": 3,
+      "assignment_source": "explicit_damage_effect",
+      "rationale": [
+        "HP-scaled power up to 150",
+        "spread-target premium +1"
+      ]
+    },
+    {
+      "move": "MOVE_WATER_SPOUT",
+      "effect": "EFFECT_ERUPTION",
+      "role": "damage",
+      "power": 150,
+      "accuracy": 100,
+      "trainer_occurrences": 0,
+      "learnable_species": 3,
+      "assignment_source": "explicit_damage_effect",
+      "rationale": [
+        "HP-scaled power up to 150",
+        "spread-target premium +1"
+      ]
+    }
+  ],
+  "special_case_moves": [
+    {
+      "move": "MOVE_ASSIST",
+      "cost": 3,
+      "effect": "EFFECT_ASSIST",
+      "rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ]
+    },
+    {
+      "move": "MOVE_BELLY_DRUM",
+      "cost": 4,
+      "effect": "EFFECT_BELLY_DRUM",
+      "rules": [
+        "standard_attempt",
+        "hp_or_self_cost_no_refund"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_BIDE",
+      "cost": 3,
+      "effect": "EFFECT_BIDE",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_BLAST_BURN",
+      "cost": 5,
+      "effect": "EFFECT_RECHARGE",
+      "rules": [
+        "standard_attempt",
+        "recharge_turn_free"
+      ],
+      "review_flags": [
+        "recharge_turn"
+      ]
+    },
+    {
+      "move": "MOVE_BOUNCE",
+      "cost": 4,
+      "effect": "EFFECT_SEMI_INVULNERABLE",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ]
+    },
+    {
+      "move": "MOVE_CHARGE",
+      "cost": 2,
+      "effect": "EFFECT_CHARGE",
+      "rules": [
+        "standard_attempt",
+        "charge_setup_separate_next_move",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "utility_value_review"
+      ]
+    },
+    {
+      "move": "MOVE_CURSE",
+      "cost": 3,
+      "effect": "EFFECT_CURSE",
+      "rules": [
+        "standard_attempt"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_DEFENSE_CURL",
+      "cost": 3,
+      "effect": "EFFECT_DEFENSE_CURL",
+      "rules": [
+        "standard_attempt",
+        "linked_moves_independent_cost",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "linked_move_family",
+        "utility_value_review"
+      ]
+    },
+    {
+      "move": "MOVE_DESTINY_BOND",
+      "cost": 4,
+      "effect": "EFFECT_DESTINY_BOND",
+      "rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_DIG",
+      "cost": 3,
+      "effect": "EFFECT_SEMI_INVULNERABLE",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ]
+    },
+    {
+      "move": "MOVE_DIVE",
+      "cost": 3,
+      "effect": "EFFECT_SEMI_INVULNERABLE",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ]
+    },
+    {
+      "move": "MOVE_DOOM_DESIRE",
+      "cost": 4,
+      "effect": "EFFECT_FUTURE_SIGHT",
+      "rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "review_flags": [
+        "delayed_execution",
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_ENDEAVOR",
+      "cost": 4,
+      "effect": "EFFECT_ENDEAVOR",
+      "rules": [
+        "standard_attempt"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_EXPLOSION",
+      "cost": 5,
+      "effect": "EFFECT_EXPLOSION",
+      "rules": [
+        "standard_attempt",
+        "hp_or_self_cost_no_refund"
+      ],
+      "review_flags": [
+        "self_sacrifice"
+      ]
+    },
+    {
+      "move": "MOVE_FISSURE",
+      "cost": 5,
+      "effect": "EFFECT_OHKO",
+      "rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "ohko"
+      ]
+    },
+    {
+      "move": "MOVE_FLY",
+      "cost": 3,
+      "effect": "EFFECT_SEMI_INVULNERABLE",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ]
+    },
+    {
+      "move": "MOVE_FOCUS_ENERGY",
+      "cost": 2,
+      "effect": "EFFECT_FOCUS_ENERGY",
+      "rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "utility_value_review"
+      ]
+    },
+    {
+      "move": "MOVE_FOCUS_PUNCH",
+      "cost": 5,
+      "effect": "EFFECT_FOCUS_PUNCH",
+      "rules": [
+        "standard_attempt",
+        "focus_punch_attempt"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_FRENZY_PLANT",
+      "cost": 5,
+      "effect": "EFFECT_RECHARGE",
+      "rules": [
+        "standard_attempt",
+        "recharge_turn_free"
+      ],
+      "review_flags": [
+        "recharge_turn"
+      ]
+    },
+    {
+      "move": "MOVE_FURY_CUTTER",
+      "cost": 2,
+      "effect": "EFFECT_FURY_CUTTER",
+      "rules": [
+        "standard_attempt",
+        "repeat_reselection_each_time"
+      ],
+      "review_flags": [
+        "repeat_scaling"
+      ]
+    },
+    {
+      "move": "MOVE_FUTURE_SIGHT",
+      "cost": 4,
+      "effect": "EFFECT_FUTURE_SIGHT",
+      "rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "review_flags": [
+        "delayed_execution",
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_GRUDGE",
+      "cost": 2,
+      "effect": "EFFECT_GRUDGE",
+      "rules": [
+        "standard_attempt",
+        "pp_asymmetry"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "player_pp_replacement"
+      ]
+    },
+    {
+      "move": "MOVE_GUILLOTINE",
+      "cost": 5,
+      "effect": "EFFECT_OHKO",
+      "rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "ohko"
+      ]
+    },
+    {
+      "move": "MOVE_HIDDEN_POWER",
+      "cost": 3,
+      "effect": "EFFECT_HIDDEN_POWER",
+      "rules": [
+        "standard_attempt",
+        "random_result_one_cost"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_HORN_DRILL",
+      "cost": 5,
+      "effect": "EFFECT_OHKO",
+      "rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "ohko"
+      ]
+    },
+    {
+      "move": "MOVE_HYDRO_CANNON",
+      "cost": 5,
+      "effect": "EFFECT_RECHARGE",
+      "rules": [
+        "standard_attempt",
+        "recharge_turn_free"
+      ],
+      "review_flags": [
+        "recharge_turn"
+      ]
+    },
+    {
+      "move": "MOVE_HYPER_BEAM",
+      "cost": 5,
+      "effect": "EFFECT_RECHARGE",
+      "rules": [
+        "standard_attempt",
+        "recharge_turn_free"
+      ],
+      "review_flags": [
+        "recharge_turn"
+      ]
+    },
+    {
+      "move": "MOVE_ICE_BALL",
+      "cost": 5,
+      "effect": "EFFECT_ROLLOUT",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ]
+    },
+    {
+      "move": "MOVE_IMPRISON",
+      "cost": 2,
+      "effect": "EFFECT_IMPRISON",
+      "rules": [
+        "standard_attempt"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_MAGNITUDE",
+      "cost": 3,
+      "effect": "EFFECT_MAGNITUDE",
+      "rules": [
+        "standard_attempt",
+        "random_result_one_cost"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_MEMENTO",
+      "cost": 3,
+      "effect": "EFFECT_MEMENTO",
+      "rules": [
+        "standard_attempt",
+        "hp_or_self_cost_no_refund"
+      ],
+      "review_flags": [
+        "self_sacrifice"
+      ]
+    },
+    {
+      "move": "MOVE_METRONOME",
+      "cost": 3,
+      "effect": "EFFECT_METRONOME",
+      "rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ]
+    },
+    {
+      "move": "MOVE_MIMIC",
+      "cost": 2,
+      "effect": "EFFECT_MIMIC",
+      "rules": [
+        "standard_attempt",
+        "copied_move_future_cost"
+      ],
+      "review_flags": [
+        "copied_move_interaction"
+      ]
+    },
+    {
+      "move": "MOVE_MIRROR_MOVE",
+      "cost": 3,
+      "effect": "EFFECT_MIRROR_MOVE",
+      "rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ]
+    },
+    {
+      "move": "MOVE_MIST",
+      "cost": 2,
+      "effect": "EFFECT_MIST",
+      "rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "utility_value_review"
+      ]
+    },
+    {
+      "move": "MOVE_NATURE_POWER",
+      "cost": 3,
+      "effect": "EFFECT_NATURE_POWER",
+      "rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ]
+    },
+    {
+      "move": "MOVE_NIGHTMARE",
+      "cost": 3,
+      "effect": "EFFECT_NIGHTMARE",
+      "rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_OUTRAGE",
+      "cost": 5,
+      "effect": "EFFECT_RAMPAGE",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ]
+    },
+    {
+      "move": "MOVE_PAIN_SPLIT",
+      "cost": 3,
+      "effect": "EFFECT_PAIN_SPLIT",
+      "rules": [
+        "standard_attempt"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_PERISH_SONG",
+      "cost": 4,
+      "effect": "EFFECT_PERISH_SONG",
+      "rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "review_flags": [
+        "perish_timer"
+      ]
+    },
+    {
+      "move": "MOVE_PETAL_DANCE",
+      "cost": 5,
+      "effect": "EFFECT_RAMPAGE",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ]
+    },
+    {
+      "move": "MOVE_PRESENT",
+      "cost": 2,
+      "effect": "EFFECT_PRESENT",
+      "rules": [
+        "standard_attempt",
+        "random_result_one_cost"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_RAGE",
+      "cost": 2,
+      "effect": "EFFECT_RAGE",
+      "rules": [
+        "standard_attempt",
+        "repeat_reselection_each_time"
+      ],
+      "review_flags": [
+        "repeat_scaling"
+      ]
+    },
+    {
+      "move": "MOVE_RAZOR_WIND",
+      "cost": 3,
+      "effect": "EFFECT_RAZOR_WIND",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ]
+    },
+    {
+      "move": "MOVE_ROLLOUT",
+      "cost": 5,
+      "effect": "EFFECT_ROLLOUT",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ]
+    },
+    {
+      "move": "MOVE_SECRET_POWER",
+      "cost": 3,
+      "effect": "EFFECT_SECRET_POWER",
+      "rules": [
+        "standard_attempt",
+        "random_result_one_cost"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    },
+    {
+      "move": "MOVE_SELF_DESTRUCT",
+      "cost": 5,
+      "effect": "EFFECT_EXPLOSION",
+      "rules": [
+        "standard_attempt",
+        "hp_or_self_cost_no_refund"
+      ],
+      "review_flags": [
+        "self_sacrifice"
+      ]
+    },
+    {
+      "move": "MOVE_SHEER_COLD",
+      "cost": 5,
+      "effect": "EFFECT_OHKO",
+      "rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "ohko"
+      ]
+    },
+    {
+      "move": "MOVE_SKETCH",
+      "cost": 3,
+      "effect": "EFFECT_SKETCH",
+      "rules": [
+        "standard_attempt",
+        "copied_move_future_cost"
+      ],
+      "review_flags": [
+        "copied_move_interaction"
+      ]
+    },
+    {
+      "move": "MOVE_SKULL_BASH",
+      "cost": 4,
+      "effect": "EFFECT_SKULL_BASH",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ]
+    },
+    {
+      "move": "MOVE_SKY_ATTACK",
+      "cost": 5,
+      "effect": "EFFECT_SKY_ATTACK",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ]
+    },
+    {
+      "move": "MOVE_SLEEP_TALK",
+      "cost": 2,
+      "effect": "EFFECT_SLEEP_TALK",
+      "rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ]
+    },
+    {
+      "move": "MOVE_SOLAR_BEAM",
+      "cost": 5,
+      "effect": "EFFECT_SOLAR_BEAM",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ]
+    },
+    {
+      "move": "MOVE_SPITE",
+      "cost": 2,
+      "effect": "EFFECT_SPITE",
+      "rules": [
+        "standard_attempt",
+        "pp_asymmetry"
+      ],
+      "review_flags": [
+        "player_pp_replacement"
+      ]
+    },
+    {
+      "move": "MOVE_SPIT_UP",
+      "cost": 4,
+      "effect": "EFFECT_SPIT_UP",
+      "rules": [
+        "standard_attempt",
+        "linked_moves_independent_cost"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "linked_move_family"
+      ]
+    },
+    {
+      "move": "MOVE_SPLASH",
+      "cost": 1,
+      "effect": "EFFECT_SPLASH",
+      "rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "utility_value_review"
+      ]
+    },
+    {
+      "move": "MOVE_STOCKPILE",
+      "cost": 2,
+      "effect": "EFFECT_STOCKPILE",
+      "rules": [
+        "standard_attempt",
+        "linked_moves_independent_cost"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "linked_move_family"
+      ]
+    },
+    {
+      "move": "MOVE_STRUGGLE",
+      "cost": 0,
+      "effect": "EFFECT_RECOIL",
+      "rules": [
+        "struggle_fallback"
+      ],
+      "review_flags": [
+        "stamina_fallback_rule"
+      ]
+    },
+    {
+      "move": "MOVE_SWALLOW",
+      "cost": 3,
+      "effect": "EFFECT_SWALLOW",
+      "rules": [
+        "standard_attempt",
+        "linked_moves_independent_cost"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "linked_move_family"
+      ]
+    },
+    {
+      "move": "MOVE_TELEPORT",
+      "cost": 1,
+      "effect": "EFFECT_TELEPORT",
+      "rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "review_flags": [
+        "utility_value_review"
+      ]
+    },
+    {
+      "move": "MOVE_THRASH",
+      "cost": 5,
+      "effect": "EFFECT_RAMPAGE",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ]
+    },
+    {
+      "move": "MOVE_TRANSFORM",
+      "cost": 3,
+      "effect": "EFFECT_TRANSFORM",
+      "rules": [
+        "standard_attempt",
+        "copied_move_future_cost"
+      ],
+      "review_flags": [
+        "copied_move_interaction"
+      ]
+    },
+    {
+      "move": "MOVE_UPROAR",
+      "cost": 4,
+      "effect": "EFFECT_UPROAR",
+      "rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ]
+    },
+    {
+      "move": "MOVE_WISH",
+      "cost": 3,
+      "effect": "EFFECT_WISH",
+      "rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ]
+    }
+  ]
+}

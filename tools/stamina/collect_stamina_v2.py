@@ -188,6 +188,47 @@ def balanced_block(text: str, open_pos: int) -> tuple[str, int]:
     return text[open_pos + 1 : i - 1], i
 
 
+
+def read_active_moves_info() -> str:
+    """
+    Return moves_info.h after resolving active FireRed #if/#else branches.
+
+    - Uses the FireRed build target.
+    - Removes inactive preprocessor branches.
+    - Preserves ordinary C expressions such as generation ternaries.
+    """
+    cmd = [
+        "arm-none-eabi-cpp",
+        "-fdirectives-only",
+        "-P",
+        "-iquote", "include",
+        "-Wno-trigraphs",
+        "-DMODERN=1",
+        "-DTESTING=0",
+        "-DFIRERED",
+        "-std=gnu17",
+        str(MOVES_INFO_H),
+    ]
+
+    try:
+        result = subprocess.run(
+            cmd,
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except FileNotFoundError:
+        die("arm-none-eabi-cpp not found")
+    except subprocess.CalledProcessError as exc:
+        die(
+            "Failed to preprocess moves_info.h:\n"
+            + exc.stderr
+        )
+
+    return result.stdout
+
+
 def parse_designated_blocks(text: str) -> dict[str, str]:
     anchor = text.find("const struct MoveInfo gMovesInfo")
     if anchor < 0:
@@ -316,6 +357,73 @@ def compact(expr: str | None) -> str | None:
     if expr is None:
         return None
     return re.sub(r"\s+", " ", expr).strip()
+
+
+def extract_simple_field(block: str, name: str) -> str | None:
+    """
+    Extract scalar top-level MoveInfo fields directly from their source line.
+
+    This intentionally bypasses the generic structural parser because RHH
+    descriptions can contain #if/#else branches with mutually exclusive
+    closing parentheses. In raw, un-preprocessed source those branches can
+    confuse generic delimiter-depth parsing even though the C is valid after
+    preprocessing.
+    """
+    m = re.search(
+        rf"(?m)^\s*\.{re.escape(name)}\s*=\s*([^,\n]+),\s*(?://.*)?$",
+        block,
+    )
+    if not m:
+        return None
+    return m.group(1).strip()
+
+
+def extract_additional_effects_expr(block: str) -> str | None:
+    """
+    Extract ADDITIONAL_EFFECTS(...) independently of preceding description
+    conditionals.
+    """
+    m = re.search(
+        r"(?m)^\s*\.additionalEffects\s*=\s*ADDITIONAL_EFFECTS\s*\(",
+        block,
+    )
+    if not m:
+        return None
+
+    expr_start = block.find("ADDITIONAL_EFFECTS", m.start())
+    open_pos = block.find("(", expr_start)
+
+    depth = 1
+    i = open_pos + 1
+    in_string = False
+    escaped = False
+
+    while i < len(block) and depth:
+        ch = block[i]
+
+        if in_string:
+            if escaped:
+                escaped = False
+            elif ch == "\\":
+                escaped = True
+            elif ch == '"':
+                in_string = False
+            i += 1
+            continue
+
+        if ch == '"':
+            in_string = True
+        elif ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth -= 1
+
+        i += 1
+
+    if depth:
+        return None
+
+    return block[expr_start:i].strip()
 
 
 def extract_c_string(expr: str | None) -> str | None:
@@ -495,7 +603,7 @@ def main() -> None:
     status = git("status", "--short")
 
     moves_h_text = read(MOVES_H)
-    moves_info_text = read(MOVES_INFO_H)
+    moves_info_text = read_active_moves_info()
 
     enum = parse_move_enum(moves_h_text)
     values: dict[str, int] = enum["values"]
@@ -544,6 +652,26 @@ def main() -> None:
             continue
 
         fields = split_top_level_fields(block)
+
+        # Repair canonical battle fields directly from their initializer lines.
+        # This makes extraction robust against #if branches inside descriptions.
+        for field_name in (
+            "effect",
+            "power",
+            "type",
+            "accuracy",
+            "pp",
+            "target",
+            "priority",
+            "category",
+        ):
+            direct_value = extract_simple_field(block, field_name)
+            if direct_value is not None:
+                fields[field_name] = direct_value
+
+        direct_additional = extract_additional_effects_expr(block)
+        if direct_additional is not None:
+            fields["additionalEffects"] = direct_additional
 
         properties = {
             k: compact(v)

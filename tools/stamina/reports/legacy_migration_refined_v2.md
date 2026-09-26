@@ -1,0 +1,671 @@
+# Stamina V2 — Refined Legacy Migration
+
+## Summary
+
+- `LEGACY_SAFE`: **72**
+- `LEGACY_MODERNIZED_MINOR`: **71**
+- `LEGACY_ENCODING_REVIEW`: **112**
+- `LEGACY_REAUDIT`: **100**
+- `LEGACY_UNRESOLVED`: **0**
+- `NEW_MOVE`: **493**
+
+## Change counts
+
+- `effect_representation_changed`: **203**
+- `v2_additional_effects`: **151**
+- `accuracy_changed`: **62**
+- `power_changed`: **56**
+- `damage_category_changed`: **54**
+- `target_changed`: **17**
+- `priority_changed`: **8**
+- `type_changed`: **5**
+
+## High-priority re-audit
+
+- `MOVE_WHIRLWIND` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_FLY` — old cost **3**
+  - changes: power_changed
+- `MOVE_VINE_WHIP` — old cost **1**
+  - changes: power_changed, damage_category_changed
+- `MOVE_JUMP_KICK` — old cost **2**
+  - changes: power_changed
+- `MOVE_THRASH` — old cost **5**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_PIN_MISSILE` — old cost **2**
+  - changes: power_changed, accuracy_changed, effect_representation_changed
+- `MOVE_ROAR` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_DISABLE` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_SURF` — old cost **4**
+  - changes: power_changed, target_changed
+- `MOVE_PETAL_DANCE` — old cost **5**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FIRE_SPIN` — old cost **2**
+  - changes: power_changed, accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_DIG` — old cost **3**
+  - changes: power_changed
+- `MOVE_TELEPORT` — old cost **1**
+  - changes: priority_changed
+- `MOVE_MIMIC` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_HAZE` — old cost **2**
+  - changes: target_changed
+- `MOVE_BIDE` — old cost **3**
+  - changes: accuracy_changed, priority_changed
+- `MOVE_LICK` — old cost **2**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SMOG` — old cost **2**
+  - changes: power_changed, damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SKULL_BASH` — old cost **4**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SOFT_BOILED` — old cost **4**
+  - changes: accuracy_changed
+- `MOVE_HIGH_JUMP_KICK` — old cost **3**
+  - changes: power_changed
+- `MOVE_GLARE` — old cost **3**
+  - changes: accuracy_changed, effect_representation_changed
+- `MOVE_POISON_GAS` — old cost **2**
+  - changes: accuracy_changed, target_changed, effect_representation_changed
+- `MOVE_LEECH_LIFE` — old cost **2**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_BUBBLE` — old cost **2**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FLASH` — old cost **2**
+  - changes: accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_PSYWAVE` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_THIEF` — old cost **1**
+  - changes: power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_SPIDER_WEB` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_MIND_READER` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_SNORE` — old cost **1**
+  - changes: power_changed, damage_category_changed, v2_additional_effects
+- `MOVE_CURSE` — old cost **3**
+  - changes: type_changed, v2_additional_effects
+- `MOVE_CONVERSION_2` — old cost **1**
+  - changes: accuracy_changed, target_changed
+- `MOVE_COTTON_SPORE` — old cost **3**
+  - changes: accuracy_changed, target_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_PROTECT` — old cost **3**
+  - changes: priority_changed
+- `MOVE_SWEET_KISS` — old cost **3**
+  - changes: type_changed
+- `MOVE_ZAP_CANNON` — old cost **4**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FORESIGHT` — old cost **1**
+  - changes: accuracy_changed
+- `MOVE_PERISH_SONG` — old cost **4**
+  - changes: target_changed
+- `MOVE_DETECT` — old cost **3**
+  - changes: priority_changed
+- `MOVE_LOCK_ON` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_OUTRAGE` — old cost **5**
+  - changes: power_changed, damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SANDSTORM` — old cost **2**
+  - changes: target_changed, effect_representation_changed
+- `MOVE_GIGA_DRAIN` — old cost **3**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_ENDURE` — old cost **2**
+  - changes: priority_changed
+- `MOVE_CHARM` — old cost **3**
+  - changes: type_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FURY_CUTTER` — old cost **2**
+  - changes: power_changed
+- `MOVE_MEAN_LOOK` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_HEAL_BELL` — old cost **4**
+  - changes: target_changed
+- `MOVE_PAIN_SPLIT` — old cost **3**
+  - changes: accuracy_changed
+- `MOVE_RAPID_SPIN` — old cost **1**
+  - changes: power_changed, v2_additional_effects
+- `MOVE_VITAL_THROW` — old cost **4**
+  - changes: accuracy_changed, effect_representation_changed
+- `MOVE_MOONLIGHT` — old cost **4**
+  - changes: type_changed
+- `MOVE_HIDDEN_POWER` — old cost **3**
+  - changes: power_changed, damage_category_changed
+- `MOVE_RAIN_DANCE` — old cost **2**
+  - changes: target_changed, effect_representation_changed
+- `MOVE_SUNNY_DAY` — old cost **2**
+  - changes: target_changed, effect_representation_changed
+- `MOVE_EXTREME_SPEED` — old cost **4**
+  - changes: priority_changed, effect_representation_changed
+- `MOVE_FUTURE_SIGHT` — old cost **4**
+  - changes: power_changed, accuracy_changed
+- `MOVE_ROCK_SMASH` — old cost **2**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_WHIRLPOOL` — old cost **2**
+  - changes: power_changed, accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_BEAT_UP` — old cost **3**
+  - changes: power_changed, damage_category_changed, v2_additional_effects
+- `MOVE_FAKE_OUT` — old cost **2**
+  - changes: priority_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_UPROAR` — old cost **4**
+  - changes: power_changed, damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SPIT_UP` — old cost **4**
+  - changes: power_changed, damage_category_changed
+- `MOVE_HAIL` — old cost **2**
+  - changes: target_changed, effect_representation_changed
+- `MOVE_FOLLOW_ME` — old cost **3**
+  - changes: accuracy_changed, priority_changed
+- `MOVE_NATURE_POWER` — old cost **3**
+  - changes: power_changed, target_changed
+- `MOVE_CHARGE` — old cost **2**
+  - changes: accuracy_changed, v2_additional_effects
+- `MOVE_HELPING_HAND` — old cost **2**
+  - changes: accuracy_changed, target_changed
+- `MOVE_ROLE_PLAY` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_WISH` — old cost **3**
+  - changes: accuracy_changed
+- `MOVE_ASSIST` — old cost **3**
+  - changes: accuracy_changed
+- `MOVE_INGRAIN` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_MAGIC_COAT` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_RECYCLE` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_YAWN` — old cost **3**
+  - changes: accuracy_changed
+- `MOVE_KNOCK_OFF` — old cost **1**
+  - changes: power_changed, damage_category_changed
+- `MOVE_SKILL_SWAP` — old cost **3**
+  - changes: accuracy_changed
+- `MOVE_IMPRISON` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_REFRESH` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_GRUDGE` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_SNATCH` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_DIVE` — old cost **3**
+  - changes: power_changed, damage_category_changed
+- `MOVE_CAMOUFLAGE` — old cost **1**
+  - changes: accuracy_changed
+- `MOVE_TAIL_GLOW` — old cost **3**
+  - changes: accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_LUSTER_PURGE` — old cost **3**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_MIST_BALL` — old cost **3**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_MUD_SPORT` — old cost **1**
+  - changes: accuracy_changed, target_changed
+- `MOVE_SLACK_OFF` — old cost **4**
+  - changes: accuracy_changed
+- `MOVE_AROMATHERAPY` — old cost **4**
+  - changes: target_changed
+- `MOVE_ODOR_SLEUTH` — old cost **1**
+  - changes: accuracy_changed
+- `MOVE_SAND_TOMB` — old cost **2**
+  - changes: power_changed, accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_BULLET_SEED` — old cost **1**
+  - changes: power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_ICICLE_SPEAR` — old cost **1**
+  - changes: power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_BLOCK` — old cost **2**
+  - changes: accuracy_changed
+- `MOVE_HOWL` — old cost **3**
+  - changes: target_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_COVET` — old cost **1**
+  - changes: power_changed, effect_representation_changed
+- `MOVE_WATER_SPORT` — old cost **1**
+  - changes: accuracy_changed, target_changed
+- `MOVE_LEAF_BLADE` — old cost **3**
+  - changes: power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_DOOM_DESIRE` — old cost **4**
+  - changes: power_changed, accuracy_changed, damage_category_changed
+
+## Effect-encoding review
+
+- `MOVE_PAY_DAY` — old cost **1**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_FIRE_PUNCH` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_ICE_PUNCH` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_THUNDER_PUNCH` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SWORDS_DANCE` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BIND` — old cost **2**
+  - changes: accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_STOMP` — old cost **4**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_ROLLING_KICK` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SAND_ATTACK` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_HEADBUTT` — old cost **4**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BODY_SLAM` — old cost **4**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_WRAP` — old cost **2**
+  - changes: accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_TAIL_WHIP` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_POISON_STING` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_TWINEEDLE` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_LEER` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BITE` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_GROWL` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_ACID` — old cost **2**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_EMBER` — old cost **1**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_FLAMETHROWER` — old cost **4**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_ICE_BEAM` — old cost **4**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_BLIZZARD` — old cost **5**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_PSYBEAM` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BUBBLE_BEAM` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_AURORA_BEAM` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_HYPER_BEAM` — old cost **5**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_ABSORB` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_MEGA_DRAIN` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_GROWTH` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_STRING_SHOT` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_THUNDER_SHOCK` — old cost **1**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_THUNDERBOLT` — old cost **4**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_THUNDER` — old cost **5**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_CONFUSION` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_PSYCHIC` — old cost **4**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_MEDITATE` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_AGILITY` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_RAGE` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SCREECH` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_DOUBLE_TEAM` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_HARDEN` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SMOKESCREEN` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_WITHDRAW` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BARRIER` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SLUDGE` — old cost **4**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_BONE_CLUB` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_FIRE_BLAST` — old cost **5**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_CLAMP` — old cost **2**
+  - changes: accuracy_changed, damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_CONSTRICT` — old cost **1**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_AMNESIA` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_KINESIS` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SKY_ATTACK` — old cost **5**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_DIZZY_PUNCH` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_ACID_ARMOR` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_ROCK_SLIDE` — old cost **4**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_HYPER_FANG` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SHARPEN` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_TRI_ATTACK` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FLAME_WHEEL` — old cost **2**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_POWDER_SNOW` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SCARY_FACE` — old cost **3**
+  - changes: accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SLUDGE_BOMB` — old cost **4**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_MUD_SLAP` — old cost **2**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_OCTAZOOKA` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_ICY_WIND` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SPARK` — old cost **4**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_STEEL_WING` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SACRED_FIRE` — old cost **4**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_DYNAMIC_PUNCH` — old cost **4**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_DRAGON_BREATH` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SWEET_SCENT` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_IRON_TAIL` — old cost **4**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_METAL_CLAW` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_TWISTER` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_CRUNCH` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_ANCIENT_POWER` — old cost **2**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SHADOW_BALL` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_HEAT_WAVE` — old cost **5**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_FLATTER` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SMELLING_SALTS` — old cost **2**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SUPERPOWER` — old cost **4**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BRICK_BREAK` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_FEATHER_DANCE` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BLAZE_KICK` — old cost **4**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_NEEDLE_ARM` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_POISON_FANG` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_CRUSH_CLAW` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BLAST_BURN` — old cost **5**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_HYDRO_CANNON` — old cost **5**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_METEOR_MASH` — old cost **4**
+  - changes: power_changed, accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_ASTONISH` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_FAKE_TEARS` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_OVERHEAT` — old cost **4**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_ROCK_TOMB` — old cost **2**
+  - changes: power_changed, accuracy_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_SILVER_WIND` — old cost **2**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_METAL_SOUND` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_TICKLE` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_COSMIC_POWER` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_SIGNAL_BEAM` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_EXTRASENSORY` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_MUDDY_WATER` — old cost **5**
+  - changes: power_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_IRON_DEFENSE` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_FRENZY_PLANT` — old cost **5**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_BULK_UP` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_MUD_SHOT` — old cost **2**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_POISON_TAIL` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_VOLT_TACKLE` — old cost **4**
+  - changes: damage_category_changed, effect_representation_changed, v2_additional_effects
+- `MOVE_CALM_MIND` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_DRAGON_DANCE` — old cost **3**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_WATER_PULSE` — old cost **2**
+  - changes: effect_representation_changed, v2_additional_effects
+- `MOVE_PSYCHO_BOOST` — old cost **5**
+  - changes: effect_representation_changed, v2_additional_effects
+
+## Minor modernization
+
+- `MOVE_KARATE_CHOP` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_DOUBLE_SLAP` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_COMET_PUNCH` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_RAZOR_WIND` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed
+- `MOVE_GUST` — old cost **1**
+  - changes: damage_category_changed, effect_representation_changed
+- `MOVE_DOUBLE_KICK` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_FURY_ATTACK` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_TACKLE` — old cost **1**
+  - changes: power_changed, accuracy_changed
+- `MOVE_DOUBLE_EDGE` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_SING` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_SONIC_BOOM` — old cost **2**
+  - changes: damage_category_changed, effect_representation_changed
+- `MOVE_HYDRO_PUMP` — old cost **4**
+  - changes: power_changed
+- `MOVE_LOW_KICK` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_COUNTER` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_RAZOR_LEAF` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed
+- `MOVE_POISON_POWDER` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_STUN_SPORE` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_SLEEP_POWDER` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_DRAGON_RAGE` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_THUNDER_WAVE` — old cost **3**
+  - changes: accuracy_changed, effect_representation_changed
+- `MOVE_TOXIC` — old cost **4**
+  - changes: accuracy_changed, effect_representation_changed
+- `MOVE_HYPNOSIS` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_QUICK_ATTACK` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_NIGHT_SHADE` — old cost **3**
+  - changes: damage_category_changed
+- `MOVE_MINIMIZE` — old cost **4**
+  - changes: v2_additional_effects
+- `MOVE_DEFENSE_CURL` — old cost **3**
+  - changes: v2_additional_effects
+- `MOVE_SELF_DESTRUCT` — old cost **5**
+  - changes: effect_representation_changed
+- `MOVE_WATERFALL` — old cost **3**
+  - changes: damage_category_changed, v2_additional_effects
+- `MOVE_SWIFT` — old cost **4**
+  - changes: damage_category_changed, effect_representation_changed
+- `MOVE_SPIKE_CANNON` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_DREAM_EATER` — old cost **4**
+  - changes: v2_additional_effects
+- `MOVE_BARRAGE` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_LOVELY_KISS` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_SPORE` — old cost **5**
+  - changes: effect_representation_changed
+- `MOVE_SPLASH` — old cost **1**
+  - changes: effect_representation_changed
+- `MOVE_CRABHAMMER` — old cost **4**
+  - changes: power_changed, accuracy_changed, damage_category_changed, effect_representation_changed
+- `MOVE_EXPLOSION` — old cost **5**
+  - changes: effect_representation_changed
+- `MOVE_FURY_SWIPES` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_BONEMERANG` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_SUPER_FANG` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_SLASH` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_AEROBLAST` — old cost **4**
+  - changes: damage_category_changed, effect_representation_changed
+- `MOVE_MACH_PUNCH` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_FEINT_ATTACK` — old cost **3**
+  - changes: damage_category_changed, effect_representation_changed
+- `MOVE_BELLY_DRUM` — old cost **4**
+  - changes: v2_additional_effects
+- `MOVE_BONE_RUSH` — old cost **3**
+  - changes: accuracy_changed, effect_representation_changed
+- `MOVE_SWAGGER` — old cost **2**
+  - changes: accuracy_changed, v2_additional_effects
+- `MOVE_PURSUIT` — old cost **1**
+  - changes: damage_category_changed
+- `MOVE_CROSS_CHOP` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_MIRROR_COAT` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_STOCKPILE` — old cost **2**
+  - changes: v2_additional_effects
+- `MOVE_WILL_O_WISP` — old cost **3**
+  - changes: accuracy_changed, effect_representation_changed
+- `MOVE_MEMENTO` — old cost **3**
+  - changes: v2_additional_effects
+- `MOVE_ERUPTION` — old cost **6**
+  - changes: effect_representation_changed
+- `MOVE_SECRET_POWER` — old cost **3**
+  - changes: v2_additional_effects
+- `MOVE_ARM_THRUST` — old cost **2**
+  - changes: effect_representation_changed
+- `MOVE_TEETER_DANCE` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_ICE_BALL` — old cost **5**
+  - changes: damage_category_changed
+- `MOVE_HYPER_VOICE` — old cost **5**
+  - changes: damage_category_changed
+- `MOVE_WEATHER_BALL` — old cost **3**
+  - changes: damage_category_changed
+- `MOVE_AIR_CUTTER` — old cost **3**
+  - changes: power_changed, damage_category_changed, effect_representation_changed
+- `MOVE_GRASS_WHISTLE` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_WATER_SPOUT` — old cost **6**
+  - changes: effect_representation_changed
+- `MOVE_SHADOW_PUNCH` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_SKY_UPPERCUT` — old cost **4**
+  - changes: effect_representation_changed
+- `MOVE_AERIAL_ACE` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_DRAGON_CLAW` — old cost **3**
+  - changes: damage_category_changed
+- `MOVE_BOUNCE` — old cost **4**
+  - changes: v2_additional_effects
+- `MOVE_MAGICAL_LEAF` — old cost **3**
+  - changes: effect_representation_changed
+- `MOVE_ROCK_BLAST` — old cost **3**
+  - changes: accuracy_changed, effect_representation_changed
+- `MOVE_SHOCK_WAVE` — old cost **3**
+  - changes: effect_representation_changed
+
+## Legacy-safe
+
+- `MOVE_NONE` — old cost **0**
+- `MOVE_POUND` — old cost **1**
+- `MOVE_MEGA_PUNCH` — old cost **3**
+- `MOVE_SCRATCH` — old cost **1**
+- `MOVE_VISE_GRIP` — old cost **2**
+- `MOVE_GUILLOTINE` — old cost **5**
+- `MOVE_CUT` — old cost **2**
+- `MOVE_WING_ATTACK` — old cost **2**
+- `MOVE_SLAM` — old cost **3**
+- `MOVE_MEGA_KICK` — old cost **4**
+- `MOVE_HORN_ATTACK` — old cost **3**
+- `MOVE_HORN_DRILL` — old cost **5**
+- `MOVE_TAKE_DOWN` — old cost **3**
+- `MOVE_SUPERSONIC` — old cost **2**
+- `MOVE_MIST` — old cost **2**
+- `MOVE_WATER_GUN` — old cost **1**
+- `MOVE_PECK` — old cost **1**
+- `MOVE_DRILL_PECK` — old cost **3**
+- `MOVE_SUBMISSION` — old cost **2**
+- `MOVE_SEISMIC_TOSS` — old cost **3**
+- `MOVE_STRENGTH` — old cost **3**
+- `MOVE_LEECH_SEED` — old cost **3**
+- `MOVE_SOLAR_BEAM` — old cost **5**
+- `MOVE_ROCK_THROW` — old cost **2**
+- `MOVE_EARTHQUAKE` — old cost **4**
+- `MOVE_FISSURE` — old cost **5**
+- `MOVE_RECOVER` — old cost **4**
+- `MOVE_CONFUSE_RAY` — old cost **3**
+- `MOVE_LIGHT_SCREEN` — old cost **3**
+- `MOVE_REFLECT` — old cost **3**
+- `MOVE_FOCUS_ENERGY` — old cost **2**
+- `MOVE_METRONOME` — old cost **3**
+- `MOVE_MIRROR_MOVE` — old cost **3**
+- `MOVE_EGG_BOMB` — old cost **4**
+- `MOVE_TRANSFORM` — old cost **3**
+- `MOVE_REST` — old cost **3**
+- `MOVE_CONVERSION` — old cost **1**
+- `MOVE_SUBSTITUTE` — old cost **3**
+- `MOVE_STRUGGLE` — old cost **0**
+- `MOVE_SKETCH` — old cost **3**
+- `MOVE_TRIPLE_KICK` — old cost **3**
+- `MOVE_NIGHTMARE` — old cost **3**
+- `MOVE_FLAIL` — old cost **3**
+- `MOVE_REVERSAL` — old cost **3**
+- `MOVE_SPITE` — old cost **2**
+- `MOVE_SPIKES` — old cost **3**
+- `MOVE_DESTINY_BOND` — old cost **4**
+- `MOVE_ROLLOUT` — old cost **5**
+- `MOVE_FALSE_SWIPE` — old cost **1**
+- `MOVE_MILK_DRINK` — old cost **4**
+- `MOVE_ATTRACT` — old cost **2**
+- `MOVE_SLEEP_TALK` — old cost **2**
+- `MOVE_RETURN` — old cost **4**
+- `MOVE_PRESENT` — old cost **2**
+- `MOVE_FRUSTRATION` — old cost **4**
+- `MOVE_SAFEGUARD` — old cost **2**
+- `MOVE_MAGNITUDE` — old cost **3**
+- `MOVE_MEGAHORN` — old cost **5**
+- `MOVE_BATON_PASS` — old cost **3**
+- `MOVE_ENCORE` — old cost **3**
+- `MOVE_MORNING_SUN` — old cost **4**
+- `MOVE_SYNTHESIS` — old cost **4**
+- `MOVE_PSYCH_UP` — old cost **2**
+- `MOVE_SWALLOW` — old cost **3**
+- `MOVE_TORMENT` — old cost **2**
+- `MOVE_FACADE` — old cost **3**
+- `MOVE_FOCUS_PUNCH` — old cost **5**
+- `MOVE_TAUNT` — old cost **2**
+- `MOVE_TRICK` — old cost **2**
+- `MOVE_REVENGE` — old cost **2**
+- `MOVE_ENDEAVOR` — old cost **4**
+- `MOVE_SHEER_COLD` — old cost **5**

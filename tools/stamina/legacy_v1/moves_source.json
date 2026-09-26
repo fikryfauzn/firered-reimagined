@@ -1,0 +1,7278 @@
+{
+  "schema_version": 2,
+  "dataset": "Pokemon FireRed move source facts",
+  "rules": {
+    "source_layer_is_immutable": true,
+    "stamina_costs_assigned_in_later_pass": true,
+    "species_specific_stamina": false,
+    "species_specific_regen": false
+  },
+  "source_files": {
+    "move_ids": "include/constants/moves.h",
+    "move_mechanics": "src/data/battle_moves.h",
+    "move_effect_ids": "include/constants/battle_move_effects.h"
+  },
+  "counts": {
+    "moves_count_constant": 355,
+    "indexed_entries": 355,
+    "real_moves_excluding_move_none": 354,
+    "battle_move_effect_constants": 214
+  },
+  "moves": [
+    {
+      "id": "MOVE_NONE",
+      "numeric_id": 0,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 0,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "none"
+      }
+    },
+    {
+      "id": "MOVE_POUND",
+      "numeric_id": 1,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 40,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 35,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_KARATE_CHOP",
+      "numeric_id": 2,
+      "source": {
+        "effect": "EFFECT_HIGH_CRITICAL",
+        "effect_numeric_id": 43,
+        "power": 50,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DOUBLE_SLAP",
+      "numeric_id": 3,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 15,
+        "type": "TYPE_NORMAL",
+        "accuracy": 85,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_COMET_PUNCH",
+      "numeric_id": 4,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 18,
+        "type": "TYPE_NORMAL",
+        "accuracy": 85,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MEGA_PUNCH",
+      "numeric_id": 5,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 80,
+        "type": "TYPE_NORMAL",
+        "accuracy": 85,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_PAY_DAY",
+      "numeric_id": 6,
+      "source": {
+        "effect": "EFFECT_PAY_DAY",
+        "effect_numeric_id": 34,
+        "power": 40,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FIRE_PUNCH",
+      "numeric_id": 7,
+      "source": {
+        "effect": "EFFECT_BURN_HIT",
+        "effect_numeric_id": 4,
+        "power": 75,
+        "type": "TYPE_FIRE",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_ICE_PUNCH",
+      "numeric_id": 8,
+      "source": {
+        "effect": "EFFECT_FREEZE_HIT",
+        "effect_numeric_id": 5,
+        "power": 75,
+        "type": "TYPE_ICE",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_THUNDER_PUNCH",
+      "numeric_id": 9,
+      "source": {
+        "effect": "EFFECT_PARALYZE_HIT",
+        "effect_numeric_id": 6,
+        "power": 75,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SCRATCH",
+      "numeric_id": 10,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 40,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 35,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_VICE_GRIP",
+      "numeric_id": 11,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 55,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_GUILLOTINE",
+      "numeric_id": 12,
+      "source": {
+        "effect": "EFFECT_OHKO",
+        "effect_numeric_id": 38,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 30,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_RAZOR_WIND",
+      "numeric_id": 13,
+      "source": {
+        "effect": "EFFECT_RAZOR_WIND",
+        "effect_numeric_id": 39,
+        "power": 80,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SWORDS_DANCE",
+      "numeric_id": 14,
+      "source": {
+        "effect": "EFFECT_ATTACK_UP_2",
+        "effect_numeric_id": 50,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CUT",
+      "numeric_id": 15,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 50,
+        "type": "TYPE_NORMAL",
+        "accuracy": 95,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_GUST",
+      "numeric_id": 16,
+      "source": {
+        "effect": "EFFECT_GUST",
+        "effect_numeric_id": 149,
+        "power": 40,
+        "type": "TYPE_FLYING",
+        "accuracy": 100,
+        "pp": 35,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_WING_ATTACK",
+      "numeric_id": 17,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 60,
+        "type": "TYPE_FLYING",
+        "accuracy": 100,
+        "pp": 35,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_WHIRLWIND",
+      "numeric_id": 18,
+      "source": {
+        "effect": "EFFECT_ROAR",
+        "effect_numeric_id": 28,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": -6,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FLY",
+      "numeric_id": 19,
+      "source": {
+        "effect": "EFFECT_SEMI_INVULNERABLE",
+        "effect_numeric_id": 155,
+        "power": 70,
+        "type": "TYPE_FLYING",
+        "accuracy": 95,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_BIND",
+      "numeric_id": 20,
+      "source": {
+        "effect": "EFFECT_TRAP",
+        "effect_numeric_id": 42,
+        "power": 15,
+        "type": "TYPE_NORMAL",
+        "accuracy": 75,
+        "pp": 20,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SLAM",
+      "numeric_id": 21,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 80,
+        "type": "TYPE_NORMAL",
+        "accuracy": 75,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_VINE_WHIP",
+      "numeric_id": 22,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 35,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_STOMP",
+      "numeric_id": 23,
+      "source": {
+        "effect": "EFFECT_FLINCH_MINIMIZE_HIT",
+        "effect_numeric_id": 150,
+        "power": 65,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DOUBLE_KICK",
+      "numeric_id": 24,
+      "source": {
+        "effect": "EFFECT_DOUBLE_HIT",
+        "effect_numeric_id": 44,
+        "power": 30,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MEGA_KICK",
+      "numeric_id": 25,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 120,
+        "type": "TYPE_NORMAL",
+        "accuracy": 75,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_JUMP_KICK",
+      "numeric_id": 26,
+      "source": {
+        "effect": "EFFECT_RECOIL_IF_MISS",
+        "effect_numeric_id": 45,
+        "power": 70,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 95,
+        "pp": 25,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_ROLLING_KICK",
+      "numeric_id": 27,
+      "source": {
+        "effect": "EFFECT_FLINCH_HIT",
+        "effect_numeric_id": 31,
+        "power": 60,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 85,
+        "pp": 15,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SAND_ATTACK",
+      "numeric_id": 28,
+      "source": {
+        "effect": "EFFECT_ACCURACY_DOWN",
+        "effect_numeric_id": 23,
+        "power": 0,
+        "type": "TYPE_GROUND",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HEADBUTT",
+      "numeric_id": 29,
+      "source": {
+        "effect": "EFFECT_FLINCH_HIT",
+        "effect_numeric_id": 31,
+        "power": 70,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_HORN_ATTACK",
+      "numeric_id": 30,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 65,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FURY_ATTACK",
+      "numeric_id": 31,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 15,
+        "type": "TYPE_NORMAL",
+        "accuracy": 85,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_HORN_DRILL",
+      "numeric_id": 32,
+      "source": {
+        "effect": "EFFECT_OHKO",
+        "effect_numeric_id": 38,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 30,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_TACKLE",
+      "numeric_id": 33,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 35,
+        "type": "TYPE_NORMAL",
+        "accuracy": 95,
+        "pp": 35,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_BODY_SLAM",
+      "numeric_id": 34,
+      "source": {
+        "effect": "EFFECT_PARALYZE_HIT",
+        "effect_numeric_id": 6,
+        "power": 85,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_WRAP",
+      "numeric_id": 35,
+      "source": {
+        "effect": "EFFECT_TRAP",
+        "effect_numeric_id": 42,
+        "power": 15,
+        "type": "TYPE_NORMAL",
+        "accuracy": 85,
+        "pp": 20,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_TAKE_DOWN",
+      "numeric_id": 36,
+      "source": {
+        "effect": "EFFECT_RECOIL",
+        "effect_numeric_id": 48,
+        "power": 90,
+        "type": "TYPE_NORMAL",
+        "accuracy": 85,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_THRASH",
+      "numeric_id": 37,
+      "source": {
+        "effect": "EFFECT_RAMPAGE",
+        "effect_numeric_id": 27,
+        "power": 90,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_RANDOM",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DOUBLE_EDGE",
+      "numeric_id": 38,
+      "source": {
+        "effect": "EFFECT_DOUBLE_EDGE",
+        "effect_numeric_id": 198,
+        "power": 120,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_TAIL_WHIP",
+      "numeric_id": 39,
+      "source": {
+        "effect": "EFFECT_DEFENSE_DOWN",
+        "effect_numeric_id": 19,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_POISON_STING",
+      "numeric_id": 40,
+      "source": {
+        "effect": "EFFECT_POISON_HIT",
+        "effect_numeric_id": 2,
+        "power": 15,
+        "type": "TYPE_POISON",
+        "accuracy": 100,
+        "pp": 35,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_TWINEEDLE",
+      "numeric_id": 41,
+      "source": {
+        "effect": "EFFECT_TWINEEDLE",
+        "effect_numeric_id": 77,
+        "power": 25,
+        "type": "TYPE_BUG",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 20,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_PIN_MISSILE",
+      "numeric_id": 42,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 14,
+        "type": "TYPE_BUG",
+        "accuracy": 85,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_LEER",
+      "numeric_id": 43,
+      "source": {
+        "effect": "EFFECT_DEFENSE_DOWN",
+        "effect_numeric_id": 19,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BITE",
+      "numeric_id": 44,
+      "source": {
+        "effect": "EFFECT_FLINCH_HIT",
+        "effect_numeric_id": 31,
+        "power": 60,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_GROWL",
+      "numeric_id": 45,
+      "source": {
+        "effect": "EFFECT_ATTACK_DOWN",
+        "effect_numeric_id": 18,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ROAR",
+      "numeric_id": 46,
+      "source": {
+        "effect": "EFFECT_ROAR",
+        "effect_numeric_id": 28,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": -6,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SING",
+      "numeric_id": 47,
+      "source": {
+        "effect": "EFFECT_SLEEP",
+        "effect_numeric_id": 1,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 55,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SUPERSONIC",
+      "numeric_id": 48,
+      "source": {
+        "effect": "EFFECT_CONFUSE",
+        "effect_numeric_id": 49,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 55,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SONIC_BOOM",
+      "numeric_id": 49,
+      "source": {
+        "effect": "EFFECT_SONICBOOM",
+        "effect_numeric_id": 130,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 90,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DISABLE",
+      "numeric_id": 50,
+      "source": {
+        "effect": "EFFECT_DISABLE",
+        "effect_numeric_id": 86,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 55,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ACID",
+      "numeric_id": 51,
+      "source": {
+        "effect": "EFFECT_DEFENSE_DOWN_HIT",
+        "effect_numeric_id": 69,
+        "power": 40,
+        "type": "TYPE_POISON",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_EMBER",
+      "numeric_id": 52,
+      "source": {
+        "effect": "EFFECT_BURN_HIT",
+        "effect_numeric_id": 4,
+        "power": 40,
+        "type": "TYPE_FIRE",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_FLAMETHROWER",
+      "numeric_id": 53,
+      "source": {
+        "effect": "EFFECT_BURN_HIT",
+        "effect_numeric_id": 4,
+        "power": 95,
+        "type": "TYPE_FIRE",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_MIST",
+      "numeric_id": 54,
+      "source": {
+        "effect": "EFFECT_MIST",
+        "effect_numeric_id": 46,
+        "power": 0,
+        "type": "TYPE_ICE",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_WATER_GUN",
+      "numeric_id": 55,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 40,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_HYDRO_PUMP",
+      "numeric_id": 56,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 120,
+        "type": "TYPE_WATER",
+        "accuracy": 80,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SURF",
+      "numeric_id": 57,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 95,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_ICE_BEAM",
+      "numeric_id": 58,
+      "source": {
+        "effect": "EFFECT_FREEZE_HIT",
+        "effect_numeric_id": 5,
+        "power": 95,
+        "type": "TYPE_ICE",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_BLIZZARD",
+      "numeric_id": 59,
+      "source": {
+        "effect": "EFFECT_FREEZE_HIT",
+        "effect_numeric_id": 5,
+        "power": 120,
+        "type": "TYPE_ICE",
+        "accuracy": 70,
+        "pp": 5,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_PSYBEAM",
+      "numeric_id": 60,
+      "source": {
+        "effect": "EFFECT_CONFUSE_HIT",
+        "effect_numeric_id": 76,
+        "power": 65,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_BUBBLE_BEAM",
+      "numeric_id": 61,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN_HIT",
+        "effect_numeric_id": 70,
+        "power": 65,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_AURORA_BEAM",
+      "numeric_id": 62,
+      "source": {
+        "effect": "EFFECT_ATTACK_DOWN_HIT",
+        "effect_numeric_id": 68,
+        "power": 65,
+        "type": "TYPE_ICE",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_HYPER_BEAM",
+      "numeric_id": 63,
+      "source": {
+        "effect": "EFFECT_RECHARGE",
+        "effect_numeric_id": 80,
+        "power": 150,
+        "type": "TYPE_NORMAL",
+        "accuracy": 90,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_PECK",
+      "numeric_id": 64,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 35,
+        "type": "TYPE_FLYING",
+        "accuracy": 100,
+        "pp": 35,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DRILL_PECK",
+      "numeric_id": 65,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 80,
+        "type": "TYPE_FLYING",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SUBMISSION",
+      "numeric_id": 66,
+      "source": {
+        "effect": "EFFECT_RECOIL",
+        "effect_numeric_id": 48,
+        "power": 80,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 80,
+        "pp": 25,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_LOW_KICK",
+      "numeric_id": 67,
+      "source": {
+        "effect": "EFFECT_LOW_KICK",
+        "effect_numeric_id": 196,
+        "power": 1,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_COUNTER",
+      "numeric_id": 68,
+      "source": {
+        "effect": "EFFECT_COUNTER",
+        "effect_numeric_id": 89,
+        "power": 1,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": -5,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SEISMIC_TOSS",
+      "numeric_id": 69,
+      "source": {
+        "effect": "EFFECT_LEVEL_DAMAGE",
+        "effect_numeric_id": 87,
+        "power": 1,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_STRENGTH",
+      "numeric_id": 70,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 80,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_ABSORB",
+      "numeric_id": 71,
+      "source": {
+        "effect": "EFFECT_ABSORB",
+        "effect_numeric_id": 3,
+        "power": 20,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_MEGA_DRAIN",
+      "numeric_id": 72,
+      "source": {
+        "effect": "EFFECT_ABSORB",
+        "effect_numeric_id": 3,
+        "power": 40,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_LEECH_SEED",
+      "numeric_id": 73,
+      "source": {
+        "effect": "EFFECT_LEECH_SEED",
+        "effect_numeric_id": 84,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 90,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_GROWTH",
+      "numeric_id": 74,
+      "source": {
+        "effect": "EFFECT_SPECIAL_ATTACK_UP",
+        "effect_numeric_id": 13,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_RAZOR_LEAF",
+      "numeric_id": 75,
+      "source": {
+        "effect": "EFFECT_HIGH_CRITICAL",
+        "effect_numeric_id": 43,
+        "power": 55,
+        "type": "TYPE_GRASS",
+        "accuracy": 95,
+        "pp": 25,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SOLAR_BEAM",
+      "numeric_id": 76,
+      "source": {
+        "effect": "EFFECT_SOLAR_BEAM",
+        "effect_numeric_id": 151,
+        "power": 120,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_POISON_POWDER",
+      "numeric_id": 77,
+      "source": {
+        "effect": "EFFECT_POISON",
+        "effect_numeric_id": 66,
+        "power": 0,
+        "type": "TYPE_POISON",
+        "accuracy": 75,
+        "pp": 35,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_STUN_SPORE",
+      "numeric_id": 78,
+      "source": {
+        "effect": "EFFECT_PARALYZE",
+        "effect_numeric_id": 67,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 75,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SLEEP_POWDER",
+      "numeric_id": 79,
+      "source": {
+        "effect": "EFFECT_SLEEP",
+        "effect_numeric_id": 1,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 75,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_PETAL_DANCE",
+      "numeric_id": 80,
+      "source": {
+        "effect": "EFFECT_RAMPAGE",
+        "effect_numeric_id": 27,
+        "power": 70,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_RANDOM",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_STRING_SHOT",
+      "numeric_id": 81,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN",
+        "effect_numeric_id": 20,
+        "power": 0,
+        "type": "TYPE_BUG",
+        "accuracy": 95,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_DRAGON_RAGE",
+      "numeric_id": 82,
+      "source": {
+        "effect": "EFFECT_DRAGON_RAGE",
+        "effect_numeric_id": 41,
+        "power": 1,
+        "type": "TYPE_DRAGON",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_FIRE_SPIN",
+      "numeric_id": 83,
+      "source": {
+        "effect": "EFFECT_TRAP",
+        "effect_numeric_id": 42,
+        "power": 15,
+        "type": "TYPE_FIRE",
+        "accuracy": 70,
+        "pp": 15,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_THUNDER_SHOCK",
+      "numeric_id": 84,
+      "source": {
+        "effect": "EFFECT_PARALYZE_HIT",
+        "effect_numeric_id": 6,
+        "power": 40,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_THUNDERBOLT",
+      "numeric_id": 85,
+      "source": {
+        "effect": "EFFECT_PARALYZE_HIT",
+        "effect_numeric_id": 6,
+        "power": 95,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_THUNDER_WAVE",
+      "numeric_id": 86,
+      "source": {
+        "effect": "EFFECT_PARALYZE",
+        "effect_numeric_id": 67,
+        "power": 0,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_THUNDER",
+      "numeric_id": 87,
+      "source": {
+        "effect": "EFFECT_THUNDER",
+        "effect_numeric_id": 152,
+        "power": 120,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 70,
+        "pp": 10,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_ROCK_THROW",
+      "numeric_id": 88,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 50,
+        "type": "TYPE_ROCK",
+        "accuracy": 90,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_EARTHQUAKE",
+      "numeric_id": 89,
+      "source": {
+        "effect": "EFFECT_EARTHQUAKE",
+        "effect_numeric_id": 147,
+        "power": 100,
+        "type": "TYPE_GROUND",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_FOES_AND_ALLY",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FISSURE",
+      "numeric_id": 90,
+      "source": {
+        "effect": "EFFECT_OHKO",
+        "effect_numeric_id": 38,
+        "power": 1,
+        "type": "TYPE_GROUND",
+        "accuracy": 30,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DIG",
+      "numeric_id": 91,
+      "source": {
+        "effect": "EFFECT_SEMI_INVULNERABLE",
+        "effect_numeric_id": 155,
+        "power": 60,
+        "type": "TYPE_GROUND",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_TOXIC",
+      "numeric_id": 92,
+      "source": {
+        "effect": "EFFECT_TOXIC",
+        "effect_numeric_id": 33,
+        "power": 0,
+        "type": "TYPE_POISON",
+        "accuracy": 85,
+        "pp": 10,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CONFUSION",
+      "numeric_id": 93,
+      "source": {
+        "effect": "EFFECT_CONFUSE_HIT",
+        "effect_numeric_id": 76,
+        "power": 50,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_PSYCHIC",
+      "numeric_id": 94,
+      "source": {
+        "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+        "effect_numeric_id": 72,
+        "power": 90,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_HYPNOSIS",
+      "numeric_id": 95,
+      "source": {
+        "effect": "EFFECT_SLEEP",
+        "effect_numeric_id": 1,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 60,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_MEDITATE",
+      "numeric_id": 96,
+      "source": {
+        "effect": "EFFECT_ATTACK_UP",
+        "effect_numeric_id": 10,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_AGILITY",
+      "numeric_id": 97,
+      "source": {
+        "effect": "EFFECT_SPEED_UP_2",
+        "effect_numeric_id": 52,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_QUICK_ATTACK",
+      "numeric_id": 98,
+      "source": {
+        "effect": "EFFECT_QUICK_ATTACK",
+        "effect_numeric_id": 103,
+        "power": 40,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 1,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_RAGE",
+      "numeric_id": 99,
+      "source": {
+        "effect": "EFFECT_RAGE",
+        "effect_numeric_id": 81,
+        "power": 20,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_TELEPORT",
+      "numeric_id": 100,
+      "source": {
+        "effect": "EFFECT_TELEPORT",
+        "effect_numeric_id": 153,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_NIGHT_SHADE",
+      "numeric_id": 101,
+      "source": {
+        "effect": "EFFECT_LEVEL_DAMAGE",
+        "effect_numeric_id": 87,
+        "power": 1,
+        "type": "TYPE_GHOST",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MIMIC",
+      "numeric_id": 102,
+      "source": {
+        "effect": "EFFECT_MIMIC",
+        "effect_numeric_id": 82,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SCREECH",
+      "numeric_id": 103,
+      "source": {
+        "effect": "EFFECT_DEFENSE_DOWN_2",
+        "effect_numeric_id": 59,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 85,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_DOUBLE_TEAM",
+      "numeric_id": 104,
+      "source": {
+        "effect": "EFFECT_EVASION_UP",
+        "effect_numeric_id": 16,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_RECOVER",
+      "numeric_id": 105,
+      "source": {
+        "effect": "EFFECT_RESTORE_HP",
+        "effect_numeric_id": 32,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HARDEN",
+      "numeric_id": 106,
+      "source": {
+        "effect": "EFFECT_DEFENSE_UP",
+        "effect_numeric_id": 11,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_MINIMIZE",
+      "numeric_id": 107,
+      "source": {
+        "effect": "EFFECT_MINIMIZE",
+        "effect_numeric_id": 108,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SMOKESCREEN",
+      "numeric_id": 108,
+      "source": {
+        "effect": "EFFECT_ACCURACY_DOWN",
+        "effect_numeric_id": 23,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CONFUSE_RAY",
+      "numeric_id": 109,
+      "source": {
+        "effect": "EFFECT_CONFUSE",
+        "effect_numeric_id": 49,
+        "power": 0,
+        "type": "TYPE_GHOST",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_WITHDRAW",
+      "numeric_id": 110,
+      "source": {
+        "effect": "EFFECT_DEFENSE_UP",
+        "effect_numeric_id": 11,
+        "power": 0,
+        "type": "TYPE_WATER",
+        "accuracy": 0,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_DEFENSE_CURL",
+      "numeric_id": 111,
+      "source": {
+        "effect": "EFFECT_DEFENSE_CURL",
+        "effect_numeric_id": 156,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BARRIER",
+      "numeric_id": 112,
+      "source": {
+        "effect": "EFFECT_DEFENSE_UP_2",
+        "effect_numeric_id": 51,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_LIGHT_SCREEN",
+      "numeric_id": 113,
+      "source": {
+        "effect": "EFFECT_LIGHT_SCREEN",
+        "effect_numeric_id": 35,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HAZE",
+      "numeric_id": 114,
+      "source": {
+        "effect": "EFFECT_HAZE",
+        "effect_numeric_id": 25,
+        "power": 0,
+        "type": "TYPE_ICE",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_REFLECT",
+      "numeric_id": 115,
+      "source": {
+        "effect": "EFFECT_REFLECT",
+        "effect_numeric_id": 65,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FOCUS_ENERGY",
+      "numeric_id": 116,
+      "source": {
+        "effect": "EFFECT_FOCUS_ENERGY",
+        "effect_numeric_id": 47,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BIDE",
+      "numeric_id": 117,
+      "source": {
+        "effect": "EFFECT_BIDE",
+        "effect_numeric_id": 26,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_METRONOME",
+      "numeric_id": 118,
+      "source": {
+        "effect": "EFFECT_METRONOME",
+        "effect_numeric_id": 83,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_MIRROR_MOVE",
+      "numeric_id": 119,
+      "source": {
+        "effect": "EFFECT_MIRROR_MOVE",
+        "effect_numeric_id": 9,
+        "power": 0,
+        "type": "TYPE_FLYING",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SELF_DESTRUCT",
+      "numeric_id": 120,
+      "source": {
+        "effect": "EFFECT_EXPLOSION",
+        "effect_numeric_id": 7,
+        "power": 200,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_FOES_AND_ALLY",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_EGG_BOMB",
+      "numeric_id": 121,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 100,
+        "type": "TYPE_NORMAL",
+        "accuracy": 75,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_LICK",
+      "numeric_id": 122,
+      "source": {
+        "effect": "EFFECT_PARALYZE_HIT",
+        "effect_numeric_id": 6,
+        "power": 20,
+        "type": "TYPE_GHOST",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SMOG",
+      "numeric_id": 123,
+      "source": {
+        "effect": "EFFECT_POISON_HIT",
+        "effect_numeric_id": 2,
+        "power": 20,
+        "type": "TYPE_POISON",
+        "accuracy": 70,
+        "pp": 20,
+        "secondary_effect_chance": 40,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SLUDGE",
+      "numeric_id": 124,
+      "source": {
+        "effect": "EFFECT_POISON_HIT",
+        "effect_numeric_id": 2,
+        "power": 65,
+        "type": "TYPE_POISON",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_BONE_CLUB",
+      "numeric_id": 125,
+      "source": {
+        "effect": "EFFECT_FLINCH_HIT",
+        "effect_numeric_id": 31,
+        "power": 65,
+        "type": "TYPE_GROUND",
+        "accuracy": 85,
+        "pp": 20,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FIRE_BLAST",
+      "numeric_id": 126,
+      "source": {
+        "effect": "EFFECT_BURN_HIT",
+        "effect_numeric_id": 4,
+        "power": 120,
+        "type": "TYPE_FIRE",
+        "accuracy": 85,
+        "pp": 5,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_WATERFALL",
+      "numeric_id": 127,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 80,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_CLAMP",
+      "numeric_id": 128,
+      "source": {
+        "effect": "EFFECT_TRAP",
+        "effect_numeric_id": 42,
+        "power": 35,
+        "type": "TYPE_WATER",
+        "accuracy": 75,
+        "pp": 10,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SWIFT",
+      "numeric_id": 129,
+      "source": {
+        "effect": "EFFECT_ALWAYS_HIT",
+        "effect_numeric_id": 17,
+        "power": 60,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SKULL_BASH",
+      "numeric_id": 130,
+      "source": {
+        "effect": "EFFECT_SKULL_BASH",
+        "effect_numeric_id": 145,
+        "power": 100,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SPIKE_CANNON",
+      "numeric_id": 131,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 20,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_CONSTRICT",
+      "numeric_id": 132,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN_HIT",
+        "effect_numeric_id": 70,
+        "power": 10,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 35,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_AMNESIA",
+      "numeric_id": 133,
+      "source": {
+        "effect": "EFFECT_SPECIAL_DEFENSE_UP_2",
+        "effect_numeric_id": 54,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_KINESIS",
+      "numeric_id": 134,
+      "source": {
+        "effect": "EFFECT_ACCURACY_DOWN",
+        "effect_numeric_id": 23,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 80,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SOFT_BOILED",
+      "numeric_id": 135,
+      "source": {
+        "effect": "EFFECT_SOFTBOILED",
+        "effect_numeric_id": 157,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HI_JUMP_KICK",
+      "numeric_id": 136,
+      "source": {
+        "effect": "EFFECT_RECOIL_IF_MISS",
+        "effect_numeric_id": 45,
+        "power": 85,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 90,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_GLARE",
+      "numeric_id": 137,
+      "source": {
+        "effect": "EFFECT_PARALYZE",
+        "effect_numeric_id": 67,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 75,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_DREAM_EATER",
+      "numeric_id": 138,
+      "source": {
+        "effect": "EFFECT_DREAM_EATER",
+        "effect_numeric_id": 8,
+        "power": 100,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_POISON_GAS",
+      "numeric_id": 139,
+      "source": {
+        "effect": "EFFECT_POISON",
+        "effect_numeric_id": 66,
+        "power": 0,
+        "type": "TYPE_POISON",
+        "accuracy": 55,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BARRAGE",
+      "numeric_id": 140,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 15,
+        "type": "TYPE_NORMAL",
+        "accuracy": 85,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_LEECH_LIFE",
+      "numeric_id": 141,
+      "source": {
+        "effect": "EFFECT_ABSORB",
+        "effect_numeric_id": 3,
+        "power": 20,
+        "type": "TYPE_BUG",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_LOVELY_KISS",
+      "numeric_id": 142,
+      "source": {
+        "effect": "EFFECT_SLEEP",
+        "effect_numeric_id": 1,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 75,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SKY_ATTACK",
+      "numeric_id": 143,
+      "source": {
+        "effect": "EFFECT_SKY_ATTACK",
+        "effect_numeric_id": 75,
+        "power": 140,
+        "type": "TYPE_FLYING",
+        "accuracy": 90,
+        "pp": 5,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_TRANSFORM",
+      "numeric_id": 144,
+      "source": {
+        "effect": "EFFECT_TRANSFORM",
+        "effect_numeric_id": 57,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BUBBLE",
+      "numeric_id": 145,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN_HIT",
+        "effect_numeric_id": 70,
+        "power": 20,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_DIZZY_PUNCH",
+      "numeric_id": 146,
+      "source": {
+        "effect": "EFFECT_CONFUSE_HIT",
+        "effect_numeric_id": 76,
+        "power": 70,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 20,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SPORE",
+      "numeric_id": 147,
+      "source": {
+        "effect": "EFFECT_SLEEP",
+        "effect_numeric_id": 1,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FLASH",
+      "numeric_id": 148,
+      "source": {
+        "effect": "EFFECT_ACCURACY_DOWN",
+        "effect_numeric_id": 23,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 70,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_PSYWAVE",
+      "numeric_id": 149,
+      "source": {
+        "effect": "EFFECT_PSYWAVE",
+        "effect_numeric_id": 88,
+        "power": 1,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 80,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SPLASH",
+      "numeric_id": 150,
+      "source": {
+        "effect": "EFFECT_SPLASH",
+        "effect_numeric_id": 85,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ACID_ARMOR",
+      "numeric_id": 151,
+      "source": {
+        "effect": "EFFECT_DEFENSE_UP_2",
+        "effect_numeric_id": 51,
+        "power": 0,
+        "type": "TYPE_POISON",
+        "accuracy": 0,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CRABHAMMER",
+      "numeric_id": 152,
+      "source": {
+        "effect": "EFFECT_HIGH_CRITICAL",
+        "effect_numeric_id": 43,
+        "power": 90,
+        "type": "TYPE_WATER",
+        "accuracy": 85,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_EXPLOSION",
+      "numeric_id": 153,
+      "source": {
+        "effect": "EFFECT_EXPLOSION",
+        "effect_numeric_id": 7,
+        "power": 250,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_FOES_AND_ALLY",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FURY_SWIPES",
+      "numeric_id": 154,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 18,
+        "type": "TYPE_NORMAL",
+        "accuracy": 80,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_BONEMERANG",
+      "numeric_id": 155,
+      "source": {
+        "effect": "EFFECT_DOUBLE_HIT",
+        "effect_numeric_id": 44,
+        "power": 50,
+        "type": "TYPE_GROUND",
+        "accuracy": 90,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_REST",
+      "numeric_id": 156,
+      "source": {
+        "effect": "EFFECT_REST",
+        "effect_numeric_id": 37,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ROCK_SLIDE",
+      "numeric_id": 157,
+      "source": {
+        "effect": "EFFECT_FLINCH_HIT",
+        "effect_numeric_id": 31,
+        "power": 75,
+        "type": "TYPE_ROCK",
+        "accuracy": 90,
+        "pp": 10,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_HYPER_FANG",
+      "numeric_id": 158,
+      "source": {
+        "effect": "EFFECT_FLINCH_HIT",
+        "effect_numeric_id": 31,
+        "power": 80,
+        "type": "TYPE_NORMAL",
+        "accuracy": 90,
+        "pp": 15,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SHARPEN",
+      "numeric_id": 159,
+      "source": {
+        "effect": "EFFECT_ATTACK_UP",
+        "effect_numeric_id": 10,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CONVERSION",
+      "numeric_id": 160,
+      "source": {
+        "effect": "EFFECT_CONVERSION",
+        "effect_numeric_id": 30,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_TRI_ATTACK",
+      "numeric_id": 161,
+      "source": {
+        "effect": "EFFECT_TRI_ATTACK",
+        "effect_numeric_id": 36,
+        "power": 80,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 20,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SUPER_FANG",
+      "numeric_id": 162,
+      "source": {
+        "effect": "EFFECT_SUPER_FANG",
+        "effect_numeric_id": 40,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 90,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SLASH",
+      "numeric_id": 163,
+      "source": {
+        "effect": "EFFECT_HIGH_CRITICAL",
+        "effect_numeric_id": 43,
+        "power": 70,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SUBSTITUTE",
+      "numeric_id": 164,
+      "source": {
+        "effect": "EFFECT_SUBSTITUTE",
+        "effect_numeric_id": 79,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_STRUGGLE",
+      "numeric_id": 165,
+      "source": {
+        "effect": "EFFECT_RECOIL",
+        "effect_numeric_id": 48,
+        "power": 50,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 1,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SKETCH",
+      "numeric_id": 166,
+      "source": {
+        "effect": "EFFECT_SKETCH",
+        "effect_numeric_id": 95,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 1,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_TRIPLE_KICK",
+      "numeric_id": 167,
+      "source": {
+        "effect": "EFFECT_TRIPLE_KICK",
+        "effect_numeric_id": 104,
+        "power": 10,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 90,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_THIEF",
+      "numeric_id": 168,
+      "source": {
+        "effect": "EFFECT_THIEF",
+        "effect_numeric_id": 105,
+        "power": 40,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SPIDER_WEB",
+      "numeric_id": 169,
+      "source": {
+        "effect": "EFFECT_MEAN_LOOK",
+        "effect_numeric_id": 106,
+        "power": 0,
+        "type": "TYPE_BUG",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_MIND_READER",
+      "numeric_id": 170,
+      "source": {
+        "effect": "EFFECT_LOCK_ON",
+        "effect_numeric_id": 94,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_NIGHTMARE",
+      "numeric_id": 171,
+      "source": {
+        "effect": "EFFECT_NIGHTMARE",
+        "effect_numeric_id": 107,
+        "power": 0,
+        "type": "TYPE_GHOST",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FLAME_WHEEL",
+      "numeric_id": 172,
+      "source": {
+        "effect": "EFFECT_THAW_HIT",
+        "effect_numeric_id": 125,
+        "power": 60,
+        "type": "TYPE_FIRE",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SNORE",
+      "numeric_id": 173,
+      "source": {
+        "effect": "EFFECT_SNORE",
+        "effect_numeric_id": 92,
+        "power": 40,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_CURSE",
+      "numeric_id": 174,
+      "source": {
+        "effect": "EFFECT_CURSE",
+        "effect_numeric_id": 109,
+        "power": 0,
+        "type": "TYPE_MYSTERY",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FLAIL",
+      "numeric_id": 175,
+      "source": {
+        "effect": "EFFECT_FLAIL",
+        "effect_numeric_id": 99,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_CONVERSION_2",
+      "numeric_id": 176,
+      "source": {
+        "effect": "EFFECT_CONVERSION_2",
+        "effect_numeric_id": 93,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_AEROBLAST",
+      "numeric_id": 177,
+      "source": {
+        "effect": "EFFECT_HIGH_CRITICAL",
+        "effect_numeric_id": 43,
+        "power": 100,
+        "type": "TYPE_FLYING",
+        "accuracy": 95,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_COTTON_SPORE",
+      "numeric_id": 178,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN_2",
+        "effect_numeric_id": 60,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 85,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_REVERSAL",
+      "numeric_id": 179,
+      "source": {
+        "effect": "EFFECT_FLAIL",
+        "effect_numeric_id": 99,
+        "power": 1,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SPITE",
+      "numeric_id": 180,
+      "source": {
+        "effect": "EFFECT_SPITE",
+        "effect_numeric_id": 100,
+        "power": 0,
+        "type": "TYPE_GHOST",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_POWDER_SNOW",
+      "numeric_id": 181,
+      "source": {
+        "effect": "EFFECT_FREEZE_HIT",
+        "effect_numeric_id": 5,
+        "power": 40,
+        "type": "TYPE_ICE",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_PROTECT",
+      "numeric_id": 182,
+      "source": {
+        "effect": "EFFECT_PROTECT",
+        "effect_numeric_id": 111,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 3,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_MACH_PUNCH",
+      "numeric_id": 183,
+      "source": {
+        "effect": "EFFECT_QUICK_ATTACK",
+        "effect_numeric_id": 103,
+        "power": 40,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 1,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SCARY_FACE",
+      "numeric_id": 184,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN_2",
+        "effect_numeric_id": 60,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 90,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FAINT_ATTACK",
+      "numeric_id": 185,
+      "source": {
+        "effect": "EFFECT_ALWAYS_HIT",
+        "effect_numeric_id": 17,
+        "power": 60,
+        "type": "TYPE_DARK",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SWEET_KISS",
+      "numeric_id": 186,
+      "source": {
+        "effect": "EFFECT_CONFUSE",
+        "effect_numeric_id": 49,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 75,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BELLY_DRUM",
+      "numeric_id": 187,
+      "source": {
+        "effect": "EFFECT_BELLY_DRUM",
+        "effect_numeric_id": 142,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SLUDGE_BOMB",
+      "numeric_id": 188,
+      "source": {
+        "effect": "EFFECT_POISON_HIT",
+        "effect_numeric_id": 2,
+        "power": 90,
+        "type": "TYPE_POISON",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MUD_SLAP",
+      "numeric_id": 189,
+      "source": {
+        "effect": "EFFECT_ACCURACY_DOWN_HIT",
+        "effect_numeric_id": 73,
+        "power": 20,
+        "type": "TYPE_GROUND",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_OCTAZOOKA",
+      "numeric_id": 190,
+      "source": {
+        "effect": "EFFECT_ACCURACY_DOWN_HIT",
+        "effect_numeric_id": 73,
+        "power": 65,
+        "type": "TYPE_WATER",
+        "accuracy": 85,
+        "pp": 10,
+        "secondary_effect_chance": 50,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SPIKES",
+      "numeric_id": 191,
+      "source": {
+        "effect": "EFFECT_SPIKES",
+        "effect_numeric_id": 112,
+        "power": 0,
+        "type": "TYPE_GROUND",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_OPPONENTS_FIELD",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ZAP_CANNON",
+      "numeric_id": 192,
+      "source": {
+        "effect": "EFFECT_PARALYZE_HIT",
+        "effect_numeric_id": 6,
+        "power": 100,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 50,
+        "pp": 5,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_FORESIGHT",
+      "numeric_id": 193,
+      "source": {
+        "effect": "EFFECT_FORESIGHT",
+        "effect_numeric_id": 113,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_DESTINY_BOND",
+      "numeric_id": 194,
+      "source": {
+        "effect": "EFFECT_DESTINY_BOND",
+        "effect_numeric_id": 98,
+        "power": 0,
+        "type": "TYPE_GHOST",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_PERISH_SONG",
+      "numeric_id": 195,
+      "source": {
+        "effect": "EFFECT_PERISH_SONG",
+        "effect_numeric_id": 114,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ICY_WIND",
+      "numeric_id": 196,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN_HIT",
+        "effect_numeric_id": 70,
+        "power": 55,
+        "type": "TYPE_ICE",
+        "accuracy": 95,
+        "pp": 15,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_DETECT",
+      "numeric_id": 197,
+      "source": {
+        "effect": "EFFECT_PROTECT",
+        "effect_numeric_id": 111,
+        "power": 0,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 3,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BONE_RUSH",
+      "numeric_id": 198,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 25,
+        "type": "TYPE_GROUND",
+        "accuracy": 80,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_LOCK_ON",
+      "numeric_id": 199,
+      "source": {
+        "effect": "EFFECT_LOCK_ON",
+        "effect_numeric_id": 94,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_OUTRAGE",
+      "numeric_id": 200,
+      "source": {
+        "effect": "EFFECT_RAMPAGE",
+        "effect_numeric_id": 27,
+        "power": 90,
+        "type": "TYPE_DRAGON",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_RANDOM",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SANDSTORM",
+      "numeric_id": 201,
+      "source": {
+        "effect": "EFFECT_SANDSTORM",
+        "effect_numeric_id": 115,
+        "power": 0,
+        "type": "TYPE_ROCK",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_GIGA_DRAIN",
+      "numeric_id": 202,
+      "source": {
+        "effect": "EFFECT_ABSORB",
+        "effect_numeric_id": 3,
+        "power": 60,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_ENDURE",
+      "numeric_id": 203,
+      "source": {
+        "effect": "EFFECT_ENDURE",
+        "effect_numeric_id": 116,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 3,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CHARM",
+      "numeric_id": 204,
+      "source": {
+        "effect": "EFFECT_ATTACK_DOWN_2",
+        "effect_numeric_id": 58,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ROLLOUT",
+      "numeric_id": 205,
+      "source": {
+        "effect": "EFFECT_ROLLOUT",
+        "effect_numeric_id": 117,
+        "power": 30,
+        "type": "TYPE_ROCK",
+        "accuracy": 90,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FALSE_SWIPE",
+      "numeric_id": 206,
+      "source": {
+        "effect": "EFFECT_FALSE_SWIPE",
+        "effect_numeric_id": 101,
+        "power": 40,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SWAGGER",
+      "numeric_id": 207,
+      "source": {
+        "effect": "EFFECT_SWAGGER",
+        "effect_numeric_id": 118,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 90,
+        "pp": 15,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_MILK_DRINK",
+      "numeric_id": 208,
+      "source": {
+        "effect": "EFFECT_SOFTBOILED",
+        "effect_numeric_id": 157,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SPARK",
+      "numeric_id": 209,
+      "source": {
+        "effect": "EFFECT_PARALYZE_HIT",
+        "effect_numeric_id": 6,
+        "power": 65,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_FURY_CUTTER",
+      "numeric_id": 210,
+      "source": {
+        "effect": "EFFECT_FURY_CUTTER",
+        "effect_numeric_id": 119,
+        "power": 10,
+        "type": "TYPE_BUG",
+        "accuracy": 95,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_STEEL_WING",
+      "numeric_id": 211,
+      "source": {
+        "effect": "EFFECT_DEFENSE_UP_HIT",
+        "effect_numeric_id": 138,
+        "power": 70,
+        "type": "TYPE_STEEL",
+        "accuracy": 90,
+        "pp": 25,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MEAN_LOOK",
+      "numeric_id": 212,
+      "source": {
+        "effect": "EFFECT_MEAN_LOOK",
+        "effect_numeric_id": 106,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ATTRACT",
+      "numeric_id": 213,
+      "source": {
+        "effect": "EFFECT_ATTRACT",
+        "effect_numeric_id": 120,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SLEEP_TALK",
+      "numeric_id": 214,
+      "source": {
+        "effect": "EFFECT_SLEEP_TALK",
+        "effect_numeric_id": 97,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HEAL_BELL",
+      "numeric_id": 215,
+      "source": {
+        "effect": "EFFECT_HEAL_BELL",
+        "effect_numeric_id": 102,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_RETURN",
+      "numeric_id": 216,
+      "source": {
+        "effect": "EFFECT_RETURN",
+        "effect_numeric_id": 121,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_PRESENT",
+      "numeric_id": 217,
+      "source": {
+        "effect": "EFFECT_PRESENT",
+        "effect_numeric_id": 122,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 90,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FRUSTRATION",
+      "numeric_id": 218,
+      "source": {
+        "effect": "EFFECT_FRUSTRATION",
+        "effect_numeric_id": 123,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SAFEGUARD",
+      "numeric_id": 219,
+      "source": {
+        "effect": "EFFECT_SAFEGUARD",
+        "effect_numeric_id": 124,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 25,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_PAIN_SPLIT",
+      "numeric_id": 220,
+      "source": {
+        "effect": "EFFECT_PAIN_SPLIT",
+        "effect_numeric_id": 91,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SACRED_FIRE",
+      "numeric_id": 221,
+      "source": {
+        "effect": "EFFECT_THAW_HIT",
+        "effect_numeric_id": 125,
+        "power": 100,
+        "type": "TYPE_FIRE",
+        "accuracy": 95,
+        "pp": 5,
+        "secondary_effect_chance": 50,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_MAGNITUDE",
+      "numeric_id": 222,
+      "source": {
+        "effect": "EFFECT_MAGNITUDE",
+        "effect_numeric_id": 126,
+        "power": 1,
+        "type": "TYPE_GROUND",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_FOES_AND_ALLY",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DYNAMIC_PUNCH",
+      "numeric_id": 223,
+      "source": {
+        "effect": "EFFECT_CONFUSE_HIT",
+        "effect_numeric_id": 76,
+        "power": 100,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 50,
+        "pp": 5,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MEGAHORN",
+      "numeric_id": 224,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 120,
+        "type": "TYPE_BUG",
+        "accuracy": 85,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DRAGON_BREATH",
+      "numeric_id": 225,
+      "source": {
+        "effect": "EFFECT_PARALYZE_HIT",
+        "effect_numeric_id": 6,
+        "power": 60,
+        "type": "TYPE_DRAGON",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_BATON_PASS",
+      "numeric_id": 226,
+      "source": {
+        "effect": "EFFECT_BATON_PASS",
+        "effect_numeric_id": 127,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ENCORE",
+      "numeric_id": 227,
+      "source": {
+        "effect": "EFFECT_ENCORE",
+        "effect_numeric_id": 90,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_PURSUIT",
+      "numeric_id": 228,
+      "source": {
+        "effect": "EFFECT_PURSUIT",
+        "effect_numeric_id": 128,
+        "power": 40,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_RAPID_SPIN",
+      "numeric_id": 229,
+      "source": {
+        "effect": "EFFECT_RAPID_SPIN",
+        "effect_numeric_id": 129,
+        "power": 20,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SWEET_SCENT",
+      "numeric_id": 230,
+      "source": {
+        "effect": "EFFECT_EVASION_DOWN",
+        "effect_numeric_id": 24,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_IRON_TAIL",
+      "numeric_id": 231,
+      "source": {
+        "effect": "EFFECT_DEFENSE_DOWN_HIT",
+        "effect_numeric_id": 69,
+        "power": 100,
+        "type": "TYPE_STEEL",
+        "accuracy": 75,
+        "pp": 15,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_METAL_CLAW",
+      "numeric_id": 232,
+      "source": {
+        "effect": "EFFECT_ATTACK_UP_HIT",
+        "effect_numeric_id": 139,
+        "power": 50,
+        "type": "TYPE_STEEL",
+        "accuracy": 95,
+        "pp": 35,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_VITAL_THROW",
+      "numeric_id": 233,
+      "source": {
+        "effect": "EFFECT_VITAL_THROW",
+        "effect_numeric_id": 78,
+        "power": 70,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": -1,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MORNING_SUN",
+      "numeric_id": 234,
+      "source": {
+        "effect": "EFFECT_MORNING_SUN",
+        "effect_numeric_id": 132,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SYNTHESIS",
+      "numeric_id": 235,
+      "source": {
+        "effect": "EFFECT_SYNTHESIS",
+        "effect_numeric_id": 133,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_MOONLIGHT",
+      "numeric_id": 236,
+      "source": {
+        "effect": "EFFECT_MOONLIGHT",
+        "effect_numeric_id": 134,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HIDDEN_POWER",
+      "numeric_id": 237,
+      "source": {
+        "effect": "EFFECT_HIDDEN_POWER",
+        "effect_numeric_id": 135,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_CROSS_CHOP",
+      "numeric_id": 238,
+      "source": {
+        "effect": "EFFECT_HIGH_CRITICAL",
+        "effect_numeric_id": 43,
+        "power": 100,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 80,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_TWISTER",
+      "numeric_id": 239,
+      "source": {
+        "effect": "EFFECT_TWISTER",
+        "effect_numeric_id": 146,
+        "power": 40,
+        "type": "TYPE_DRAGON",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 20,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_RAIN_DANCE",
+      "numeric_id": 240,
+      "source": {
+        "effect": "EFFECT_RAIN_DANCE",
+        "effect_numeric_id": 136,
+        "power": 0,
+        "type": "TYPE_WATER",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SUNNY_DAY",
+      "numeric_id": 241,
+      "source": {
+        "effect": "EFFECT_SUNNY_DAY",
+        "effect_numeric_id": 137,
+        "power": 0,
+        "type": "TYPE_FIRE",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CRUNCH",
+      "numeric_id": 242,
+      "source": {
+        "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+        "effect_numeric_id": 72,
+        "power": 80,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 20,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_MIRROR_COAT",
+      "numeric_id": 243,
+      "source": {
+        "effect": "EFFECT_MIRROR_COAT",
+        "effect_numeric_id": 144,
+        "power": 1,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": -5,
+        "flags": [
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_PSYCH_UP",
+      "numeric_id": 244,
+      "source": {
+        "effect": "EFFECT_PSYCH_UP",
+        "effect_numeric_id": 143,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_EXTREME_SPEED",
+      "numeric_id": 245,
+      "source": {
+        "effect": "EFFECT_QUICK_ATTACK",
+        "effect_numeric_id": 103,
+        "power": 80,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 1,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_ANCIENT_POWER",
+      "numeric_id": 246,
+      "source": {
+        "effect": "EFFECT_ALL_STATS_UP_HIT",
+        "effect_numeric_id": 140,
+        "power": 60,
+        "type": "TYPE_ROCK",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SHADOW_BALL",
+      "numeric_id": 247,
+      "source": {
+        "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+        "effect_numeric_id": 72,
+        "power": 80,
+        "type": "TYPE_GHOST",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 20,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FUTURE_SIGHT",
+      "numeric_id": 248,
+      "source": {
+        "effect": "EFFECT_FUTURE_SIGHT",
+        "effect_numeric_id": 148,
+        "power": 80,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 90,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_ROCK_SMASH",
+      "numeric_id": 249,
+      "source": {
+        "effect": "EFFECT_DEFENSE_DOWN_HIT",
+        "effect_numeric_id": 69,
+        "power": 20,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 50,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_WHIRLPOOL",
+      "numeric_id": 250,
+      "source": {
+        "effect": "EFFECT_TRAP",
+        "effect_numeric_id": 42,
+        "power": 15,
+        "type": "TYPE_WATER",
+        "accuracy": 70,
+        "pp": 15,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_BEAT_UP",
+      "numeric_id": 251,
+      "source": {
+        "effect": "EFFECT_BEAT_UP",
+        "effect_numeric_id": 154,
+        "power": 10,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_FAKE_OUT",
+      "numeric_id": 252,
+      "source": {
+        "effect": "EFFECT_FAKE_OUT",
+        "effect_numeric_id": 158,
+        "power": 40,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 1,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_UPROAR",
+      "numeric_id": 253,
+      "source": {
+        "effect": "EFFECT_UPROAR",
+        "effect_numeric_id": 159,
+        "power": 50,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_RANDOM",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_STOCKPILE",
+      "numeric_id": 254,
+      "source": {
+        "effect": "EFFECT_STOCKPILE",
+        "effect_numeric_id": 160,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SPIT_UP",
+      "numeric_id": 255,
+      "source": {
+        "effect": "EFFECT_SPIT_UP",
+        "effect_numeric_id": 161,
+        "power": 100,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SWALLOW",
+      "numeric_id": 256,
+      "source": {
+        "effect": "EFFECT_SWALLOW",
+        "effect_numeric_id": 162,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HEAT_WAVE",
+      "numeric_id": 257,
+      "source": {
+        "effect": "EFFECT_BURN_HIT",
+        "effect_numeric_id": 4,
+        "power": 100,
+        "type": "TYPE_FIRE",
+        "accuracy": 90,
+        "pp": 10,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_HAIL",
+      "numeric_id": 258,
+      "source": {
+        "effect": "EFFECT_HAIL",
+        "effect_numeric_id": 164,
+        "power": 0,
+        "type": "TYPE_ICE",
+        "accuracy": 0,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_TORMENT",
+      "numeric_id": 259,
+      "source": {
+        "effect": "EFFECT_TORMENT",
+        "effect_numeric_id": 165,
+        "power": 0,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FLATTER",
+      "numeric_id": 260,
+      "source": {
+        "effect": "EFFECT_FLATTER",
+        "effect_numeric_id": 166,
+        "power": 0,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_WILL_O_WISP",
+      "numeric_id": 261,
+      "source": {
+        "effect": "EFFECT_WILL_O_WISP",
+        "effect_numeric_id": 167,
+        "power": 0,
+        "type": "TYPE_FIRE",
+        "accuracy": 75,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_MEMENTO",
+      "numeric_id": 262,
+      "source": {
+        "effect": "EFFECT_MEMENTO",
+        "effect_numeric_id": 168,
+        "power": 0,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FACADE",
+      "numeric_id": 263,
+      "source": {
+        "effect": "EFFECT_FACADE",
+        "effect_numeric_id": 169,
+        "power": 70,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FOCUS_PUNCH",
+      "numeric_id": 264,
+      "source": {
+        "effect": "EFFECT_FOCUS_PUNCH",
+        "effect_numeric_id": 170,
+        "power": 150,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": -3,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SMELLING_SALT",
+      "numeric_id": 265,
+      "source": {
+        "effect": "EFFECT_SMELLINGSALT",
+        "effect_numeric_id": 171,
+        "power": 60,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_FOLLOW_ME",
+      "numeric_id": 266,
+      "source": {
+        "effect": "EFFECT_FOLLOW_ME",
+        "effect_numeric_id": 172,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 3,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_NATURE_POWER",
+      "numeric_id": 267,
+      "source": {
+        "effect": "EFFECT_NATURE_POWER",
+        "effect_numeric_id": 173,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CHARGE",
+      "numeric_id": 268,
+      "source": {
+        "effect": "EFFECT_CHARGE",
+        "effect_numeric_id": 174,
+        "power": 0,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_TAUNT",
+      "numeric_id": 269,
+      "source": {
+        "effect": "EFFECT_TAUNT",
+        "effect_numeric_id": 175,
+        "power": 0,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HELPING_HAND",
+      "numeric_id": 270,
+      "source": {
+        "effect": "EFFECT_HELPING_HAND",
+        "effect_numeric_id": 176,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 5,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_TRICK",
+      "numeric_id": 271,
+      "source": {
+        "effect": "EFFECT_TRICK",
+        "effect_numeric_id": 177,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ROLE_PLAY",
+      "numeric_id": 272,
+      "source": {
+        "effect": "EFFECT_ROLE_PLAY",
+        "effect_numeric_id": 178,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_WISH",
+      "numeric_id": 273,
+      "source": {
+        "effect": "EFFECT_WISH",
+        "effect_numeric_id": 179,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ASSIST",
+      "numeric_id": 274,
+      "source": {
+        "effect": "EFFECT_ASSIST",
+        "effect_numeric_id": 180,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_INGRAIN",
+      "numeric_id": 275,
+      "source": {
+        "effect": "EFFECT_INGRAIN",
+        "effect_numeric_id": 181,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SUPERPOWER",
+      "numeric_id": 276,
+      "source": {
+        "effect": "EFFECT_SUPERPOWER",
+        "effect_numeric_id": 182,
+        "power": 120,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MAGIC_COAT",
+      "numeric_id": 277,
+      "source": {
+        "effect": "EFFECT_MAGIC_COAT",
+        "effect_numeric_id": 183,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": 4,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_RECYCLE",
+      "numeric_id": 278,
+      "source": {
+        "effect": "EFFECT_RECYCLE",
+        "effect_numeric_id": 184,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_REVENGE",
+      "numeric_id": 279,
+      "source": {
+        "effect": "EFFECT_REVENGE",
+        "effect_numeric_id": 185,
+        "power": 60,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": -4,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_BRICK_BREAK",
+      "numeric_id": 280,
+      "source": {
+        "effect": "EFFECT_BRICK_BREAK",
+        "effect_numeric_id": 186,
+        "power": 75,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_YAWN",
+      "numeric_id": 281,
+      "source": {
+        "effect": "EFFECT_YAWN",
+        "effect_numeric_id": 187,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_KNOCK_OFF",
+      "numeric_id": 282,
+      "source": {
+        "effect": "EFFECT_KNOCK_OFF",
+        "effect_numeric_id": 188,
+        "power": 20,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_ENDEAVOR",
+      "numeric_id": 283,
+      "source": {
+        "effect": "EFFECT_ENDEAVOR",
+        "effect_numeric_id": 189,
+        "power": 1,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_ERUPTION",
+      "numeric_id": 284,
+      "source": {
+        "effect": "EFFECT_ERUPTION",
+        "effect_numeric_id": 190,
+        "power": 150,
+        "type": "TYPE_FIRE",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SKILL_SWAP",
+      "numeric_id": 285,
+      "source": {
+        "effect": "EFFECT_SKILL_SWAP",
+        "effect_numeric_id": 191,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_IMPRISON",
+      "numeric_id": 286,
+      "source": {
+        "effect": "EFFECT_IMPRISON",
+        "effect_numeric_id": 192,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_REFRESH",
+      "numeric_id": 287,
+      "source": {
+        "effect": "EFFECT_REFRESH",
+        "effect_numeric_id": 193,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_GRUDGE",
+      "numeric_id": 288,
+      "source": {
+        "effect": "EFFECT_GRUDGE",
+        "effect_numeric_id": 194,
+        "power": 0,
+        "type": "TYPE_GHOST",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SNATCH",
+      "numeric_id": 289,
+      "source": {
+        "effect": "EFFECT_SNATCH",
+        "effect_numeric_id": 195,
+        "power": 0,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_DEPENDS",
+        "priority": 4,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_SECRET_POWER",
+      "numeric_id": 290,
+      "source": {
+        "effect": "EFFECT_SECRET_POWER",
+        "effect_numeric_id": 197,
+        "power": 70,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_DIVE",
+      "numeric_id": 291,
+      "source": {
+        "effect": "EFFECT_SEMI_INVULNERABLE",
+        "effect_numeric_id": 155,
+        "power": 60,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_ARM_THRUST",
+      "numeric_id": 292,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 15,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_CAMOUFLAGE",
+      "numeric_id": 293,
+      "source": {
+        "effect": "EFFECT_CAMOUFLAGE",
+        "effect_numeric_id": 213,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_TAIL_GLOW",
+      "numeric_id": 294,
+      "source": {
+        "effect": "EFFECT_SPECIAL_ATTACK_UP_2",
+        "effect_numeric_id": 53,
+        "power": 0,
+        "type": "TYPE_BUG",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_LUSTER_PURGE",
+      "numeric_id": 295,
+      "source": {
+        "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+        "effect_numeric_id": 72,
+        "power": 70,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 50,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_MIST_BALL",
+      "numeric_id": 296,
+      "source": {
+        "effect": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+        "effect_numeric_id": 71,
+        "power": 70,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 50,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_FEATHER_DANCE",
+      "numeric_id": 297,
+      "source": {
+        "effect": "EFFECT_ATTACK_DOWN_2",
+        "effect_numeric_id": 58,
+        "power": 0,
+        "type": "TYPE_FLYING",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_TEETER_DANCE",
+      "numeric_id": 298,
+      "source": {
+        "effect": "EFFECT_TEETER_DANCE",
+        "effect_numeric_id": 199,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_FOES_AND_ALLY",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BLAZE_KICK",
+      "numeric_id": 299,
+      "source": {
+        "effect": "EFFECT_BLAZE_KICK",
+        "effect_numeric_id": 200,
+        "power": 85,
+        "type": "TYPE_FIRE",
+        "accuracy": 90,
+        "pp": 10,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_MUD_SPORT",
+      "numeric_id": 300,
+      "source": {
+        "effect": "EFFECT_MUD_SPORT",
+        "effect_numeric_id": 201,
+        "power": 0,
+        "type": "TYPE_GROUND",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ICE_BALL",
+      "numeric_id": 301,
+      "source": {
+        "effect": "EFFECT_ROLLOUT",
+        "effect_numeric_id": 117,
+        "power": 30,
+        "type": "TYPE_ICE",
+        "accuracy": 90,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_NEEDLE_ARM",
+      "numeric_id": 302,
+      "source": {
+        "effect": "EFFECT_FLINCH_MINIMIZE_HIT",
+        "effect_numeric_id": 150,
+        "power": 60,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SLACK_OFF",
+      "numeric_id": 303,
+      "source": {
+        "effect": "EFFECT_RESTORE_HP",
+        "effect_numeric_id": 32,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HYPER_VOICE",
+      "numeric_id": 304,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 90,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_POISON_FANG",
+      "numeric_id": 305,
+      "source": {
+        "effect": "EFFECT_POISON_FANG",
+        "effect_numeric_id": 202,
+        "power": 50,
+        "type": "TYPE_POISON",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_CRUSH_CLAW",
+      "numeric_id": 306,
+      "source": {
+        "effect": "EFFECT_DEFENSE_DOWN_HIT",
+        "effect_numeric_id": 69,
+        "power": 75,
+        "type": "TYPE_NORMAL",
+        "accuracy": 95,
+        "pp": 10,
+        "secondary_effect_chance": 50,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_BLAST_BURN",
+      "numeric_id": 307,
+      "source": {
+        "effect": "EFFECT_RECHARGE",
+        "effect_numeric_id": 80,
+        "power": 150,
+        "type": "TYPE_FIRE",
+        "accuracy": 90,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_HYDRO_CANNON",
+      "numeric_id": 308,
+      "source": {
+        "effect": "EFFECT_RECHARGE",
+        "effect_numeric_id": 80,
+        "power": 150,
+        "type": "TYPE_WATER",
+        "accuracy": 90,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_METEOR_MASH",
+      "numeric_id": 309,
+      "source": {
+        "effect": "EFFECT_ATTACK_UP_HIT",
+        "effect_numeric_id": 139,
+        "power": 100,
+        "type": "TYPE_STEEL",
+        "accuracy": 85,
+        "pp": 10,
+        "secondary_effect_chance": 20,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_ASTONISH",
+      "numeric_id": 310,
+      "source": {
+        "effect": "EFFECT_FLINCH_MINIMIZE_HIT",
+        "effect_numeric_id": 150,
+        "power": 30,
+        "type": "TYPE_GHOST",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_WEATHER_BALL",
+      "numeric_id": 311,
+      "source": {
+        "effect": "EFFECT_WEATHER_BALL",
+        "effect_numeric_id": 203,
+        "power": 50,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_AROMATHERAPY",
+      "numeric_id": 312,
+      "source": {
+        "effect": "EFFECT_HEAL_BELL",
+        "effect_numeric_id": 102,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 0,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_FAKE_TEARS",
+      "numeric_id": 313,
+      "source": {
+        "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_2",
+        "effect_numeric_id": 62,
+        "power": 0,
+        "type": "TYPE_DARK",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_AIR_CUTTER",
+      "numeric_id": 314,
+      "source": {
+        "effect": "EFFECT_HIGH_CRITICAL",
+        "effect_numeric_id": 43,
+        "power": 55,
+        "type": "TYPE_FLYING",
+        "accuracy": 95,
+        "pp": 25,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_OVERHEAT",
+      "numeric_id": 315,
+      "source": {
+        "effect": "EFFECT_OVERHEAT",
+        "effect_numeric_id": 204,
+        "power": 140,
+        "type": "TYPE_FIRE",
+        "accuracy": 90,
+        "pp": 5,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_ODOR_SLEUTH",
+      "numeric_id": 316,
+      "source": {
+        "effect": "EFFECT_FORESIGHT",
+        "effect_numeric_id": 113,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ROCK_TOMB",
+      "numeric_id": 317,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN_HIT",
+        "effect_numeric_id": 70,
+        "power": 50,
+        "type": "TYPE_ROCK",
+        "accuracy": 80,
+        "pp": 10,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SILVER_WIND",
+      "numeric_id": 318,
+      "source": {
+        "effect": "EFFECT_ALL_STATS_UP_HIT",
+        "effect_numeric_id": 140,
+        "power": 60,
+        "type": "TYPE_BUG",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_METAL_SOUND",
+      "numeric_id": 319,
+      "source": {
+        "effect": "EFFECT_SPECIAL_DEFENSE_DOWN_2",
+        "effect_numeric_id": 62,
+        "power": 0,
+        "type": "TYPE_STEEL",
+        "accuracy": 85,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_GRASS_WHISTLE",
+      "numeric_id": 320,
+      "source": {
+        "effect": "EFFECT_SLEEP",
+        "effect_numeric_id": 1,
+        "power": 0,
+        "type": "TYPE_GRASS",
+        "accuracy": 55,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_TICKLE",
+      "numeric_id": 321,
+      "source": {
+        "effect": "EFFECT_TICKLE",
+        "effect_numeric_id": 205,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_COSMIC_POWER",
+      "numeric_id": 322,
+      "source": {
+        "effect": "EFFECT_COSMIC_POWER",
+        "effect_numeric_id": 206,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_WATER_SPOUT",
+      "numeric_id": 323,
+      "source": {
+        "effect": "EFFECT_ERUPTION",
+        "effect_numeric_id": 190,
+        "power": 150,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SIGNAL_BEAM",
+      "numeric_id": 324,
+      "source": {
+        "effect": "EFFECT_CONFUSE_HIT",
+        "effect_numeric_id": 76,
+        "power": 75,
+        "type": "TYPE_BUG",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SHADOW_PUNCH",
+      "numeric_id": 325,
+      "source": {
+        "effect": "EFFECT_ALWAYS_HIT",
+        "effect_numeric_id": 17,
+        "power": 60,
+        "type": "TYPE_GHOST",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_EXTRASENSORY",
+      "numeric_id": 326,
+      "source": {
+        "effect": "EFFECT_FLINCH_MINIMIZE_HIT",
+        "effect_numeric_id": 150,
+        "power": 80,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_SKY_UPPERCUT",
+      "numeric_id": 327,
+      "source": {
+        "effect": "EFFECT_SKY_UPPERCUT",
+        "effect_numeric_id": 207,
+        "power": 85,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 90,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SAND_TOMB",
+      "numeric_id": 328,
+      "source": {
+        "effect": "EFFECT_TRAP",
+        "effect_numeric_id": 42,
+        "power": 15,
+        "type": "TYPE_GROUND",
+        "accuracy": 70,
+        "pp": 15,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SHEER_COLD",
+      "numeric_id": 329,
+      "source": {
+        "effect": "EFFECT_OHKO",
+        "effect_numeric_id": 38,
+        "power": 1,
+        "type": "TYPE_ICE",
+        "accuracy": 30,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_MUDDY_WATER",
+      "numeric_id": 330,
+      "source": {
+        "effect": "EFFECT_ACCURACY_DOWN_HIT",
+        "effect_numeric_id": 73,
+        "power": 95,
+        "type": "TYPE_WATER",
+        "accuracy": 85,
+        "pp": 10,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_BOTH",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_BULLET_SEED",
+      "numeric_id": 331,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 10,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_AERIAL_ACE",
+      "numeric_id": 332,
+      "source": {
+        "effect": "EFFECT_ALWAYS_HIT",
+        "effect_numeric_id": 17,
+        "power": 60,
+        "type": "TYPE_FLYING",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_ICICLE_SPEAR",
+      "numeric_id": 333,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 10,
+        "type": "TYPE_ICE",
+        "accuracy": 100,
+        "pp": 30,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_IRON_DEFENSE",
+      "numeric_id": 334,
+      "source": {
+        "effect": "EFFECT_DEFENSE_UP_2",
+        "effect_numeric_id": 51,
+        "power": 0,
+        "type": "TYPE_STEEL",
+        "accuracy": 0,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BLOCK",
+      "numeric_id": 335,
+      "source": {
+        "effect": "EFFECT_MEAN_LOOK",
+        "effect_numeric_id": 106,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MAGIC_COAT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_HOWL",
+      "numeric_id": 336,
+      "source": {
+        "effect": "EFFECT_ATTACK_UP",
+        "effect_numeric_id": 10,
+        "power": 0,
+        "type": "TYPE_NORMAL",
+        "accuracy": 0,
+        "pp": 40,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_DRAGON_CLAW",
+      "numeric_id": 337,
+      "source": {
+        "effect": "EFFECT_HIT",
+        "effect_numeric_id": 0,
+        "power": 80,
+        "type": "TYPE_DRAGON",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_FRENZY_PLANT",
+      "numeric_id": 338,
+      "source": {
+        "effect": "EFFECT_RECHARGE",
+        "effect_numeric_id": 80,
+        "power": 150,
+        "type": "TYPE_GRASS",
+        "accuracy": 90,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_BULK_UP",
+      "numeric_id": 339,
+      "source": {
+        "effect": "EFFECT_BULK_UP",
+        "effect_numeric_id": 208,
+        "power": 0,
+        "type": "TYPE_FIGHTING",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_BOUNCE",
+      "numeric_id": 340,
+      "source": {
+        "effect": "EFFECT_SEMI_INVULNERABLE",
+        "effect_numeric_id": 155,
+        "power": 85,
+        "type": "TYPE_FLYING",
+        "accuracy": 85,
+        "pp": 5,
+        "secondary_effect_chance": 30,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_MUD_SHOT",
+      "numeric_id": 341,
+      "source": {
+        "effect": "EFFECT_SPEED_DOWN_HIT",
+        "effect_numeric_id": 70,
+        "power": 55,
+        "type": "TYPE_GROUND",
+        "accuracy": 95,
+        "pp": 15,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_POISON_TAIL",
+      "numeric_id": 342,
+      "source": {
+        "effect": "EFFECT_POISON_TAIL",
+        "effect_numeric_id": 209,
+        "power": 50,
+        "type": "TYPE_POISON",
+        "accuracy": 100,
+        "pp": 25,
+        "secondary_effect_chance": 10,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_COVET",
+      "numeric_id": 343,
+      "source": {
+        "effect": "EFFECT_THIEF",
+        "effect_numeric_id": 105,
+        "power": 40,
+        "type": "TYPE_NORMAL",
+        "accuracy": 100,
+        "pp": 40,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_VOLT_TACKLE",
+      "numeric_id": 344,
+      "source": {
+        "effect": "EFFECT_DOUBLE_EDGE",
+        "effect_numeric_id": 198,
+        "power": 120,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_MAGICAL_LEAF",
+      "numeric_id": 345,
+      "source": {
+        "effect": "EFFECT_ALWAYS_HIT",
+        "effect_numeric_id": 17,
+        "power": 60,
+        "type": "TYPE_GRASS",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_WATER_SPORT",
+      "numeric_id": 346,
+      "source": {
+        "effect": "EFFECT_WATER_SPORT",
+        "effect_numeric_id": 210,
+        "power": 0,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_CALM_MIND",
+      "numeric_id": 347,
+      "source": {
+        "effect": "EFFECT_CALM_MIND",
+        "effect_numeric_id": 211,
+        "power": 0,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_LEAF_BLADE",
+      "numeric_id": 348,
+      "source": {
+        "effect": "EFFECT_HIGH_CRITICAL",
+        "effect_numeric_id": 43,
+        "power": 70,
+        "type": "TYPE_GRASS",
+        "accuracy": 100,
+        "pp": 15,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_MAKES_CONTACT",
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_DRAGON_DANCE",
+      "numeric_id": 349,
+      "source": {
+        "effect": "EFFECT_DRAGON_DANCE",
+        "effect_numeric_id": 212,
+        "power": 0,
+        "type": "TYPE_DRAGON",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_USER",
+        "priority": 0,
+        "flags": [
+          "FLAG_SNATCH_AFFECTED"
+        ],
+        "gen3_damage_class": "status"
+      }
+    },
+    {
+      "id": "MOVE_ROCK_BLAST",
+      "numeric_id": 350,
+      "source": {
+        "effect": "EFFECT_MULTI_HIT",
+        "effect_numeric_id": 29,
+        "power": 25,
+        "type": "TYPE_ROCK",
+        "accuracy": 80,
+        "pp": 10,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_SHOCK_WAVE",
+      "numeric_id": 351,
+      "source": {
+        "effect": "EFFECT_ALWAYS_HIT",
+        "effect_numeric_id": 17,
+        "power": 60,
+        "type": "TYPE_ELECTRIC",
+        "accuracy": 0,
+        "pp": 20,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_WATER_PULSE",
+      "numeric_id": 352,
+      "source": {
+        "effect": "EFFECT_CONFUSE_HIT",
+        "effect_numeric_id": 76,
+        "power": 60,
+        "type": "TYPE_WATER",
+        "accuracy": 100,
+        "pp": 20,
+        "secondary_effect_chance": 20,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    },
+    {
+      "id": "MOVE_DOOM_DESIRE",
+      "numeric_id": 353,
+      "source": {
+        "effect": "EFFECT_FUTURE_SIGHT",
+        "effect_numeric_id": 148,
+        "power": 120,
+        "type": "TYPE_STEEL",
+        "accuracy": 85,
+        "pp": 5,
+        "secondary_effect_chance": 0,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [],
+        "gen3_damage_class": "physical"
+      }
+    },
+    {
+      "id": "MOVE_PSYCHO_BOOST",
+      "numeric_id": 354,
+      "source": {
+        "effect": "EFFECT_OVERHEAT",
+        "effect_numeric_id": 204,
+        "power": 140,
+        "type": "TYPE_PSYCHIC",
+        "accuracy": 90,
+        "pp": 5,
+        "secondary_effect_chance": 100,
+        "target": "MOVE_TARGET_SELECTED",
+        "priority": 0,
+        "flags": [
+          "FLAG_PROTECT_AFFECTED",
+          "FLAG_MIRROR_MOVE_AFFECTED",
+          "FLAG_KINGS_ROCK_AFFECTED"
+        ],
+        "gen3_damage_class": "special"
+      }
+    }
+  ],
+  "source_snapshot": {
+    "authority": "local pret/pokefirered checkout",
+    "git_commit": "c75f352304d529f6ba92d4f74b9cf8b5c3810788",
+    "git_branch": "feature/stamina-battle-system",
+    "worktree_clean": false,
+    "dirty_path_count": 3,
+    "authoritative_file_sha256": {
+      "include/constants/moves.h": "79d5b93423006c25e6ee47355b15f403b2534616fd6b638e1755e5886d378194",
+      "src/data/battle_moves.h": "54e08c749547afaf73eb2f1e4f4e3023f4d8e186d2f608c29bd6419c291b5384",
+      "include/constants/battle_move_effects.h": "fa15e285903818cc3cc7ecb2ca32c11d8317b14d261ca2d1caf44e614b53828a",
+      "data/battle_scripts_1.s": "27e9c39f3147b05e5ba2ed36ca0c89fcdc9b26718778083bd362c582de800034",
+      "data/battle_scripts_2.s": "83e1211907cc9a21cd1d94e65a065af5abf683d4e88e7ee690e78faf40651133",
+      "src/battle_script_commands.c": "3b7341db8cd58c54fb0b54b47e6eef89c5c05e8a60ab4e9b45bdc907845c19b3",
+      "include/battle.h": "bf64a16fb4e660f8a326eb352a511bb9e8fd54a74ebb03e328c08d5a23e5d8fa",
+      "include/constants/pokemon.h": "9cabd203100ae7246bc595b7295e7e04145f6292abfab83c3bd0597a2cfbcfb5",
+      "src/data/pokemon/level_up_learnsets.h": "d6563a88fa893d1433a02027cb13ba9574a6828a96b1a730b1d767fd7c5a0cc6",
+      "src/data/pokemon/level_up_learnset_pointers.h": "7a85513797da2a2ebdf7893ce58d94f99aee07deb1aec4f0d7a31422dc8040de",
+      "src/data/pokemon/tmhm_learnsets.h": "92bf603f90469ccae0398902db943770e2cb12cb910883b42a552cff07cff31f",
+      "src/data/pokemon/tutor_learnsets.h": "d09053c6fa423a6838fa1eb2c5c28701305e3895ee6b894dc46113be57019e76",
+      "src/data/pokemon/egg_moves.h": "dbc39729ba62ae2b70c9dded2c32b18f55c9ea409a867c0720c30617008da758",
+      "src/data/trainer_parties.h": "cb135d9cbdfc52c87066374d582506830a8c93561eab2033d847331c2de00299",
+      "src/data/trainers.h": "b2105a3b1d1baec02d8f6a89f44bcdf6a05cbaac1d6d8872766eec49aa8555bc"
+    },
+    "finalized_at_utc": "2026-09-25T12:29:07.387173+00:00"
+  }
+}

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "source": {
     "repository": "rh-hideout/pokeemerald-expansion",
-    "git_commit": "2cfbd9a89167687b9562f7a534a0753c870c27e3",
+    "git_commit": "a3cf2460e7677734ae83d74c607d2f6b4c5871b0",
     "git_branch_when_collected": "tactical-firered",
     "working_tree_dirty_when_collected": true,
     "files": [
@@ -213,17 +213,26 @@
       "constant": "MOVE_ICE_PUNCH",
       "aliases": [],
       "name": "Ice Punch",
-      "description": "An icy punch that may\nleave the foe with frostbite.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "An icy punch that may\nfreeze the foe.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "75",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "100",
+      "pp_expr": "15",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_FREEZE_OR_FROSTBITE",
+          "chance": "10"
+        }
+      ],
+      "properties": {
+        "makesContact": "TRUE",
+        "punchingMove": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 9,
@@ -320,16 +329,22 @@
       "aliases": [],
       "name": "Razor Wind",
       "description": "A 2-turn move that strikes\nthe foe on the 2nd turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_TWO_TURNS_ATTACK",
+      "power_expr": "80",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "B_UPDATED_MOVE_DATA >= GEN_3 ? 100 : 75",
+      "pp_expr": "10",
+      "target_expr": "TARGET_BOTH",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "criticalHitStage": "1",
+        "sleepTalkBanned": "TRUE",
+        "instructBanned": "TRUE",
+        "windMove": "B_EXTRAPOLATED_MOVE_FLAGS",
+        "twoTurnAttack": "{ .stringId = STRINGID_PKMNWHIPPEDWHIRLWIND }"
+      }
     },
     {
       "id": 14,
@@ -429,10 +444,10 @@
       "effect": "EFFECT_ROAR",
       "power_expr": "0",
       "type_expr": "TYPE_NORMAL",
-      "accuracy_expr": "85",
+      "accuracy_expr": "0",
       "pp_expr": "20",
       "target_expr": "TARGET_SELECTED",
-      "priority_expr": "0",
+      "priority_expr": "-6",
       "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
       "properties": {
@@ -528,7 +543,7 @@
       "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 45 : 35",
       "type_expr": "TYPE_GRASS",
       "accuracy_expr": "100",
-      "pp_expr": "10",
+      "pp_expr": "25",
       "target_expr": "TARGET_SELECTED",
       "priority_expr": "0",
       "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
@@ -612,7 +627,7 @@
       "name": "Jump Kick",
       "description": "A strong jumping kick. May\nmiss and hurt the kicker.",
       "effect": "EFFECT_RECOIL_IF_MISS",
-      "power_expr": "70",
+      "power_expr": "100",
       "type_expr": "TYPE_FIGHTING",
       "accuracy_expr": "95",
       "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 10 : 25",
@@ -769,7 +784,7 @@
       "name": "Tackle",
       "description": "Charges the foe with a full-\nbody tackle.",
       "effect": "EFFECT_HIT",
-      "power_expr": "35",
+      "power_expr": "40",
       "type_expr": "TYPE_NORMAL",
       "accuracy_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 100 : 95",
       "pp_expr": "35",
@@ -1084,7 +1099,7 @@
       "accuracy_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 0 : 100",
       "pp_expr": "20",
       "target_expr": "TARGET_SELECTED",
-      "priority_expr": "0",
+      "priority_expr": "-6",
       "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
       "properties": {
@@ -1172,11 +1187,11 @@
       "constant": "MOVE_DISABLE",
       "aliases": [],
       "name": "Disable",
-      "description": "For 4 turns, prevents foe\nFor 4-7 turns, prevents foe\nFor 2-5 turns, prevents foe\nfrom using last used move.",
+      "description": "For 4 turns, prevents foe\nfrom using last used move.",
       "effect": "EFFECT_DISABLE",
       "power_expr": "0",
       "type_expr": "TYPE_NORMAL",
-      "accuracy_expr": "55",
+      "accuracy_expr": "100",
       "pp_expr": "20",
       "target_expr": "TARGET_SELECTED",
       "priority_expr": "0",
@@ -1195,15 +1210,22 @@
       "aliases": [],
       "name": "Acid",
       "description": "Sprays a hide-melting acid.\nMay lower Sp. Def.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
+      "effect": "EFFECT_HIT",
+      "power_expr": "40",
+      "type_expr": "TYPE_POISON",
+      "accuracy_expr": "100",
+      "pp_expr": "30",
+      "target_expr": "TARGET_BOTH",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_STAT_MINUS",
+          "defense": "B_UPDATED_MOVE_DATA < GEN_4 ? 1 : 0",
+          "spDef": "B_UPDATED_MOVE_DATA >= GEN_4 ? 1 : 0",
+          "chance": "B_UPDATED_MOVE_DATA >= GEN_2 ? 10 : 33"
+        }
+      ],
       "properties": {}
     },
     {
@@ -1317,50 +1339,70 @@
       "aliases": [],
       "name": "Surf",
       "description": "Creates a huge wave, then\ncrashes it on all others.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_HIT",
+      "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95",
+      "type_expr": "TYPE_WATER",
+      "accuracy_expr": "100",
+      "pp_expr": "15",
+      "target_expr": "B_UPDATED_MOVE_DATA >= GEN_4 ? TARGET_FOES_AND_ALLY : TARGET_BOTH",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "damagesUnderwater": "TRUE",
+        "skyBattleBanned": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 58,
       "constant": "MOVE_ICE_BEAM",
       "aliases": [],
       "name": "Ice Beam",
-      "description": "Blasts the foe with an icy\nbeam. May cause frostbite.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Blasts the foe with an icy\nbeam that may freeze it.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "100",
+      "pp_expr": "10",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_FREEZE_OR_FROSTBITE",
+          "chance": "10"
+        }
+      ],
+      "properties": {
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 59,
       "constant": "MOVE_BLIZZARD",
       "aliases": [],
       "name": "Blizzard",
-      "description": "Hits the foes with an icy\nstorm. May cause frostbite.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Hits the foes with an icy\nstorm that may freeze.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 110 : 120",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "B_UPDATED_MOVE_DATA >= GEN_2 ? 70 : 90",
+      "pp_expr": "5",
+      "target_expr": "TARGET_BOTH",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_FREEZE_OR_FROSTBITE",
+          "chance": "10"
+        }
+      ],
+      "properties": {
+        "windMove": "TRUE",
+        "alwaysHitsInHailSnow": "B_BLIZZARD_HAIL >= GEN_4",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 60,
@@ -1439,17 +1481,25 @@
       "constant": "MOVE_HYPER_BEAM",
       "aliases": [],
       "name": "Hyper Beam",
-      "description": "Powerful, but leaves the\nuser immobile the next turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Leaves the user immobile if\nit doesn't KO the target.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "150",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "90",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_RECHARGE",
+          "self": "TRUE"
+        }
+      ],
+      "properties": {
+        "ignoresKingsRock": "B_UPDATED_MOVE_FLAGS < GEN_3",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 64,
@@ -1517,16 +1567,19 @@
       "aliases": [],
       "name": "Low Kick",
       "description": "A kick that inflicts more\ndamage on heavier foes.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "B_UPDATED_MOVE_DATA >= GEN_3 ? EFFECT_LOW_KICK : EFFECT_HIT",
+      "power_expr": "B_UPDATED_MOVE_DATA >= GEN_3 ? 1 : 50",
+      "type_expr": "TYPE_FIGHTING",
+      "accuracy_expr": "B_UPDATED_MOVE_DATA >= GEN_3 ? 100 : 90",
+      "pp_expr": "20",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "makesContact": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 68,
@@ -1675,16 +1728,28 @@
       "aliases": [],
       "name": "Growth",
       "description": "Forces the body to grow and\nraises Attack and Sp. Atk.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_GROWTH",
+      "power_expr": "0",
+      "type_expr": "B_UPDATED_MOVE_TYPES >= GEN_CHAMPIONS ? TYPE_GRASS : TYPE_NORMAL",
+      "accuracy_expr": "0",
+      "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 20 : 40",
+      "target_expr": "TARGET_USER",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
+      "additional_effects": [
+        {
+          "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+          "attack": "B_UPDATED_MOVE_DATA >= GEN_5 ? 1 : 0",
+          "spAtk": "1"
+        }
+      ],
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_SPATK_UP_1 }",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "snatchAffected": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 75,
@@ -1809,7 +1874,7 @@
       "name": "Petal Dance",
       "description": "A rampage of 2 to 3 turns\nthat confuses the user.",
       "effect": "EFFECT_HIT",
-      "power_expr": "70",
+      "power_expr": "120",
       "type_expr": "TYPE_GRASS",
       "accuracy_expr": "100",
       "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 10 : 20",
@@ -1835,16 +1900,24 @@
       "aliases": [],
       "name": "String Shot",
       "description": "Binds the foe with string\nto harshly lower its Speed.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_STAT_CHANGE",
+      "power_expr": "0",
+      "type_expr": "TYPE_BUG",
+      "accuracy_expr": "95",
+      "pp_expr": "40",
+      "target_expr": "TARGET_BOTH",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
+      "additional_effects": [
+        {
+          "moveEffect": "STAT_CHANGE_EFFECT_MINUS",
+          "speed": "B_UPDATED_MOVE_DATA >= GEN_6 ? 2 : 1"
+        }
+      ],
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+        "magicCoatAffected": "TRUE"
+      }
     },
     {
       "id": 82,
@@ -2056,7 +2129,7 @@
       "name": "Dig",
       "description": "Digs underground the first\nturn and strikes next turn.",
       "effect": "EFFECT_SEMI_INVULNERABLE",
-      "power_expr": "100",
+      "power_expr": "80",
       "type_expr": "TYPE_GROUND",
       "accuracy_expr": "100",
       "pp_expr": "10",
@@ -2272,16 +2345,20 @@
       "aliases": [],
       "name": "Teleport",
       "description": "The user switches places\nwith another party PokÃ©mon.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_TELEPORT",
+      "power_expr": "0",
+      "type_expr": "TYPE_PSYCHIC",
+      "accuracy_expr": "0",
+      "pp_expr": "20",
+      "target_expr": "TARGET_USER",
+      "priority_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? -6 : 0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_RECOVER_HP }",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE"
+      }
     },
     {
       "id": 101,
@@ -2396,7 +2473,7 @@
       "power_expr": "0",
       "type_expr": "TYPE_NORMAL",
       "accuracy_expr": "0",
-      "pp_expr": "20",
+      "pp_expr": "5",
       "target_expr": "TARGET_USER",
       "priority_expr": "0",
       "category_expr": "DAMAGE_CATEGORY_STATUS",
@@ -2444,16 +2521,27 @@
       "aliases": [],
       "name": "Minimize",
       "description": "Minimizes the user's size\nto sharply raise evasion.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_MINIMIZE",
+      "power_expr": "0",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "0",
+      "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 10 : 20",
+      "target_expr": "TARGET_USER",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
+      "additional_effects": [
+        {
+          "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+          "evasion": "(B_MINIMIZE_EVASION >= GEN_5) ? 2 : 1"
+        }
+      ],
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "snatchAffected": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 108,
@@ -2922,7 +3010,7 @@
       "constant": "MOVE_WATERFALL",
       "aliases": [],
       "name": "Waterfall",
-      "description": "Charges the foe with speed\nto climb waterfalls.",
+      "description": "Charges with speed to\nclimb waterfalls. May flinch.",
       "effect": "EFFECT_HIT",
       "power_expr": "80",
       "type_expr": "TYPE_WATER",
@@ -2992,7 +3080,7 @@
       "constant": "MOVE_SKULL_BASH",
       "aliases": [],
       "name": "Skull Bash",
-      "description": "Tucks in the head, then\nattacks on the next turn.",
+      "description": "Tucks in to raise Defense,\nthen attacks the next turn.",
       "effect": "EFFECT_TWO_TURNS_ATTACK",
       "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 130 : 100",
       "type_expr": "TYPE_NORMAL",
@@ -3150,7 +3238,7 @@
       "name": "High Jump Kick",
       "description": "A jumping knee kick. If it\nmisses, the user is hurt.",
       "effect": "EFFECT_RECOIL_IF_MISS",
-      "power_expr": "85",
+      "power_expr": "130",
       "type_expr": "TYPE_FIGHTING",
       "accuracy_expr": "90",
       "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 10 : 20",
@@ -3173,7 +3261,7 @@
       "effect": "EFFECT_NON_VOLATILE_STATUS",
       "power_expr": "0",
       "type_expr": "TYPE_NORMAL",
-      "accuracy_expr": "75",
+      "accuracy_expr": "100",
       "pp_expr": "30",
       "target_expr": "TARGET_SELECTED",
       "priority_expr": "0",
@@ -3216,11 +3304,11 @@
       "constant": "MOVE_POISON_GAS",
       "aliases": [],
       "name": "Poison Gas",
-      "description": "Envelops the foes in a toxic\nEnvelops the foe in a toxic\ngas that poisons.",
+      "description": "Envelops the foes in a toxic\ngas that poisons.",
       "effect": "EFFECT_NON_VOLATILE_STATUS",
       "power_expr": "0",
       "type_expr": "TYPE_POISON",
-      "accuracy_expr": "55",
+      "accuracy_expr": "90",
       "pp_expr": "40",
       "target_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? TARGET_BOTH : TARGET_SELECTED",
       "priority_expr": "0",
@@ -3305,7 +3393,7 @@
       "constant": "MOVE_SKY_ATTACK",
       "aliases": [],
       "name": "Sky Attack",
-      "description": "Searches out weak spots,\nthen strikes the next turn.",
+      "description": "2-turn move. May flinch and\nhas a high critical-hit rate.",
       "effect": "EFFECT_TWO_TURNS_ATTACK",
       "power_expr": "140",
       "type_expr": "TYPE_FLYING",
@@ -3385,7 +3473,7 @@
       "constant": "MOVE_DIZZY_PUNCH",
       "aliases": [],
       "name": "Dizzy Punch",
-      "description": "The foe is hit with a\nrhythmic punch.",
+      "description": "A rhythmic punch that may\nconfuse the foe.",
       "effect": "EFFECT_HIT",
       "power_expr": "70",
       "type_expr": "TYPE_NORMAL",
@@ -3533,7 +3621,7 @@
       "effect": "EFFECT_HIT",
       "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 100 : 90",
       "type_expr": "TYPE_WATER",
-      "accuracy_expr": "85",
+      "accuracy_expr": "95",
       "pp_expr": "10",
       "target_expr": "TARGET_SELECTED",
       "priority_expr": "0",
@@ -3636,7 +3724,7 @@
       "constant": "MOVE_ROCK_SLIDE",
       "aliases": [],
       "name": "Rock Slide",
-      "description": "Hits the foes with an\navalanche of boulders.",
+      "description": "Large boulders are hurled.\nMay cause flinching.",
       "effect": "EFFECT_HIT",
       "power_expr": "75",
       "type_expr": "TYPE_ROCK",
@@ -3715,23 +3803,29 @@
       "aliases": [],
       "name": "Conversion",
       "description": "Changes the user's type into\nthe first known move's type.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_CONVERSION",
+      "power_expr": "0",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "0",
+      "pp_expr": "30",
+      "target_expr": "TARGET_USER",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_ALL_STATS_UP_1 }",
+        "snatchAffected": "B_UPDATED_MOVE_FLAGS >= GEN_5",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 161,
       "constant": "MOVE_TRI_ATTACK",
       "aliases": [],
       "name": "Tri Attack",
-      "description": "A triangular field of energy\nis created and launched.",
+      "description": "Fires three types of beams.\nMay burn/paralyze/freeze.",
       "effect": "EFFECT_HIT",
       "power_expr": "80",
       "type_expr": "TYPE_NORMAL",
@@ -3840,7 +3934,6 @@
         }
       ],
       "properties": {
-        "argument": "{ .recoilPercentage = 50 }",
         "makesContact": "TRUE",
         "meFirstBanned": "TRUE",
         "mimicBanned": "TRUE",
@@ -4149,7 +4242,7 @@
       "constant": "MOVE_COTTON_SPORE",
       "aliases": [],
       "name": "Cotton Spore",
-      "description": "Spores cling to the foes,\nSpores cling to the foe,\nharshly lowering Speed.",
+      "description": "Spores cling to the foes,\nharshly lowering Speed.",
       "effect": "EFFECT_STAT_CHANGE",
       "power_expr": "0",
       "type_expr": "TYPE_GRASS",
@@ -4197,32 +4290,42 @@
       "aliases": [],
       "name": "Spite",
       "description": "Spitefully cuts the PP of\nthe foe's last move by 4.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_SPITE",
+      "power_expr": "0",
+      "type_expr": "TYPE_GHOST",
+      "accuracy_expr": "100",
+      "pp_expr": "10",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_RECOVER_HP }",
+        "magicCoatAffected": "B_UPDATED_MOVE_FLAGS >= GEN_5",
+        "ignoresSubstitute": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 181,
       "constant": "MOVE_POWDER_SNOW",
       "aliases": [],
       "name": "Powder Snow",
-      "description": "Blasts the foes with a snowy\ngust. May cause frostbite.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
+      "description": "Blasts the foes with a snowy\ngust. May cause freezing.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "40",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "100",
+      "pp_expr": "25",
+      "target_expr": "TARGET_BOTH",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_FREEZE_OR_FROSTBITE",
+          "chance": "10"
+        }
+      ],
       "properties": {}
     },
     {
@@ -4237,7 +4340,7 @@
       "accuracy_expr": "0",
       "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10",
       "target_expr": "TARGET_USER",
-      "priority_expr": "2",
+      "priority_expr": "4",
       "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
       "properties": {
@@ -4605,7 +4708,7 @@
       "accuracy_expr": "0",
       "pp_expr": "5",
       "target_expr": "TARGET_USER",
-      "priority_expr": "2",
+      "priority_expr": "4",
       "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
       "properties": {
@@ -4746,7 +4849,7 @@
       "accuracy_expr": "0",
       "pp_expr": "10",
       "target_expr": "TARGET_USER",
-      "priority_expr": "2",
+      "priority_expr": "4",
       "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
       "properties": {
@@ -4910,7 +5013,7 @@
       "name": "Fury Cutter",
       "description": "An attack that intensifies\non each successive hit.",
       "effect": "EFFECT_FURY_CUTTER",
-      "power_expr": "10",
+      "power_expr": "40",
       "type_expr": "TYPE_BUG",
       "accuracy_expr": "95",
       "pp_expr": "20",
@@ -5301,16 +5404,22 @@
       "aliases": [],
       "name": "Encore",
       "description": "Makes the foe repeat its\nlast move over 3 turns.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_ENCORE",
+      "power_expr": "0",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "100",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+        "magicCoatAffected": "B_UPDATED_MOVE_FLAGS >= GEN_5",
+        "encoreBanned": "TRUE",
+        "ignoresSubstitute": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 228,
@@ -5338,7 +5447,7 @@
       "constant": "MOVE_RAPID_SPIN",
       "aliases": [],
       "name": "Rapid Spin",
-      "description": "Spins the body at high\nspeed to remove traps.",
+      "description": "Spins to remove traps\nand raise Speed.",
       "effect": "EFFECT_RAPID_SPIN",
       "power_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? 50 : 20",
       "type_expr": "TYPE_NORMAL",
@@ -5366,16 +5475,25 @@
       "aliases": [],
       "name": "Sweet Scent",
       "description": "Allures the foes to harshly\nlower evasiveness.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_STAT_CHANGE",
+      "power_expr": "0",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "100",
+      "pp_expr": "20",
+      "target_expr": "TARGET_BOTH",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
+      "additional_effects": [
+        {
+          "moveEffect": "STAT_CHANGE_EFFECT_MINUS",
+          "evasion": "(B_UPDATED_MOVE_DATA >= GEN_6) ? 2 : 1"
+        }
+      ],
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_ACC_UP_1 }",
+        "magicCoatAffected": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 231,
@@ -5641,16 +5759,27 @@
       "aliases": [],
       "name": "Crunch",
       "description": "Crunches with sharp fangs.\nMay lower Defense.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_HIT",
+      "power_expr": "80",
+      "type_expr": "TYPE_DARK",
+      "accuracy_expr": "100",
+      "pp_expr": "15",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_STAT_MINUS",
+          "defense": "B_UPDATED_MOVE_DATA >= GEN_4 ? 1 : 0",
+          "spDef": "B_UPDATED_MOVE_DATA < GEN_4 ? 1 : 0",
+          "chance": "20"
+        }
+      ],
+      "properties": {
+        "makesContact": "TRUE",
+        "bitingMove": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 243,
@@ -5790,7 +5919,7 @@
       "name": "Future Sight",
       "description": "Heightens inner power to\nstrike 2 turns later.",
       "effect": "EFFECT_FUTURE_SIGHT",
-      "power_expr": "80",
+      "power_expr": "120",
       "type_expr": "TYPE_PSYCHIC",
       "accuracy_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 100 : 90",
       "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 10 : 15",
@@ -5911,7 +6040,7 @@
       "constant": "MOVE_UPROAR",
       "aliases": [],
       "name": "Uproar",
-      "description": "Causes an uproar for 3\nCauses an uproar for 2 to 5\nturns and prevents sleep.",
+      "description": "Causes an uproar for 3\nturns and prevents sleep.",
       "effect": "EFFECT_HIT",
       "power_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 90 : 50",
       "type_expr": "TYPE_NORMAL",
@@ -5941,16 +6070,28 @@
       "aliases": [],
       "name": "Stockpile",
       "description": "Charges up power for up to\n3 turns. Raises defenses.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_STOCKPILE",
+      "power_expr": "0",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "0",
+      "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_4 ? 20 : 10",
+      "target_expr": "TARGET_USER",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
+      "additional_effects": [
+        {
+          "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+          "defense": "1",
+          "spDef": "1"
+        }
+      ],
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_RECOVER_HP }",
+        "snatchAffected": "TRUE",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 255,
@@ -6027,16 +6168,22 @@
       "aliases": [],
       "name": "Hail",
       "description": "Boosts the Defense of Ice-\ntype PokÃ©mon for 5 turns.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_WEATHER",
+      "power_expr": "0",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "0",
+      "pp_expr": "10",
+      "target_expr": "TARGET_FIELD",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "argument": "{ .weatherType = (B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_SNOW) ? BATTLE_WEATHER_SNOW : BATTLE_WEATHER_HAIL }",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 259,
@@ -6266,7 +6413,7 @@
       "constant": "MOVE_CHARGE",
       "aliases": [],
       "name": "Charge",
-      "description": "Charges power to boost the\nElectric move used next turn.",
+      "description": "Ups the user's next Electric\nmove. It also raises Sp. Def.",
       "effect": "EFFECT_CHARGE",
       "power_expr": "0",
       "type_expr": "TYPE_ELECTRIC",
@@ -6295,16 +6442,22 @@
       "aliases": [],
       "name": "Taunt",
       "description": "The foe can use only attack\nmoves for 3 turns.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_TAUNT",
+      "power_expr": "0",
+      "type_expr": "TYPE_DARK",
+      "accuracy_expr": "100",
+      "pp_expr": "20",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_ATK_UP_1 }",
+        "ignoresSubstitute": "TRUE",
+        "magicCoatAffected": "B_UPDATED_MOVE_FLAGS >= GEN_5",
+        "mirrorMoveBanned": "B_UPDATED_MOVE_FLAGS < GEN_4",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 270,
@@ -6599,16 +6752,19 @@
       "aliases": [],
       "name": "Knock Off",
       "description": "Deals more damage to a foe\nwith an item and removes it.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_KNOCK_OFF",
+      "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 65 : 20",
+      "type_expr": "TYPE_DARK",
+      "accuracy_expr": "100",
+      "pp_expr": "20",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "makesContact": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 283,
@@ -6867,16 +7023,27 @@
       "aliases": [],
       "name": "Tail Glow",
       "description": "Flashes a light that\ndrastically raises Sp. Atk.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_STAT_CHANGE",
+      "power_expr": "0",
+      "type_expr": "TYPE_BUG",
+      "accuracy_expr": "0",
+      "pp_expr": "20",
+      "target_expr": "TARGET_USER",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
+      "additional_effects": [
+        {
+          "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+          "spAtk": "B_UPDATED_MOVE_DATA >= GEN_5 ? 3 : 2"
+        }
+      ],
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+        "snatchAffected": "TRUE",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 295,
@@ -7012,16 +7179,22 @@
       "aliases": [],
       "name": "Mud Sport",
       "description": "Mud weakens Electric-\ntype moves for 5 turns.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_MUD_SPORT",
+      "power_expr": "0",
+      "type_expr": "TYPE_GROUND",
+      "accuracy_expr": "0",
+      "pp_expr": "15",
+      "target_expr": "TARGET_FIELD",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_SPDEF_UP_1 }",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "skyBattleBanned": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 301,
@@ -7173,34 +7346,48 @@
       "constant": "MOVE_BLAST_BURN",
       "aliases": [],
       "name": "Blast Burn",
-      "description": "Powerful, but leaves the\nuser immobile the next turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Leaves the user immobile if\nit doesn't KO the target.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "150",
+      "type_expr": "TYPE_FIRE",
+      "accuracy_expr": "90",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_RECHARGE",
+          "self": "TRUE"
+        }
+      ],
+      "properties": {
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 308,
       "constant": "MOVE_HYDRO_CANNON",
       "aliases": [],
       "name": "Hydro Cannon",
-      "description": "Powerful, but leaves the\nuser immobile the next turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Leaves the user immobile if\nit doesn't KO the target.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "150",
+      "type_expr": "TYPE_WATER",
+      "accuracy_expr": "90",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_RECHARGE",
+          "self": "TRUE"
+        }
+      ],
+      "properties": {
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 309,
@@ -7705,16 +7892,20 @@
       "aliases": [],
       "name": "Sheer Cold",
       "description": "Causes fainting. Unlikely to\nhit if user isn't Ice-type.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_OHKO",
+      "power_expr": "1",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "30",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "noAffectOnSameTypeTarget": "B_SHEER_COLD_IMMUNITY >= GEN_7",
+        "accDecreaseIfUserNotSameType": "B_SHEER_COLD_ACC >= GEN_7",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 330,
@@ -7858,16 +8049,29 @@
       "aliases": [],
       "name": "Howl",
       "description": "Howls to raise the spirit\nand raises allies' Attack.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_STAT_CHANGE",
+      "power_expr": "0",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "0",
+      "pp_expr": "40",
+      "target_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? TARGET_USER_AND_ALLY : TARGET_USER",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
+      "additional_effects": [
+        {
+          "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+          "attack": "1"
+        }
+      ],
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_ATK_UP_1 }",
+        "snatchAffected": "TRUE",
+        "ignoresProtect": "TRUE",
+        "ignoresSubstitute": "B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS",
+        "mirrorMoveBanned": "TRUE",
+        "soundMove": "B_UPDATED_MOVE_FLAGS >= GEN_8",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 337,
@@ -7895,17 +8099,25 @@
       "constant": "MOVE_FRENZY_PLANT",
       "aliases": [],
       "name": "Frenzy Plant",
-      "description": "Powerful, but leaves the\nuser immobile the next turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Leaves the user immobile if\nit doesn't KO the target.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "150",
+      "type_expr": "TYPE_GRASS",
+      "accuracy_expr": "90",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_RECHARGE",
+          "self": "TRUE"
+        }
+      ],
+      "properties": {
+        "skyBattleBanned": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 339,
@@ -8044,7 +8256,7 @@
       "constant": "MOVE_VOLT_TACKLE",
       "aliases": [],
       "name": "Volt Tackle",
-      "description": "A life-risking tackle that\nslightly hurts the user.",
+      "description": "A life-risking tackle that\nhurts the user. May paralyze.",
       "effect": "EFFECT_RECOIL",
       "power_expr": "120",
       "type_expr": "TYPE_ELECTRIC",
@@ -8090,16 +8302,22 @@
       "aliases": [],
       "name": "Water Sport",
       "description": "Water weakens Fire-\ntype moves for 5 turns.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_WATER_SPORT",
+      "power_expr": "0",
+      "type_expr": "TYPE_WATER",
+      "accuracy_expr": "0",
+      "pp_expr": "15",
+      "target_expr": "TARGET_FIELD",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_SPDEF_UP_1 }",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "skyBattleBanned": "TRUE",
+        "validApprenticeMove": "TRUE"
+      }
     },
     {
       "id": 347,
@@ -8541,16 +8759,22 @@
       "aliases": [],
       "name": "Tailwind",
       "description": "Whips up a wind that boosts\nallies' Speed for 4 turns.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_TAILWIND",
+      "power_expr": "0",
+      "type_expr": "TYPE_FLYING",
+      "accuracy_expr": "0",
+      "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 15 : 30",
+      "target_expr": "TARGET_USER",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_BOOST_CRITS }",
+        "snatchAffected": "TRUE",
+        "windMove": "TRUE",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE"
+      }
     },
     {
       "id": 367,
@@ -9631,17 +9855,24 @@
       "constant": "MOVE_GIGA_IMPACT",
       "aliases": [],
       "name": "Giga Impact",
-      "description": "Powerful, but leaves the\nuser immobile the next turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Leaves the user immobile if\nit doesn't KO the target.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "150",
+      "type_expr": "TYPE_NORMAL",
+      "accuracy_expr": "90",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_RECHARGE",
+          "self": "TRUE"
+        }
+      ],
+      "properties": {
+        "makesContact": "TRUE"
+      }
     },
     {
       "id": 417,
@@ -9781,17 +10012,29 @@
       "constant": "MOVE_ICE_FANG",
       "aliases": [],
       "name": "Ice Fang",
-      "description": "May cause flinching or\nleave the foe with frostbite.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "May cause flinching or\nleave the foe frozen.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "65",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "95",
+      "pp_expr": "15",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_FREEZE_OR_FROSTBITE",
+          "chance": "10"
+        },
+        {
+          "moveEffect": "MOVE_EFFECT_FLINCH",
+          "chance": "10"
+        }
+      ],
+      "properties": {
+        "makesContact": "TRUE",
+        "bitingMove": "TRUE"
+      }
     },
     {
       "id": 424,
@@ -10140,17 +10383,24 @@
       "constant": "MOVE_ROCK_WRECKER",
       "aliases": [],
       "name": "Rock Wrecker",
-      "description": "Powerful, but leaves the\nuser immobile the next turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Leaves the user immobile if\nit doesn't KO the target.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "150",
+      "type_expr": "TYPE_ROCK",
+      "accuracy_expr": "90",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_RECHARGE",
+          "self": "TRUE"
+        }
+      ],
+      "properties": {
+        "ballisticMove": "TRUE"
+      }
     },
     {
       "id": 440,
@@ -10347,7 +10597,7 @@
       "additional_effects": [
         {
           "moveEffect": "MOVE_EFFECT_CONFUSION",
-          "chance": "31"
+          "chance": "100"
         }
       ],
       "properties": {
@@ -10583,16 +10833,21 @@
       "constant": "MOVE_ROAR_OF_TIME",
       "aliases": [],
       "name": "Roar of Time",
-      "description": "Powerful, but leaves the\nuser immobile the next turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
+      "description": "Leaves the user immobile if\nit doesn't KO the target.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "150",
+      "type_expr": "TYPE_DRAGON",
+      "accuracy_expr": "90",
+      "pp_expr": "5",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_RECHARGE",
+          "self": "TRUE"
+        }
+      ],
       "properties": {}
     },
     {
@@ -11729,7 +11984,7 @@
       "constant": "MOVE_INCINERATE",
       "aliases": [],
       "name": "Incinerate",
-      "description": "Burns up certain items,\nBurns up Berries,\nmaking them unusable.",
+      "description": "Burns up certain items,\nmaking them unusable.",
       "effect": "EFFECT_HIT",
       "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 30",
       "type_expr": "TYPE_FIRE",
@@ -12991,16 +13246,18 @@
       "aliases": [],
       "name": "Fell Stinger",
       "description": "If the foe is KO'd, Attack\nis drastically raised.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_FELL_STINGER",
+      "power_expr": "B_UPDATED_MOVE_DATA >= GEN_7 ? 50 : 30",
+      "type_expr": "TYPE_BUG",
+      "accuracy_expr": "100",
+      "pp_expr": "25",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "makesContact": "TRUE"
+      }
     },
     {
       "id": 566,
@@ -13171,17 +13428,19 @@
       "constant": "MOVE_FREEZE_DRY",
       "aliases": [],
       "name": "Freeze-Dry",
-      "description": "Super effective on Water-\ntypes. May cause frostbite.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "description": "Super effective on Water-\ntypes.",
+      "effect": "EFFECT_SUPER_EFFECTIVE_ON_ARG",
+      "power_expr": "70",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "100",
+      "pp_expr": "20",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "argument": "{ .type = TYPE_WATER }"
+      }
     },
     {
       "id": 574,
@@ -13504,7 +13763,7 @@
       "constant": "MOVE_KINGS_SHIELD",
       "aliases": [],
       "name": "King's Shield",
-      "description": "Evades damage and\nEvades damage and harshly\nlowers Attack on contact.",
+      "description": "Evades damage and\nlowers Attack on contact.",
       "effect": "EFFECT_PROTECT",
       "power_expr": "0",
       "type_expr": "TYPE_STEEL",
@@ -15128,16 +15387,21 @@
       "aliases": [],
       "name": "Aurora Veil",
       "description": "Weakens all attacks, but\nonly usable with snow.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_AURORA_VEIL",
+      "power_expr": "0",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "0",
+      "pp_expr": "20",
+      "target_expr": "TARGET_USER",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+        "snatchAffected": "TRUE",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE"
+      }
     },
     {
       "id": 658,
@@ -15552,16 +15816,27 @@
       "aliases": [],
       "name": "Zippy Zap",
       "description": "Electric bursts always go\nfirst and raise evasion.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_HIT",
+      "power_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? 80 : 50",
+      "type_expr": "TYPE_ELECTRIC",
+      "accuracy_expr": "100",
+      "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? 10 : 15",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "2",
+      "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_STAT_PLUS",
+          "evasion": "1",
+          "self": "TRUE"
+        }
+      ],
+      "properties": {
+        "makesContact": "TRUE",
+        "mirrorMoveBanned": "B_UPDATED_MOVE_FLAGS < GEN_8",
+        "alwaysCriticalHit": "B_UPDATED_MOVE_DATA < GEN_8",
+        "metronomeBanned": "TRUE"
+      }
     },
     {
       "id": 677,
@@ -15642,16 +15917,25 @@
       "aliases": [],
       "name": "Bouncy Bubble",
       "description": "Shoots bubbles that absorb\nall the damage inflicted.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "effect": "EFFECT_HIT",
+      "power_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? 60 : 90",
+      "type_expr": "TYPE_WATER",
+      "accuracy_expr": "100",
+      "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? 20 : 15",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_ABSORB",
+          "absorbPercentage": "B_UPDATED_MOVE_DATA >= GEN_8 ? 100 : 50"
+        }
+      ],
+      "properties": {
+        "mirrorMoveBanned": "B_UPDATED_MOVE_FLAGS < GEN_8",
+        "metronomeBanned": "TRUE",
+        "healingMove": "B_HEAL_BLOCKING >= GEN_6"
+      }
     },
     {
       "id": 681,
@@ -17217,17 +17501,24 @@
       "constant": "MOVE_FREEZING_GLARE",
       "aliases": [],
       "name": "Freezing Glare",
-      "description": "Shoots psychic power from\nthe eyes. May frostbite.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
-      "additional_effects": [],
-      "properties": {}
+      "description": "Shoots psychic power from\nthe eyes. May freeze the foe.",
+      "effect": "EFFECT_HIT",
+      "power_expr": "90",
+      "type_expr": "TYPE_PSYCHIC",
+      "accuracy_expr": "100",
+      "pp_expr": "10",
+      "target_expr": "TARGET_SELECTED",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+      "additional_effects": [
+        {
+          "moveEffect": "MOVE_EFFECT_FREEZE_OR_FROSTBITE",
+          "chance": "10"
+        }
+      ],
+      "properties": {
+        "metronomeBanned": "TRUE"
+      }
     },
     {
       "id": 750,
@@ -18585,16 +18876,22 @@
       "aliases": [],
       "name": "Chilly Reception",
       "description": "Bad joke summons hailstorm.\nThe user also switches out.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_WEATHER_AND_SWITCH",
+      "power_expr": "0",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "0",
+      "pp_expr": "10",
+      "target_expr": "TARGET_FIELD",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "metronomeBanned": "TRUE",
+        "argument": "{ .weatherType = (B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL) ? BATTLE_WEATHER_HAIL : BATTLE_WEATHER_SNOW }"
+      }
     },
     {
       "id": 808,
@@ -18629,16 +18926,22 @@
       "aliases": [],
       "name": "Snowscape",
       "description": "Summons a hailstorm that\nstrikes every turn.",
-      "effect": null,
-      "power_expr": null,
-      "type_expr": null,
-      "accuracy_expr": null,
-      "pp_expr": null,
-      "target_expr": null,
-      "priority_expr": null,
-      "category_expr": null,
+      "effect": "EFFECT_WEATHER",
+      "power_expr": "0",
+      "type_expr": "TYPE_ICE",
+      "accuracy_expr": "0",
+      "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10",
+      "target_expr": "TARGET_FIELD",
+      "priority_expr": "0",
+      "category_expr": "DAMAGE_CATEGORY_STATUS",
       "additional_effects": [],
-      "properties": {}
+      "properties": {
+        "argument": "{ .weatherType = (B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL) ? BATTLE_WEATHER_HAIL : BATTLE_WEATHER_SNOW }",
+        "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+        "ignoresProtect": "TRUE",
+        "mirrorMoveBanned": "TRUE",
+        "metronomeBanned": "TRUE"
+      }
     },
     {
       "id": 810,

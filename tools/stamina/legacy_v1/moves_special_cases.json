@@ -1,0 +1,1411 @@
+{
+  "schema_version": 1,
+  "dataset": "Pokemon FireRed Stamina special-case semantics",
+  "principles": {
+    "shared_player_side_stamina": true,
+    "enemy_uses_stamina": false,
+    "species_specific_stamina": false,
+    "species_specific_regen": false,
+    "pay_on_genuine_attempt": true,
+    "refund_after_attempt_begins": false
+  },
+  "rules": {
+    "standard_attempt": {
+      "status": "locked",
+      "summary": "Pay the selected move's Stamina once when the move genuinely begins its attempt. No refund for miss, immunity, Protect, effect failure, or other failure after the attempt begins.",
+      "implementation": "Do not charge if a pre-action blocker prevents the move from beginning at all (sleep, freeze, flinch, full paralysis, etc.)."
+    },
+    "struggle_fallback": {
+      "status": "locked",
+      "summary": "Struggle is the emergency action when no normal player move is affordable.",
+      "implementation": "Struggle costs 0 Stamina. It is not a normal low-cost tactical option and should only be offered/forced by the no-affordable-move fallback condition."
+    },
+    "forced_multiturn_single_commit": {
+      "status": "locked",
+      "summary": "Pay once when the player initially commits to the move. Forced continuation turns do not consume additional Stamina.",
+      "implementation": "Affordability is checked only when the player selects the initial move. Automatic continuation/resolution must not re-check or re-charge Stamina."
+    },
+    "recharge_turn_free": {
+      "status": "locked",
+      "summary": "Pay once for the attacking move. The forced recharge turn costs no Stamina.",
+      "implementation": "Recharge is not a new player-selected action, so it cannot create a second resource charge."
+    },
+    "called_move_caller_only": {
+      "status": "locked",
+      "summary": "Pay only the move the player selected (Metronome, Sleep Talk, Assist, Mirror Move, Nature Power). The called move costs no additional Stamina.",
+      "implementation": "The called move may execute even when its standalone Stamina cost would exceed the remaining pool. There is no hidden second cost."
+    },
+    "copied_move_future_cost": {
+      "status": "locked",
+      "summary": "Pay the copy/transform move when it is used. A copied move later selected directly uses that copied move's normal Stamina cost.",
+      "implementation": "Mimic/Sketch/Transform do not pre-pay future uses and do not make copied moves free."
+    },
+    "delayed_resolution_free": {
+      "status": "locked",
+      "summary": "Pay when the player selects and attempts the move. Delayed damage, healing, residual damage, KO reaction, or timer resolution costs no additional Stamina.",
+      "implementation": "The later battle event is a consequence of an already-paid action, not a new action selection."
+    },
+    "repeat_reselection_each_time": {
+      "status": "locked",
+      "summary": "If the player must manually select the move again on later turns, each new selection pays that move's normal Stamina cost.",
+      "implementation": "This applies to repeated-use scaling such as Rage and Fury Cutter. They are not treated as automatic locked continuations."
+    },
+    "linked_moves_independent_cost": {
+      "status": "locked",
+      "summary": "Each separately selected move in a linked family pays its own Stamina cost.",
+      "implementation": "Stockpile does not pre-pay Spit Up or Swallow. Defense Curl does not discount or pre-pay Rollout/Ice Ball."
+    },
+    "pp_asymmetry": {
+      "status": "locked_for_v1",
+      "summary": "PP-manipulation moves continue to interact with enemy PP, because the enemy still uses vanilla PP. They do not reduce player Stamina.",
+      "implementation": "When an enemy PP-reduction effect targets the player, its PP change may become tactically irrelevant once player PP is bypassed. Do not secretly convert PP loss into Stamina loss in V1."
+    },
+    "focus_punch_attempt": {
+      "status": "locked",
+      "summary": "Focus Punch pays if its move attempt has begun, even if the user later loses focus from taking damage.",
+      "implementation": "A pre-action blocker that prevents the move from beginning still follows the global no-charge rule. Losing focus after commitment is not a refund."
+    },
+    "random_result_one_cost": {
+      "status": "locked",
+      "summary": "Random or dynamically calculated outcomes do not alter Stamina after selection.",
+      "implementation": "Present, Magnitude, Hidden Power, Secret Power, and similar moves pay exactly their selected move cost once, regardless of the result rolled/calculated."
+    },
+    "charge_setup_separate_next_move": {
+      "status": "locked",
+      "summary": "Charge pays its own Stamina cost. A later Electric attack is a new player-selected action and pays its own normal Stamina cost.",
+      "implementation": "The temporary charged state does not pre-pay the next Electric move and does not add an extra surcharge to it."
+    },
+    "hp_or_self_cost_no_refund": {
+      "status": "locked",
+      "summary": "HP loss, self-KO, recoil, or other built-in sacrifice remains an independent move drawback and does not refund Stamina.",
+      "implementation": "Stamina is the action cost; HP/recoil/self-KO is the move's existing combat cost."
+    },
+    "cost_tuning_only": {
+      "status": "locked",
+      "summary": "No special Stamina execution logic is required. The move only needs careful numeric cost tuning later.",
+      "implementation": "Use standard attempt semantics unless another rule is attached."
+    }
+  },
+  "counts": {
+    "flagged_moves": 64,
+    "resolved_moves": 64,
+    "unresolved_moves": 0,
+    "rule_usage": {
+      "called_move_caller_only": 5,
+      "charge_setup_separate_next_move": 1,
+      "copied_move_future_cost": 3,
+      "cost_tuning_only": 10,
+      "delayed_resolution_free": 6,
+      "focus_punch_attempt": 1,
+      "forced_multiturn_single_commit": 15,
+      "hp_or_self_cost_no_refund": 4,
+      "linked_moves_independent_cost": 4,
+      "pp_asymmetry": 2,
+      "random_result_one_cost": 4,
+      "recharge_turn_free": 4,
+      "repeat_reselection_each_time": 2,
+      "standard_attempt": 63,
+      "struggle_fallback": 1
+    },
+    "review_flags": {
+      "called_move_cost_rule": 5,
+      "copied_move_interaction": 3,
+      "delayed_execution": 2,
+      "effect_specific_review": 21,
+      "forced_or_chained_turns": 6,
+      "linked_move_family": 4,
+      "multi_turn_commitment": 8,
+      "ohko": 4,
+      "perish_timer": 1,
+      "player_pp_replacement": 2,
+      "recharge_turn": 4,
+      "repeat_scaling": 2,
+      "self_sacrifice": 3,
+      "stamina_fallback_rule": 1,
+      "utility_value_review": 6
+    }
+  },
+  "moves": {
+    "MOVE_GUILLOTINE": {
+      "move": "MOVE_GUILLOTINE",
+      "effect": "EFFECT_OHKO",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "ohko",
+        "special_case"
+      ],
+      "review_flags": [
+        "ohko"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 8,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_RAZOR_WIND": {
+      "move": "MOVE_RAZOR_WIND",
+      "effect": "EFFECT_RAZOR_WIND",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "charge_turn",
+        "direct_damage",
+        "special_case",
+        "spread"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_FLY": {
+      "move": "MOVE_FLY",
+      "effect": "EFFECT_SEMI_INVULNERABLE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "charge_turn",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 1,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_HORN_DRILL": {
+      "move": "MOVE_HORN_DRILL",
+      "effect": "EFFECT_OHKO",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "ohko",
+        "special_case"
+      ],
+      "review_flags": [
+        "ohko"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 18,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_THRASH": {
+      "move": "MOVE_THRASH",
+      "effect": "EFFECT_RAMPAGE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "forced_repeat",
+        "special_case"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 17,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_MIST": {
+      "move": "MOVE_MIST",
+      "effect": "EFFECT_MIST",
+      "primary_role": "protection",
+      "mechanic_tags": [
+        "persistent_effect",
+        "stat_drop_prevention"
+      ],
+      "review_flags": [
+        "utility_value_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_HYPER_BEAM": {
+      "move": "MOVE_HYPER_BEAM",
+      "effect": "EFFECT_RECHARGE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "recharge_turn",
+        "special_case"
+      ],
+      "review_flags": [
+        "recharge_turn"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "recharge_turn_free"
+      ],
+      "trainer_move_occurrence_count": 13,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SOLAR_BEAM": {
+      "move": "MOVE_SOLAR_BEAM",
+      "effect": "EFFECT_SOLAR_BEAM",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "charge_turn",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 5,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_PETAL_DANCE": {
+      "move": "MOVE_PETAL_DANCE",
+      "effect": "EFFECT_RAMPAGE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "forced_repeat",
+        "special_case"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 9,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_FISSURE": {
+      "move": "MOVE_FISSURE",
+      "effect": "EFFECT_OHKO",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "ohko",
+        "special_case"
+      ],
+      "review_flags": [
+        "ohko"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_DIG": {
+      "move": "MOVE_DIG",
+      "effect": "EFFECT_SEMI_INVULNERABLE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "charge_turn",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 1,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_RAGE": {
+      "move": "MOVE_RAGE",
+      "effect": "EFFECT_RAGE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "repeat_scaling",
+        "special_case"
+      ],
+      "review_flags": [
+        "repeat_scaling"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "repeat_reselection_each_time"
+      ],
+      "trainer_move_occurrence_count": 49,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_TELEPORT": {
+      "move": "MOVE_TELEPORT",
+      "effect": "EFFECT_TELEPORT",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "switching"
+      ],
+      "review_flags": [
+        "utility_value_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 12,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_MIMIC": {
+      "move": "MOVE_MIMIC",
+      "effect": "EFFECT_MIMIC",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "move_copy",
+        "special_case"
+      ],
+      "review_flags": [
+        "copied_move_interaction"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "copied_move_future_cost"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_DEFENSE_CURL": {
+      "move": "MOVE_DEFENSE_CURL",
+      "effect": "EFFECT_DEFENSE_CURL",
+      "primary_role": "setup",
+      "mechanic_tags": [
+        "special_case",
+        "stat_boost_defense"
+      ],
+      "review_flags": [
+        "linked_move_family",
+        "utility_value_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "linked_moves_independent_cost",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 58,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_FOCUS_ENERGY": {
+      "move": "MOVE_FOCUS_ENERGY",
+      "effect": "EFFECT_FOCUS_ENERGY",
+      "primary_role": "setup",
+      "mechanic_tags": [
+        "critical_setup",
+        "persistent_effect"
+      ],
+      "review_flags": [
+        "utility_value_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 71,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_BIDE": {
+      "move": "MOVE_BIDE",
+      "effect": "EFFECT_BIDE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "counterplay",
+        "direct_damage",
+        "reactive_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 4,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_METRONOME": {
+      "move": "MOVE_METRONOME",
+      "effect": "EFFECT_METRONOME",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "move_call",
+        "random_outcome",
+        "special_case"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "trainer_move_occurrence_count": 6,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_MIRROR_MOVE": {
+      "move": "MOVE_MIRROR_MOVE",
+      "effect": "EFFECT_MIRROR_MOVE",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "move_call",
+        "special_case"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "trainer_move_occurrence_count": 21,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SELF_DESTRUCT": {
+      "move": "MOVE_SELF_DESTRUCT",
+      "effect": "EFFECT_EXPLOSION",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "self_sacrifice",
+        "special_case"
+      ],
+      "review_flags": [
+        "self_sacrifice"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "hp_or_self_cost_no_refund"
+      ],
+      "trainer_move_occurrence_count": 44,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SKULL_BASH": {
+      "move": "MOVE_SKULL_BASH",
+      "effect": "EFFECT_SKULL_BASH",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "charge_turn",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 3,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SKY_ATTACK": {
+      "move": "MOVE_SKY_ATTACK",
+      "effect": "EFFECT_SKY_ATTACK",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "charge_turn",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_TRANSFORM": {
+      "move": "MOVE_TRANSFORM",
+      "effect": "EFFECT_TRANSFORM",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "move_copy",
+        "special_case"
+      ],
+      "review_flags": [
+        "copied_move_interaction"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "copied_move_future_cost"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SPLASH": {
+      "move": "MOVE_SPLASH",
+      "effect": "EFFECT_SPLASH",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "no_effect"
+      ],
+      "review_flags": [
+        "utility_value_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 14,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_EXPLOSION": {
+      "move": "MOVE_EXPLOSION",
+      "effect": "EFFECT_EXPLOSION",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "self_sacrifice",
+        "special_case"
+      ],
+      "review_flags": [
+        "self_sacrifice"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "hp_or_self_cost_no_refund"
+      ],
+      "trainer_move_occurrence_count": 11,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_STRUGGLE": {
+      "move": "MOVE_STRUGGLE",
+      "effect": "EFFECT_RECOIL",
+      "primary_role": "fallback",
+      "mechanic_tags": [
+        "direct_damage",
+        "recoil"
+      ],
+      "review_flags": [
+        "stamina_fallback_rule"
+      ],
+      "stamina_rules": [
+        "struggle_fallback"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SKETCH": {
+      "move": "MOVE_SKETCH",
+      "effect": "EFFECT_SKETCH",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "move_copy",
+        "special_case"
+      ],
+      "review_flags": [
+        "copied_move_interaction"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "copied_move_future_cost"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_NIGHTMARE": {
+      "move": "MOVE_NIGHTMARE",
+      "effect": "EFFECT_NIGHTMARE",
+      "primary_role": "control",
+      "mechanic_tags": [
+        "depends_on_target_state",
+        "persistent_effect",
+        "residual_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "trainer_move_occurrence_count": 1,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_CURSE": {
+      "move": "MOVE_CURSE",
+      "effect": "EFFECT_CURSE",
+      "primary_role": "setup",
+      "mechanic_tags": [
+        "special_case",
+        "stat_boost_mixed"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt"
+      ],
+      "trainer_move_occurrence_count": 27,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SPITE": {
+      "move": "MOVE_SPITE",
+      "effect": "EFFECT_SPITE",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "pp_manipulation",
+        "special_case"
+      ],
+      "review_flags": [
+        "player_pp_replacement"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "pp_asymmetry"
+      ],
+      "trainer_move_occurrence_count": 26,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_BELLY_DRUM": {
+      "move": "MOVE_BELLY_DRUM",
+      "effect": "EFFECT_BELLY_DRUM",
+      "primary_role": "setup",
+      "mechanic_tags": [
+        "depends_on_user_state",
+        "special_case",
+        "stat_boost_mixed"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "hp_or_self_cost_no_refund"
+      ],
+      "trainer_move_occurrence_count": 7,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_DESTINY_BOND": {
+      "move": "MOVE_DESTINY_BOND",
+      "effect": "EFFECT_DESTINY_BOND",
+      "primary_role": "control",
+      "mechanic_tags": [
+        "counterplay",
+        "reactive_ko",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "trainer_move_occurrence_count": 7,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_PERISH_SONG": {
+      "move": "MOVE_PERISH_SONG",
+      "effect": "EFFECT_PERISH_SONG",
+      "primary_role": "control",
+      "mechanic_tags": [
+        "perish",
+        "special_case"
+      ],
+      "review_flags": [
+        "perish_timer"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "trainer_move_occurrence_count": 1,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_OUTRAGE": {
+      "move": "MOVE_OUTRAGE",
+      "effect": "EFFECT_RAMPAGE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "forced_repeat",
+        "special_case"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 4,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_ROLLOUT": {
+      "move": "MOVE_ROLLOUT",
+      "effect": "EFFECT_ROLLOUT",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "forced_repeat",
+        "special_case"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 15,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_FURY_CUTTER": {
+      "move": "MOVE_FURY_CUTTER",
+      "effect": "EFFECT_FURY_CUTTER",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "repeat_scaling",
+        "special_case"
+      ],
+      "review_flags": [
+        "repeat_scaling"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "repeat_reselection_each_time"
+      ],
+      "trainer_move_occurrence_count": 3,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SLEEP_TALK": {
+      "move": "MOVE_SLEEP_TALK",
+      "effect": "EFFECT_SLEEP_TALK",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "depends_on_user_state",
+        "move_call",
+        "special_case"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_PRESENT": {
+      "move": "MOVE_PRESENT",
+      "effect": "EFFECT_PRESENT",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "random_outcome",
+        "special_case",
+        "variable_damage"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "random_result_one_cost"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_PAIN_SPLIT": {
+      "move": "MOVE_PAIN_SPLIT",
+      "effect": "EFFECT_PAIN_SPLIT",
+      "primary_role": "recovery",
+      "mechanic_tags": [
+        "recovery_hp",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_MAGNITUDE": {
+      "move": "MOVE_MAGNITUDE",
+      "effect": "EFFECT_MAGNITUDE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "random_outcome",
+        "special_case",
+        "variable_damage"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "random_result_one_cost"
+      ],
+      "trainer_move_occurrence_count": 20,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_HIDDEN_POWER": {
+      "move": "MOVE_HIDDEN_POWER",
+      "effect": "EFFECT_HIDDEN_POWER",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "special_case",
+        "variable_damage"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "random_result_one_cost"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_FUTURE_SIGHT": {
+      "move": "MOVE_FUTURE_SIGHT",
+      "effect": "EFFECT_FUTURE_SIGHT",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "delayed_damage",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "delayed_execution",
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "trainer_move_occurrence_count": 31,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_UPROAR": {
+      "move": "MOVE_UPROAR",
+      "effect": "EFFECT_UPROAR",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "forced_repeat",
+        "special_case"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 6,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_STOCKPILE": {
+      "move": "MOVE_STOCKPILE",
+      "effect": "EFFECT_STOCKPILE",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "special_case",
+        "stockpile_family"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "linked_move_family"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "linked_moves_independent_cost"
+      ],
+      "trainer_move_occurrence_count": 4,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SPIT_UP": {
+      "move": "MOVE_SPIT_UP",
+      "effect": "EFFECT_SPIT_UP",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "special_case",
+        "stockpile_family"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "linked_move_family"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "linked_moves_independent_cost"
+      ],
+      "trainer_move_occurrence_count": 4,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SWALLOW": {
+      "move": "MOVE_SWALLOW",
+      "effect": "EFFECT_SWALLOW",
+      "primary_role": "recovery",
+      "mechanic_tags": [
+        "recovery_hp",
+        "special_case",
+        "stockpile_family"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "linked_move_family"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "linked_moves_independent_cost"
+      ],
+      "trainer_move_occurrence_count": 4,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_MEMENTO": {
+      "move": "MOVE_MEMENTO",
+      "effect": "EFFECT_MEMENTO",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "self_sacrifice",
+        "special_case"
+      ],
+      "review_flags": [
+        "self_sacrifice"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "hp_or_self_cost_no_refund"
+      ],
+      "trainer_move_occurrence_count": 1,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_FOCUS_PUNCH": {
+      "move": "MOVE_FOCUS_PUNCH",
+      "effect": "EFFECT_FOCUS_PUNCH",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "conditional_damage",
+        "direct_damage",
+        "negative_priority",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "focus_punch_attempt"
+      ],
+      "trainer_move_occurrence_count": 1,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_NATURE_POWER": {
+      "move": "MOVE_NATURE_POWER",
+      "effect": "EFFECT_NATURE_POWER",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "move_call",
+        "random_outcome",
+        "special_case"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_CHARGE": {
+      "move": "MOVE_CHARGE",
+      "effect": "EFFECT_CHARGE",
+      "primary_role": "setup",
+      "mechanic_tags": [
+        "electric_power_setup",
+        "persistent_effect",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "utility_value_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "charge_setup_separate_next_move",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 11,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_WISH": {
+      "move": "MOVE_WISH",
+      "effect": "EFFECT_WISH",
+      "primary_role": "recovery",
+      "mechanic_tags": [
+        "recovery_hp",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "trainer_move_occurrence_count": 7,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_ASSIST": {
+      "move": "MOVE_ASSIST",
+      "effect": "EFFECT_ASSIST",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "move_call",
+        "random_outcome",
+        "special_case"
+      ],
+      "review_flags": [
+        "called_move_cost_rule"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "called_move_caller_only"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_ENDEAVOR": {
+      "move": "MOVE_ENDEAVOR",
+      "effect": "EFFECT_ENDEAVOR",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "special_case",
+        "variable_damage"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt"
+      ],
+      "trainer_move_occurrence_count": 10,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_IMPRISON": {
+      "move": "MOVE_IMPRISON",
+      "effect": "EFFECT_IMPRISON",
+      "primary_role": "control",
+      "mechanic_tags": [
+        "move_lock",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt"
+      ],
+      "trainer_move_occurrence_count": 11,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_GRUDGE": {
+      "move": "MOVE_GRUDGE",
+      "effect": "EFFECT_GRUDGE",
+      "primary_role": "utility",
+      "mechanic_tags": [
+        "pp_manipulation",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review",
+        "player_pp_replacement"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "pp_asymmetry"
+      ],
+      "trainer_move_occurrence_count": 5,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SECRET_POWER": {
+      "move": "MOVE_SECRET_POWER",
+      "effect": "EFFECT_SECRET_POWER",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "random_result_one_cost"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_DIVE": {
+      "move": "MOVE_DIVE",
+      "effect": "EFFECT_SEMI_INVULNERABLE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "charge_turn",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 2,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_ICE_BALL": {
+      "move": "MOVE_ICE_BALL",
+      "effect": "EFFECT_ROLLOUT",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "forced_repeat",
+        "special_case"
+      ],
+      "review_flags": [
+        "forced_or_chained_turns"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_BLAST_BURN": {
+      "move": "MOVE_BLAST_BURN",
+      "effect": "EFFECT_RECHARGE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "recharge_turn",
+        "special_case"
+      ],
+      "review_flags": [
+        "recharge_turn"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "recharge_turn_free"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_HYDRO_CANNON": {
+      "move": "MOVE_HYDRO_CANNON",
+      "effect": "EFFECT_RECHARGE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "recharge_turn",
+        "special_case"
+      ],
+      "review_flags": [
+        "recharge_turn"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "recharge_turn_free"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_SHEER_COLD": {
+      "move": "MOVE_SHEER_COLD",
+      "effect": "EFFECT_OHKO",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "ohko",
+        "special_case"
+      ],
+      "review_flags": [
+        "ohko"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "cost_tuning_only"
+      ],
+      "trainer_move_occurrence_count": 3,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_FRENZY_PLANT": {
+      "move": "MOVE_FRENZY_PLANT",
+      "effect": "EFFECT_RECHARGE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "direct_damage",
+        "recharge_turn",
+        "special_case"
+      ],
+      "review_flags": [
+        "recharge_turn"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "recharge_turn_free"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_BOUNCE": {
+      "move": "MOVE_BOUNCE",
+      "effect": "EFFECT_SEMI_INVULNERABLE",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "charge_turn",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "multi_turn_commitment"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "forced_multiturn_single_commit"
+      ],
+      "trainer_move_occurrence_count": 5,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    },
+    "MOVE_DOOM_DESIRE": {
+      "move": "MOVE_DOOM_DESIRE",
+      "effect": "EFFECT_FUTURE_SIGHT",
+      "primary_role": "damage",
+      "mechanic_tags": [
+        "delayed_damage",
+        "direct_damage",
+        "special_case"
+      ],
+      "review_flags": [
+        "delayed_execution",
+        "effect_specific_review"
+      ],
+      "stamina_rules": [
+        "standard_attempt",
+        "delayed_resolution_free"
+      ],
+      "trainer_move_occurrence_count": 0,
+      "resolution_status": "resolved",
+      "unresolved_flags": []
+    }
+  },
+  "known_non_move_followups": [
+    {
+      "topic": "Pressure",
+      "status": "deferred_non_move_pp_audit",
+      "note": "Ability-level PP interaction is not converted into Stamina by this move audit."
+    },
+    {
+      "topic": "Ether / Elixir / Leppa Berry / PP Up / PP Max",
+      "status": "deferred_non_move_pp_audit",
+      "note": "Item/progression PP mechanics are outside move-cost data and need a later compatibility cleanup after the battle prototype is proven."
+    }
+  ]
+}
