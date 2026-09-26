@@ -1,0 +1,4174 @@
+{
+  "schema": "firered-reimagined.stamina.legacy-tactical-review.v2",
+  "schema_version": 1,
+  "count": 29,
+  "moves": [
+    {
+      "numeric_id": 57,
+      "constant": "MOVE_SURF",
+      "name": "Surf",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 4,
+        "primary_role": "damage",
+        "mechanic_tags": [
+          "direct_damage",
+          "spread"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_move_override",
+          "rationale": [
+            "95 power reliable spread attack; shared-pool doubles pressure already limits partner options"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_HIT",
+          "effect_numeric_id": 0,
+          "power": 95,
+          "type": "TYPE_WATER",
+          "accuracy": 100,
+          "pp": 15,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_BOTH",
+          "priority": 0,
+          "flags": [
+            "FLAG_PROTECT_AFFECTED",
+            "FLAG_MIRROR_MOVE_AFFECTED",
+            "FLAG_KINGS_ROCK_AFFECTED"
+          ],
+          "gen3_damage_class": "special"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_HIT",
+        "power_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95",
+        "type_expr": "TYPE_WATER",
+        "accuracy_expr": "100",
+        "pp_expr": "15",
+        "target_expr": "B_UPDATED_MOVE_DATA >= GEN_4 ? TARGET_FOES_AND_ALLY : TARGET_BOTH",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_SPECIAL",
+        "additional_effects": [],
+        "properties": {
+          "damagesUnderwater": "TRUE",
+          "skyBattleBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "power_changed",
+          "target_changed"
+        ],
+        "details": {
+          "power": {
+            "v1": 95,
+            "v2": 90,
+            "delta": -5
+          },
+          "target": {
+            "v1": "TARGET_BOTH",
+            "v2": "TARGET_FOES_AND_ALLY"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 249,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 21,
+        "active_levelup_occurrences": 21,
+        "active_levelup_species": [
+          "Eiscue",
+          "Milotic",
+          "Mudkip",
+          "Omanyte",
+          "Omastar",
+          "Sealeo",
+          "Slowbro",
+          "SlowbroGalar",
+          "Slowking",
+          "SlowkingGalar",
+          "Slowpoke",
+          "SlowpokeGalar",
+          "Spheal",
+          "Starmie",
+          "Staryu",
+          "Suicune",
+          "Swampert",
+          "TapuFini",
+          "Tentacool",
+          "Tentacruel",
+          "Walrein"
+        ],
+        "egg_species_count": 0,
+        "egg_species": [],
+        "is_current_tm": false,
+        "is_current_hm": true,
+        "explicit_frlg_trainer_move_count": 7
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 100,
+      "constant": "MOVE_TELEPORT",
+      "name": "Teleport",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 1,
+        "primary_role": "utility",
+        "mechanic_tags": [
+          "switching"
+        ],
+        "stamina_rules": [
+          "standard_attempt",
+          "cost_tuning_only"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "battle escape utility"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_TELEPORT",
+          "effect_numeric_id": 153,
+          "power": 0,
+          "type": "TYPE_PSYCHIC",
+          "accuracy": 0,
+          "pp": 20,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_TELEPORT",
+        "power_expr": "0",
+        "type_expr": "TYPE_PSYCHIC",
+        "accuracy_expr": "0",
+        "pp_expr": "20",
+        "target_expr": "TARGET_USER",
+        "priority_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? -6 : 0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RECOVER_HP }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "priority_changed"
+        ],
+        "details": {
+          "priority": {
+            "v1": 0,
+            "v2": -6
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 50,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 19,
+        "active_levelup_occurrences": 19,
+        "active_levelup_species": [
+          "Abra",
+          "Alakazam",
+          "Beheeyem",
+          "Claydol",
+          "Cosmoem",
+          "Cosmog",
+          "DeoxysAttack",
+          "DeoxysDefense",
+          "DeoxysNormal",
+          "Elgyem",
+          "Gallade",
+          "Gardevoir",
+          "Kadabra",
+          "Kirlia",
+          "Lunala",
+          "Natu",
+          "Ralts",
+          "Solgaleo",
+          "Xatu"
+        ],
+        "egg_species_count": 1,
+        "egg_species": [
+          "Elgyem"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 3
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 114,
+      "constant": "MOVE_HAZE",
+      "name": "Haze",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "utility",
+        "mechanic_tags": [
+          "stat_reset"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "global stat reset"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_HAZE",
+          "effect_numeric_id": 25,
+          "power": 0,
+          "type": "TYPE_ICE",
+          "accuracy": 0,
+          "pp": 30,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [
+            "FLAG_PROTECT_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_HAZE",
+        "power_expr": "0",
+        "type_expr": "TYPE_ICE",
+        "accuracy_expr": "0",
+        "pp_expr": "30",
+        "target_expr": "TARGET_FIELD",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RECOVER_HP }",
+          "ignoresProtect": "TRUE",
+          "ignoresSubstitute": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_FIELD"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 127,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 29,
+        "active_levelup_occurrences": 29,
+        "active_levelup_species": [
+          "Arbok",
+          "Articuno",
+          "CalyrexShadow",
+          "ChienPao",
+          "Cofagrigus",
+          "Crobat",
+          "Cryogonal",
+          "Darkrai",
+          "Ekans",
+          "Golbat",
+          "Greninja",
+          "Honchkrow",
+          "Koffing",
+          "Murkrow",
+          "Quagsire",
+          "Runerigus",
+          "Seviper",
+          "Spectrier",
+          "Surskit",
+          "TapuFini",
+          "Vaporeon",
+          "Volcanion",
+          "Weezing",
+          "WeezingGalar",
+          "Wooper",
+          "Yamask",
+          "YamaskGalar",
+          "Zubat",
+          "Zygarde"
+        ],
+        "egg_species_count": 32,
+        "egg_species": [
+          "Amaura",
+          "CorsolaGalar",
+          "Doduo",
+          "Dratini",
+          "Drifloon",
+          "Duskull",
+          "Feebas",
+          "Finizen",
+          "Gastly",
+          "Goldeen",
+          "Grimer",
+          "Krabby",
+          "Litwick",
+          "Mantine",
+          "Mantyke",
+          "Mareanie",
+          "Natu",
+          "Omanyte",
+          "Poliwag",
+          "Qwilfish",
+          "QwilfishHisui",
+          "Remoraid",
+          "Rowlet",
+          "Skrelp",
+          "Sobble",
+          "Squirtle",
+          "Stunky",
+          "Swablu",
+          "Tentacool",
+          "Trubbish",
+          "Varoom",
+          "WooperPaldea"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 4
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 117,
+      "constant": "MOVE_BIDE",
+      "name": "Bide",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "damage",
+        "mechanic_tags": [
+          "counterplay",
+          "direct_damage",
+          "reactive_damage",
+          "special_case"
+        ],
+        "stamina_rules": [
+          "standard_attempt",
+          "forced_multiturn_single_commit"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_move_override",
+          "rationale": [
+            "forced reactive multi-turn commitment"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_BIDE",
+          "effect_numeric_id": 26,
+          "power": 1,
+          "type": "TYPE_NORMAL",
+          "accuracy": 100,
+          "pp": 10,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [
+            "FLAG_MAKES_CONTACT",
+            "FLAG_PROTECT_AFFECTED",
+            "FLAG_KINGS_ROCK_AFFECTED"
+          ],
+          "gen3_damage_class": "physical"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_BIDE",
+        "power_expr": "1",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "(B_UPDATED_MOVE_DATA >= GEN_4 || B_UPDATED_MOVE_DATA == GEN_1) ? 0 : 100",
+        "pp_expr": "10",
+        "target_expr": "TARGET_USER",
+        "priority_expr": "B_UPDATED_MOVE_DATA >= GEN_4 ? 1 : 0",
+        "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+        "additional_effects": [],
+        "properties": {
+          "makesContact": "TRUE",
+          "sleepTalkBanned": "TRUE",
+          "instructBanned": "TRUE",
+          "mirrorMoveBanned": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "accuracy_changed",
+          "priority_changed"
+        ],
+        "details": {
+          "accuracy": {
+            "v1": 100,
+            "v2": 0,
+            "delta": -100
+          },
+          "priority": {
+            "v1": 0,
+            "v2": 1
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 215,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 2,
+        "active_levelup_occurrences": 2,
+        "active_levelup_species": [
+          "Patrat",
+          "Watchog"
+        ],
+        "egg_species_count": 12,
+        "egg_species": [
+          "Corsola",
+          "Dunsparce",
+          "Heracross",
+          "Krabby",
+          "Ledyba",
+          "Omanyte",
+          "Petilil",
+          "Pichu",
+          "Piplup",
+          "Snorunt",
+          "Sunkern",
+          "Tirtouga"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 2
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 139,
+      "constant": "MOVE_POISON_GAS",
+      "name": "Poison Gas",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "control",
+        "mechanic_tags": [
+          "status_poison"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_move_override",
+          "rationale": [
+            "repeatable direct poison attempt"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_POISON",
+          "effect_numeric_id": 66,
+          "power": 0,
+          "type": "TYPE_POISON",
+          "accuracy": 55,
+          "pp": 40,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_SELECTED",
+          "priority": 0,
+          "flags": [
+            "FLAG_PROTECT_AFFECTED",
+            "FLAG_MAGIC_COAT_AFFECTED",
+            "FLAG_MIRROR_MOVE_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_NON_VOLATILE_STATUS",
+        "power_expr": "0",
+        "type_expr": "TYPE_POISON",
+        "accuracy_expr": "90",
+        "pp_expr": "40",
+        "target_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? TARGET_BOTH : TARGET_SELECTED",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "argument": "{ .nonVolatileStatus = MOVE_EFFECT_POISON }",
+          "zMove": "{ .effect = Z_EFFECT_DEF_UP_1 }",
+          "magicCoatAffected": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "accuracy_changed",
+          "target_changed",
+          "effect_representation_changed"
+        ],
+        "details": {
+          "accuracy": {
+            "v1": 55,
+            "v2": 90,
+            "delta": 35
+          },
+          "target": {
+            "v1": "TARGET_SELECTED",
+            "v2": "TARGET_BOTH"
+          },
+          "effect": {
+            "v1": "EFFECT_POISON",
+            "v2": "EFFECT_NON_VOLATILE_STATUS"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 27,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 21,
+        "active_levelup_occurrences": 21,
+        "active_levelup_species": [
+          "Drowzee",
+          "Fezandipiti",
+          "Garbodor",
+          "Grimer",
+          "GrimerAlola",
+          "Gulpin",
+          "Hypno",
+          "Koffing",
+          "Muk",
+          "MukAlola",
+          "Pecharunt",
+          "Revavroom",
+          "Salandit",
+          "Salazzle",
+          "Skuntank",
+          "Stunky",
+          "Swalot",
+          "Trubbish",
+          "Varoom",
+          "Weezing",
+          "WeezingGalar"
+        ],
+        "egg_species_count": 0,
+        "egg_species": [],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 8
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 174,
+      "constant": "MOVE_CURSE",
+      "name": "Curse",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "setup",
+        "mechanic_tags": [
+          "special_case",
+          "stat_boost_mixed"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_move_override",
+          "rationale": [
+            "type-dependent branching setup/control"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_CURSE",
+          "effect_numeric_id": 109,
+          "power": 0,
+          "type": "TYPE_MYSTERY",
+          "accuracy": 0,
+          "pp": 10,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_SELECTED",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_CURSE",
+        "power_expr": "0",
+        "type_expr": "B_UPDATED_MOVE_TYPES >= GEN_5 ? TYPE_GHOST : TYPE_MYSTERY",
+        "accuracy_expr": "0",
+        "pp_expr": "10",
+        "target_expr": "TARGET_SELECTED",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [
+          {
+            "moveEffect": "STAT_CHANGE_EFFECT_MINUS",
+            "speed": "1"
+          },
+          {
+            "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+            "attack": "1",
+            "defense": "1"
+          }
+        ],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_CURSE }",
+          "ignoresProtect": "TRUE",
+          "ignoresSubstitute": "B_UPDATED_MOVE_FLAGS >= GEN_5",
+          "mirrorMoveBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "type_changed",
+          "v2_additional_effects"
+        ],
+        "details": {
+          "type": {
+            "v1": "TYPE_MYSTERY",
+            "v2": "TYPE_GHOST"
+          },
+          "additional_effects": [
+            {
+              "moveEffect": "STAT_CHANGE_EFFECT_MINUS",
+              "speed": "1"
+            },
+            {
+              "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+              "attack": "1",
+              "defense": "1"
+            }
+          ]
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 481,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 66,
+        "active_levelup_occurrences": 66,
+        "active_levelup_species": [
+          "Accelgor",
+          "Appletun",
+          "Avalugg",
+          "AvaluggHisui",
+          "Banette",
+          "Bergmite",
+          "Bibarel",
+          "Bidoof",
+          "Brambleghast",
+          "Bramblin",
+          "Camerupt",
+          "Carracosta",
+          "Chandelure",
+          "Cofagrigus",
+          "CorsolaGalar",
+          "Cursola",
+          "Dusclops",
+          "Dusknoir",
+          "Duskull",
+          "Ferroseed",
+          "Ferrothorn",
+          "Forretress",
+          "Gastly",
+          "Gengar",
+          "Golett",
+          "Golurk",
+          "Goodra",
+          "GoodraHisui",
+          "Goomy",
+          "Grotle",
+          "Haunter",
+          "Lampent",
+          "Litwick",
+          "Numel",
+          "Onix",
+          "Phantump",
+          "Pincurchin",
+          "Pineco",
+          "Polteageist",
+          "Pyukumuku",
+          "Regice",
+          "Regirock",
+          "Registeel",
+          "Runerigus",
+          "Shelmet",
+          "Shuppet",
+          "Sliggoo",
+          "SliggooHisui",
+          "Slowbro",
+          "SlowbroGalar",
+          "Slowking",
+          "SlowkingGalar",
+          "Slowpoke",
+          "SlowpokeGalar",
+          "Spiritomb",
+          "Steelix",
+          "Tirtouga",
+          "Torkoal",
+          "Torterra",
+          "Trevenant",
+          "Turtwig",
+          "Yamask",
+          "YamaskGalar",
+          "Zangoose",
+          "ZoroarkHisui",
+          "ZoruaHisui"
+        ],
+        "egg_species_count": 77,
+        "egg_species": [
+          "Absol",
+          "Aerodactyl",
+          "Anorith",
+          "Aron",
+          "Bonsly",
+          "Bulbasaur",
+          "Chespin",
+          "Chimecho",
+          "Chingling",
+          "Corsola",
+          "Cranidos",
+          "Cubone",
+          "Cufant",
+          "Dondozo",
+          "Dreepy",
+          "Dunsparce",
+          "Dwebble",
+          "Eevee",
+          "Electrike",
+          "Exeggcute",
+          "Farfetchd",
+          "FarfetchdGalar",
+          "Fuecoco",
+          "Geodude",
+          "GeodudeAlola",
+          "Goomy",
+          "Grimer",
+          "GrimerAlola",
+          "Gulpin",
+          "Heatmor",
+          "Hippopotas",
+          "Koffing",
+          "Lapras",
+          "Larvitar",
+          "Lickitung",
+          "Lileep",
+          "MeowthGalar",
+          "Miltank",
+          "Mimikyu",
+          "Misdreavus",
+          "Mudkip",
+          "Munchlax",
+          "Munna",
+          "Nacli",
+          "Orthworm",
+          "Pumpkaboo",
+          "Rhyhorn",
+          "Roggenrola",
+          "Rowlet",
+          "SandshrewAlola",
+          "Sandygast",
+          "Shellos",
+          "Shieldon",
+          "Skarmory",
+          "Slakoth",
+          "Slugma",
+          "Snorlax",
+          "Spheal",
+          "Stonjourner",
+          "Stunfisk",
+          "StunfiskGalar",
+          "Sudowoodo",
+          "Sunkern",
+          "Swinub",
+          "TaurosPaldeaAqua",
+          "TaurosPaldeaBlaze",
+          "TaurosPaldeaCombat",
+          "Tepig",
+          "Torchic",
+          "Tropius",
+          "Trubbish",
+          "Tyrunt",
+          "Wailmer",
+          "Wooper",
+          "WooperPaldea",
+          "Zangoose",
+          "Zubat"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 1
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 176,
+      "constant": "MOVE_CONVERSION_2",
+      "name": "Conversion 2",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 1,
+        "primary_role": "utility",
+        "mechanic_tags": [
+          "type_change"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "reactive self type change"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_CONVERSION_2",
+          "effect_numeric_id": 93,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 100,
+          "pp": 30,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_CONVERSION_2",
+        "power_expr": "0",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "30",
+        "target_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? TARGET_SELECTED : TARGET_USER",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RECOVER_HP }",
+          "ignoresProtect": "TRUE",
+          "ignoresSubstitute": "B_UPDATED_MOVE_FLAGS >= GEN_5",
+          "mirrorMoveBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "accuracy_changed",
+          "target_changed"
+        ],
+        "details": {
+          "accuracy": {
+            "v1": 100,
+            "v2": 0,
+            "delta": -100
+          },
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_SELECTED"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 3,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 3,
+        "active_levelup_occurrences": 3,
+        "active_levelup_species": [
+          "Porygon",
+          "Porygon2",
+          "PorygonZ"
+        ],
+        "egg_species_count": 0,
+        "egg_species": [],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 178,
+      "constant": "MOVE_COTTON_SPORE",
+      "name": "Cotton Spore",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "control",
+        "mechanic_tags": [
+          "stat_drop_speed"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "two-stage Speed reduction"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_SPEED_DOWN_2",
+          "effect_numeric_id": 60,
+          "power": 0,
+          "type": "TYPE_GRASS",
+          "accuracy": 85,
+          "pp": 40,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_SELECTED",
+          "priority": 0,
+          "flags": [
+            "FLAG_PROTECT_AFFECTED",
+            "FLAG_MAGIC_COAT_AFFECTED",
+            "FLAG_MIRROR_MOVE_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_STAT_CHANGE",
+        "power_expr": "0",
+        "type_expr": "TYPE_GRASS",
+        "accuracy_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 100 : 85",
+        "pp_expr": "40",
+        "target_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? TARGET_BOTH : TARGET_SELECTED",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [
+          {
+            "moveEffect": "STAT_CHANGE_EFFECT_MINUS",
+            "speed": "2"
+          }
+        ],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+          "magicCoatAffected": "TRUE",
+          "powderMove": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "accuracy_changed",
+          "target_changed",
+          "effect_representation_changed",
+          "v2_additional_effects"
+        ],
+        "details": {
+          "accuracy": {
+            "v1": 85,
+            "v2": 100,
+            "delta": 15
+          },
+          "target": {
+            "v1": "TARGET_SELECTED",
+            "v2": "TARGET_BOTH"
+          },
+          "effect": {
+            "v1": "EFFECT_SPEED_DOWN_2",
+            "v2": "EFFECT_STAT_CHANGE"
+          },
+          "additional_effects": [
+            {
+              "moveEffect": "STAT_CHANGE_EFFECT_MINUS",
+              "speed": "2"
+            }
+          ]
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 17,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 14,
+        "active_levelup_occurrences": 15,
+        "active_levelup_species": [
+          "Ampharos",
+          "Cacnea",
+          "Cacturne",
+          "Cottonee",
+          "Eldegoss",
+          "Flaaffy",
+          "Hoppip",
+          "Jumpluff",
+          "Maractus",
+          "Mareep",
+          "Skiploom",
+          "Slurpuff",
+          "Swirlix",
+          "Whimsicott"
+        ],
+        "egg_species_count": 2,
+        "egg_species": [
+          "Budew",
+          "Roselia"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 182,
+      "constant": "MOVE_PROTECT",
+      "name": "Protect",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "protection",
+        "mechanic_tags": [
+          "counterplay",
+          "priority",
+          "protect_like"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "full-turn protection with repeat penalty"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_PROTECT",
+          "effect_numeric_id": 111,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 0,
+          "pp": 10,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 3,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_PROTECT",
+        "power_expr": "0",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10",
+        "target_expr": "TARGET_USER",
+        "priority_expr": "4",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "argument": "{ .protectMethod = PROTECT_NORMAL }",
+          "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "metronomeBanned": "TRUE",
+          "copycatBanned": "TRUE",
+          "assistBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "priority_changed"
+        ],
+        "details": {
+          "priority": {
+            "v1": 3,
+            "v2": 4
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 1089,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 93,
+        "active_levelup_occurrences": 97,
+        "active_levelup_species": [
+          "Aggron",
+          "Alomomola",
+          "Anorith",
+          "Appletun",
+          "Arctovish",
+          "Armaldo",
+          "Aron",
+          "Avalugg",
+          "AvaluggHisui",
+          "Bastiodon",
+          "Beautifly",
+          "Bergmite",
+          "Blastoise",
+          "Burmy",
+          "Carracosta",
+          "Chewtle",
+          "Cloyster",
+          "Cofagrigus",
+          "Corphish",
+          "Crabominable",
+          "Crabrawler",
+          "Crawdaunt",
+          "DeoxysDefense",
+          "Dipplin",
+          "Dracovish",
+          "Drampa",
+          "Drednaw",
+          "Duosion",
+          "Dustox",
+          "Falinks",
+          "Flapple",
+          "Forretress",
+          "Froslass",
+          "Gallade",
+          "Glalie",
+          "Goodra",
+          "GoodraHisui",
+          "Goomy",
+          "HakamoO",
+          "Hydrapple",
+          "JangmoO",
+          "Kabuto",
+          "Kabutops",
+          "Kingler",
+          "Klawf",
+          "KommoO",
+          "Krabby",
+          "Lairon",
+          "Marshtomp",
+          "Melmetal",
+          "Mesprit",
+          "MimeJr",
+          "Mothim",
+          "MrMime",
+          "MrMimeGalar",
+          "MrRime",
+          "Mudkip",
+          "Omanyte",
+          "Omastar",
+          "Pelipper",
+          "Pineco",
+          "Polteageist",
+          "Regigigas",
+          "Reuniclus",
+          "Runerigus",
+          "Salamence",
+          "Scolipede",
+          "Shelgon",
+          "Shellder",
+          "Shelmet",
+          "Shieldon",
+          "Sliggoo",
+          "SliggooHisui",
+          "Snorunt",
+          "Solosis",
+          "Spewpa",
+          "Squirtle",
+          "Stakataka",
+          "Swadloon",
+          "Swampert",
+          "Terapagos",
+          "Tirtouga",
+          "Torkoal",
+          "Turtonator",
+          "Venipede",
+          "Volbeat",
+          "Wartortle",
+          "Whirlipede",
+          "WormadamPlant",
+          "WormadamSandy",
+          "WormadamTrash",
+          "Yamask",
+          "YamaskGalar"
+        ],
+        "egg_species_count": 0,
+        "egg_species": [],
+        "is_current_tm": true,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 3
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 186,
+      "constant": "MOVE_SWEET_KISS",
+      "name": "Sweet Kiss",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "control",
+        "mechanic_tags": [
+          "status_confusion"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "direct confusion control"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_CONFUSE",
+          "effect_numeric_id": 49,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 75,
+          "pp": 10,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_SELECTED",
+          "priority": 0,
+          "flags": [
+            "FLAG_PROTECT_AFFECTED",
+            "FLAG_MAGIC_COAT_AFFECTED",
+            "FLAG_MIRROR_MOVE_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_CONFUSE",
+        "power_expr": "0",
+        "type_expr": "B_UPDATED_MOVE_TYPES >= GEN_6 ? TYPE_FAIRY : TYPE_NORMAL",
+        "accuracy_expr": "75",
+        "pp_expr": "10",
+        "target_expr": "TARGET_SELECTED",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_SPATK_UP_1 }",
+          "magicCoatAffected": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "type_changed"
+        ],
+        "details": {
+          "type": {
+            "v1": "TYPE_NORMAL",
+            "v2": "TYPE_FAIRY"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 40,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 30,
+        "active_levelup_occurrences": 30,
+        "active_levelup_species": [
+          "Alcremie",
+          "Aromatisse",
+          "Blissey",
+          "Chansey",
+          "Clefable",
+          "Clefairy",
+          "Cleffa",
+          "Comfey",
+          "Happiny",
+          "Igglybuff",
+          "Jigglypuff",
+          "Jynx",
+          "Luvdisc",
+          "Milcery",
+          "Pachirisu",
+          "Pichu",
+          "Pikachu",
+          "Raichu",
+          "RaichuAlola",
+          "ShayminLand",
+          "ShayminSky",
+          "Smoochum",
+          "Spritzee",
+          "Tinkatink",
+          "Tinkaton",
+          "Tinkatuff",
+          "Togekiss",
+          "Togepi",
+          "Togetic",
+          "Wigglytuff"
+        ],
+        "egg_species_count": 6,
+        "egg_species": [
+          "Audino",
+          "Buneary",
+          "Finneon",
+          "Minun",
+          "Pawmi",
+          "Plusle"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 195,
+      "constant": "MOVE_PERISH_SONG",
+      "name": "Perish Song",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 4,
+        "primary_role": "control",
+        "mechanic_tags": [
+          "perish",
+          "special_case"
+        ],
+        "stamina_rules": [
+          "standard_attempt",
+          "delayed_resolution_free"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_move_override",
+          "rationale": [
+            "battle-shaping KO timer"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_PERISH_SONG",
+          "effect_numeric_id": 114,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 0,
+          "pp": 5,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_PERISH_SONG",
+        "power_expr": "0",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "5",
+        "target_expr": "TARGET_ALL_BATTLERS",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+          "ignoresProtect": "TRUE",
+          "ignoresSubstitute": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "soundMove": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_ALL_BATTLERS"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 36,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 16,
+        "active_levelup_occurrences": 16,
+        "active_levelup_species": [
+          "Absol",
+          "Altaria",
+          "Arceus",
+          "Celebi",
+          "Cursola",
+          "FlutterMane",
+          "Gengar",
+          "Jynx",
+          "Kricketune",
+          "Lapras",
+          "Meloetta",
+          "Misdreavus",
+          "Politoed",
+          "ScreamTail",
+          "Smoochum",
+          "Swablu"
+        ],
+        "egg_species_count": 9,
+        "egg_species": [
+          "Absol",
+          "Chimecho",
+          "Cubone",
+          "Gastly",
+          "Igglybuff",
+          "Marill",
+          "Murkrow",
+          "Popplio",
+          "Seel"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 197,
+      "constant": "MOVE_DETECT",
+      "name": "Detect",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "protection",
+        "mechanic_tags": [
+          "counterplay",
+          "priority",
+          "protect_like"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "full-turn protection with repeat penalty"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_PROTECT",
+          "effect_numeric_id": 111,
+          "power": 0,
+          "type": "TYPE_FIGHTING",
+          "accuracy": 0,
+          "pp": 5,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 3,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_PROTECT",
+        "power_expr": "0",
+        "type_expr": "TYPE_FIGHTING",
+        "accuracy_expr": "0",
+        "pp_expr": "5",
+        "target_expr": "TARGET_USER",
+        "priority_expr": "4",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "argument": "{ .protectMethod = PROTECT_NORMAL }",
+          "zMove": "{ .effect = Z_EFFECT_EVSN_UP_1 }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "metronomeBanned": "TRUE",
+          "copycatBanned": "TRUE",
+          "assistBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "priority_changed"
+        ],
+        "details": {
+          "priority": {
+            "v1": 3,
+            "v2": 4
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 168,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 41,
+        "active_levelup_occurrences": 41,
+        "active_levelup_species": [
+          "Absol",
+          "Azelf",
+          "Blaziken",
+          "Clobbopus",
+          "Combusken",
+          "FarfetchdGalar",
+          "Flamigo",
+          "Grapploct",
+          "Grovyle",
+          "Hariyama",
+          "Hawlucha",
+          "Hitmonchan",
+          "Hitmontop",
+          "IronHands",
+          "Kartana",
+          "Kecleon",
+          "Kubfu",
+          "Lokix",
+          "Lucario",
+          "Makuhita",
+          "Medicham",
+          "Meditite",
+          "Mienfoo",
+          "Mienshao",
+          "Patrat",
+          "Pidove",
+          "Sableye",
+          "Sceptile",
+          "Sirfetchd",
+          "Torchic",
+          "Tranquill",
+          "Treecko",
+          "Unfezant",
+          "UrshifuRapidStrike",
+          "UrshifuSingleStrike",
+          "Watchog",
+          "Yanma",
+          "Yanmega",
+          "Zangoose",
+          "Zapdos",
+          "ZapdosGalar"
+        ],
+        "egg_species_count": 11,
+        "egg_species": [
+          "Cubone",
+          "Eevee",
+          "Makuhita",
+          "Oshawott",
+          "Quaxly",
+          "Riolu",
+          "Scraggy",
+          "Starly",
+          "Timburr",
+          "Zorua",
+          "ZoruaHisui"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 201,
+      "constant": "MOVE_SANDSTORM",
+      "name": "Sandstorm",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "field",
+        "mechanic_tags": [
+          "weather"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "weather field control"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_SANDSTORM",
+          "effect_numeric_id": 115,
+          "power": 0,
+          "type": "TYPE_ROCK",
+          "accuracy": 0,
+          "pp": 10,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_WEATHER",
+        "power_expr": "0",
+        "type_expr": "TYPE_ROCK",
+        "accuracy_expr": "0",
+        "pp_expr": "B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10",
+        "target_expr": "TARGET_FIELD",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+          "ignoresProtect": "TRUE",
+          "windMove": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "argument": "{ .weatherType = BATTLE_WEATHER_SANDSTORM }",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed",
+          "effect_representation_changed"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_FIELD"
+          },
+          "effect": {
+            "v1": "EFFECT_SANDSTORM",
+            "v2": "EFFECT_WEATHER"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 271,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 43,
+        "active_levelup_occurrences": 43,
+        "active_levelup_species": [
+          "Baltoy",
+          "Boldore",
+          "Cacnea",
+          "Cacturne",
+          "Claydol",
+          "Diglett",
+          "DiglettAlola",
+          "Drilbur",
+          "Dugtrio",
+          "DugtrioAlola",
+          "Excadrill",
+          "Flygon",
+          "Gabite",
+          "Garchomp",
+          "Gible",
+          "Gigalith",
+          "Glimmet",
+          "Glimmora",
+          "Hippopotas",
+          "Hippowdon",
+          "IronThorns",
+          "Krokorok",
+          "Krookodile",
+          "Landorus",
+          "Larvitar",
+          "Nosepass",
+          "Onix",
+          "Orthworm",
+          "Palossand",
+          "Probopass",
+          "Pupitar",
+          "Roggenrola",
+          "Sandaconda",
+          "Sandile",
+          "Sandshrew",
+          "Sandslash",
+          "Sandygast",
+          "Silicobra",
+          "Steelix",
+          "Trapinch",
+          "Tyranitar",
+          "Vibrava",
+          "Zygarde"
+        ],
+        "egg_species_count": 0,
+        "egg_species": [],
+        "is_current_tm": true,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 2
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 203,
+      "constant": "MOVE_ENDURE",
+      "name": "Endure",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "protection",
+        "mechanic_tags": [
+          "counterplay",
+          "priority",
+          "protect_like"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "survival protection"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_ENDURE",
+          "effect_numeric_id": 116,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 0,
+          "pp": 10,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 3,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_ENDURE",
+        "power_expr": "0",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "10",
+        "target_expr": "TARGET_USER",
+        "priority_expr": "4",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "argument": "{ .protectMethod = PROTECT_NONE }",
+          "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "metronomeBanned": "TRUE",
+          "copycatBanned": "TRUE",
+          "assistBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "priority_changed"
+        ],
+        "details": {
+          "priority": {
+            "v1": 3,
+            "v2": 4
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 1082,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 46,
+        "active_levelup_occurrences": 46,
+        "active_levelup_species": [
+          "Bastiodon",
+          "Beartic",
+          "Bewear",
+          "Buzzwole",
+          "Corsola",
+          "Cubchoo",
+          "Emboar",
+          "Escavalier",
+          "Falinks",
+          "Hariyama",
+          "Heracross",
+          "Hitmonlee",
+          "Kangaskhan",
+          "Karrablast",
+          "Kubfu",
+          "Lokix",
+          "LycanrocDusk",
+          "LycanrocMidnight",
+          "Makuhita",
+          "Mamoswine",
+          "Medicham",
+          "Meditite",
+          "Moltres",
+          "MoltresGalar",
+          "Nymble",
+          "Pachirisu",
+          "Phanpy",
+          "Pignite",
+          "Piloswine",
+          "Riolu",
+          "Sawk",
+          "Sewaddle",
+          "Shieldon",
+          "Stufful",
+          "Stunfisk",
+          "StunfiskGalar",
+          "Swadloon",
+          "Swinub",
+          "Tepig",
+          "Throh",
+          "Turtonator",
+          "UrshifuRapidStrike",
+          "UrshifuSingleStrike",
+          "Uxie",
+          "Victini",
+          "Vigoroth"
+        ],
+        "egg_species_count": 61,
+        "egg_species": [
+          "Alomomola",
+          "Axew",
+          "Bagon",
+          "Bidoof",
+          "Blitzle",
+          "Bonsly",
+          "Bulbasaur",
+          "Chansey",
+          "Clamperl",
+          "Clauncher",
+          "Comfey",
+          "Cubone",
+          "Darumaka",
+          "Diglett",
+          "DiglettAlola",
+          "Durant",
+          "Dwebble",
+          "Eevee",
+          "Foongus",
+          "Geodude",
+          "GeodudeAlola",
+          "Goomy",
+          "Grubbin",
+          "Happiny",
+          "Hoppip",
+          "Krabby",
+          "Larvesta",
+          "Ledyba",
+          "Lileep",
+          "Lillipup",
+          "Litwick",
+          "Mienfoo",
+          "Miltank",
+          "Minccino",
+          "NidoranF",
+          "NidoranM",
+          "Nincada",
+          "Nosepass",
+          "Numel",
+          "Paras",
+          "Petilil",
+          "Pichu",
+          "Pineco",
+          "Poliwag",
+          "Pyukumuku",
+          "Sandshrew",
+          "SandshrewAlola",
+          "Scyther",
+          "Shelmet",
+          "Skarmory",
+          "Spoink",
+          "Stufful",
+          "Sudowoodo",
+          "Sunkern",
+          "Surskit",
+          "Timburr",
+          "Torchic",
+          "Torkoal",
+          "Trapinch",
+          "Tyrogue",
+          "Yamask"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 2
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 204,
+      "constant": "MOVE_CHARM",
+      "name": "Charm",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "control",
+        "mechanic_tags": [
+          "stat_drop_offense"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "two-stage Attack reduction"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_ATTACK_DOWN_2",
+          "effect_numeric_id": 58,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 100,
+          "pp": 20,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_SELECTED",
+          "priority": 0,
+          "flags": [
+            "FLAG_PROTECT_AFFECTED",
+            "FLAG_MAGIC_COAT_AFFECTED",
+            "FLAG_MIRROR_MOVE_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_STAT_CHANGE",
+        "power_expr": "0",
+        "type_expr": "B_UPDATED_MOVE_TYPES >= GEN_6 ? TYPE_FAIRY : TYPE_NORMAL",
+        "accuracy_expr": "100",
+        "pp_expr": "20",
+        "target_expr": "TARGET_SELECTED",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [
+          {
+            "moveEffect": "STAT_CHANGE_EFFECT_MINUS",
+            "attack": "2"
+          }
+        ],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_DEF_UP_1 }",
+          "magicCoatAffected": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "type_changed",
+          "effect_representation_changed",
+          "v2_additional_effects"
+        ],
+        "details": {
+          "type": {
+            "v1": "TYPE_NORMAL",
+            "v2": "TYPE_FAIRY"
+          },
+          "effect": {
+            "v1": "EFFECT_ATTACK_DOWN_2",
+            "v2": "EFFECT_STAT_CHANGE"
+          },
+          "additional_effects": [
+            {
+              "moveEffect": "STAT_CHANGE_EFFECT_MINUS",
+              "attack": "2"
+            }
+          ]
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 245,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 93,
+        "active_levelup_occurrences": 93,
+        "active_levelup_species": [
+          "Alcremie",
+          "Aromatisse",
+          "Azumarill",
+          "Azurill",
+          "Beartic",
+          "Blissey",
+          "Boltund",
+          "Buneary",
+          "Chansey",
+          "Cinccino",
+          "Clefable",
+          "Clefairy",
+          "Cleffa",
+          "Comfey",
+          "Cottonee",
+          "Cubchoo",
+          "Dachsbun",
+          "Dedenne",
+          "Deerling",
+          "Delcatty",
+          "Duosion",
+          "Eevee",
+          "Espeon",
+          "Fidough",
+          "Finizen",
+          "Flareon",
+          "Furfrou",
+          "Gallade",
+          "Gardevoir",
+          "Glaceon",
+          "Glameow",
+          "Gothita",
+          "Gothitelle",
+          "Gothorita",
+          "Granbull",
+          "Greavard",
+          "Happiny",
+          "Houndstone",
+          "Igglybuff",
+          "Illumise",
+          "Jigglypuff",
+          "Jolteon",
+          "Kirlia",
+          "Latias",
+          "Leafeon",
+          "Lilligant",
+          "Lopunny",
+          "Luvdisc",
+          "Manaphy",
+          "Marill",
+          "Maushold",
+          "MeowsticM",
+          "Mesprit",
+          "Milcery",
+          "Miltank",
+          "Mimikyu",
+          "Minccino",
+          "Naganadel",
+          "Pachirisu",
+          "Palafin",
+          "Petilil",
+          "Phanpy",
+          "Phione",
+          "Pichu",
+          "Pikachu",
+          "Piplup",
+          "Poipole",
+          "Purugly",
+          "Raichu",
+          "RaichuAlola",
+          "Ralts",
+          "Reuniclus",
+          "Sawsbuck",
+          "Seel",
+          "Skitty",
+          "Snubbull",
+          "Solosis",
+          "Spritzee",
+          "Sylveon",
+          "Tandemaus",
+          "Teddiursa",
+          "Togekiss",
+          "Togepi",
+          "Togetic",
+          "Tyrantrum",
+          "Tyrunt",
+          "Umbreon",
+          "Vaporeon",
+          "Whimsicott",
+          "Wigglytuff",
+          "Wobbuffet",
+          "Wynaut",
+          "Yamper"
+        ],
+        "egg_species_count": 25,
+        "egg_species": [
+          "Bounsweet",
+          "Bulbasaur",
+          "Eevee",
+          "Emolga",
+          "Finneon",
+          "Komala",
+          "Lillipup",
+          "Meowth",
+          "MeowthAlola",
+          "MimeJr",
+          "Minun",
+          "Munchlax",
+          "NidoranF",
+          "Oddish",
+          "Petilil",
+          "Plusle",
+          "Ponyta",
+          "Popplio",
+          "Purrloin",
+          "Sentret",
+          "Shroomish",
+          "Snorlax",
+          "VulpixAlola",
+          "Woobat",
+          "Zigzagoon"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 215,
+      "constant": "MOVE_HEAL_BELL",
+      "name": "Heal Bell",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 4,
+        "primary_role": "recovery",
+        "mechanic_tags": [
+          "recovery_status"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "party-wide status recovery"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_HEAL_BELL",
+          "effect_numeric_id": 102,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 0,
+          "pp": 5,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [
+            "FLAG_SNATCH_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_HEAL_BELL",
+        "power_expr": "0",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "5",
+        "target_expr": "TARGET_USER_AND_ALLY",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RECOVER_HP }",
+          "snatchAffected": "TRUE",
+          "ignoresProtect": "TRUE",
+          "ignoresSubstitute": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "soundMove": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_USER_AND_ALLY"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 76,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 5,
+        "active_levelup_occurrences": 5,
+        "active_levelup_species": [
+          "Celebi",
+          "Chimecho",
+          "Delcatty",
+          "Miltank",
+          "Skitty"
+        ],
+        "egg_species_count": 4,
+        "egg_species": [
+          "Audino",
+          "Chansey",
+          "Happiny",
+          "Snubbull"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 236,
+      "constant": "MOVE_MOONLIGHT",
+      "name": "Moonlight",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 4,
+        "primary_role": "recovery",
+        "mechanic_tags": [
+          "recovery_hp"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "weather-sensitive recovery"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_MOONLIGHT",
+          "effect_numeric_id": 134,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 0,
+          "pp": 5,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [
+            "FLAG_SNATCH_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_MOONLIGHT",
+        "power_expr": "0",
+        "type_expr": "B_UPDATED_MOVE_TYPES >= GEN_6 ? TYPE_FAIRY : TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "5",
+        "target_expr": "TARGET_USER",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+          "healingMove": "TRUE",
+          "snatchAffected": "TRUE",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "type_changed"
+        ],
+        "details": {
+          "type": {
+            "v1": "TYPE_NORMAL",
+            "v2": "TYPE_FAIRY"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 25,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 20,
+        "active_levelup_occurrences": 20,
+        "active_levelup_species": [
+          "Bellossom",
+          "Clefable",
+          "Clefairy",
+          "Cresselia",
+          "Dustox",
+          "Gloom",
+          "Illumise",
+          "Lunala",
+          "Lunatone",
+          "Morelull",
+          "Munna",
+          "Musharna",
+          "Necrozma",
+          "Noivern",
+          "Oddish",
+          "Shiinotic",
+          "Umbreon",
+          "UrsalunaBloodmoon",
+          "Vileplume",
+          "Volbeat"
+        ],
+        "egg_species_count": 2,
+        "egg_species": [
+          "Exeggcute",
+          "Sableye"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 4
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 240,
+      "constant": "MOVE_RAIN_DANCE",
+      "name": "Rain Dance",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "field",
+        "mechanic_tags": [
+          "weather"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "weather field control"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_RAIN_DANCE",
+          "effect_numeric_id": 136,
+          "power": 0,
+          "type": "TYPE_WATER",
+          "accuracy": 0,
+          "pp": 5,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_WEATHER",
+        "power_expr": "0",
+        "type_expr": "TYPE_WATER",
+        "accuracy_expr": "0",
+        "pp_expr": "5",
+        "target_expr": "TARGET_FIELD",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "argument": "{ .weatherType = BATTLE_WEATHER_RAIN }",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed",
+          "effect_representation_changed"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_FIELD"
+          },
+          "effect": {
+            "v1": "EFFECT_RAIN_DANCE",
+            "v2": "EFFECT_WEATHER"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 752,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 62,
+        "active_levelup_occurrences": 62,
+        "active_levelup_species": [
+          "Azumarill",
+          "Blastoise",
+          "Bronzong",
+          "Carracosta",
+          "Castform",
+          "Dondozo",
+          "Dragonair",
+          "Dragonite",
+          "Dratini",
+          "Drizzile",
+          "Ducklett",
+          "Finneon",
+          "Frillish",
+          "Gastrodon",
+          "Goodra",
+          "GoodraHisui",
+          "Goomy",
+          "Gorebyss",
+          "Gyarados",
+          "Horsea",
+          "Huntail",
+          "Inteleon",
+          "Jellicent",
+          "Kingdra",
+          "Lapras",
+          "Lotad",
+          "Ludicolo",
+          "Lugia",
+          "Lumineon",
+          "Manaphy",
+          "Marill",
+          "Milotic",
+          "Palpitoad",
+          "Phione",
+          "Politoed",
+          "Poliwag",
+          "Poliwhirl",
+          "Poliwrath",
+          "Quagsire",
+          "Raikou",
+          "Seadra",
+          "Seismitoad",
+          "Shellos",
+          "Sliggoo",
+          "SliggooHisui",
+          "Slowbro",
+          "SlowbroGalar",
+          "Slowking",
+          "SlowkingGalar",
+          "Slowpoke",
+          "SlowpokeGalar",
+          "Sobble",
+          "Squirtle",
+          "Suicune",
+          "Swanna",
+          "Thundurus",
+          "Tirtouga",
+          "Tornadus",
+          "Tympole",
+          "Wartortle",
+          "Wooper",
+          "Zapdos"
+        ],
+        "egg_species_count": 0,
+        "egg_species": [],
+        "is_current_tm": true,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 7
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 241,
+      "constant": "MOVE_SUNNY_DAY",
+      "name": "Sunny Day",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "field",
+        "mechanic_tags": [
+          "weather"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "weather field control"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_SUNNY_DAY",
+          "effect_numeric_id": 137,
+          "power": 0,
+          "type": "TYPE_FIRE",
+          "accuracy": 0,
+          "pp": 5,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_WEATHER",
+        "power_expr": "0",
+        "type_expr": "TYPE_FIRE",
+        "accuracy_expr": "0",
+        "pp_expr": "5",
+        "target_expr": "TARGET_FIELD",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "argument": "{ .weatherType = BATTLE_WEATHER_SUN }",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed",
+          "effect_representation_changed"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_FIELD"
+          },
+          "effect": {
+            "v1": "EFFECT_SUNNY_DAY",
+            "v2": "EFFECT_WEATHER"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 740,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 39,
+        "active_levelup_occurrences": 40,
+        "active_levelup_species": [
+          "Braixen",
+          "Bronzong",
+          "BruteBonnet",
+          "Capsakid",
+          "Castform",
+          "Cherrim",
+          "Cottonee",
+          "Delphox",
+          "Entei",
+          "Fennekin",
+          "FlutterMane",
+          "Fomantis",
+          "GougingFire",
+          "GreatTusk",
+          "HoOh",
+          "Koraidon",
+          "Leafeon",
+          "Lilligant",
+          "LilligantHisui",
+          "Lurantis",
+          "Magby",
+          "Magmar",
+          "Magmortar",
+          "Maractus",
+          "Moltres",
+          "Nuzleaf",
+          "Petilil",
+          "RagingBolt",
+          "RoaringMoon",
+          "SandyShocks",
+          "Scovillain",
+          "ScreamTail",
+          "Seedot",
+          "Shiftry",
+          "SlitherWing",
+          "Sunflora",
+          "Sunkern",
+          "WalkingWake",
+          "Whimsicott"
+        ],
+        "egg_species_count": 0,
+        "egg_species": [],
+        "is_current_tm": true,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 2
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 245,
+      "constant": "MOVE_EXTREME_SPEED",
+      "name": "Extreme Speed",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 4,
+        "primary_role": "damage",
+        "mechanic_tags": [
+          "direct_damage",
+          "priority"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "damage_model",
+          "rationale": [
+            "damage baseline from effective power 80",
+            "priority premium +1"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_QUICK_ATTACK",
+          "effect_numeric_id": 103,
+          "power": 80,
+          "type": "TYPE_NORMAL",
+          "accuracy": 100,
+          "pp": 5,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_SELECTED",
+          "priority": 1,
+          "flags": [
+            "FLAG_MAKES_CONTACT",
+            "FLAG_PROTECT_AFFECTED",
+            "FLAG_MIRROR_MOVE_AFFECTED",
+            "FLAG_KINGS_ROCK_AFFECTED"
+          ],
+          "gen3_damage_class": "physical"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_HIT",
+        "power_expr": "80",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "100",
+        "pp_expr": "5",
+        "target_expr": "TARGET_SELECTED",
+        "priority_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 2 : 1",
+        "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+        "additional_effects": [],
+        "properties": {
+          "makesContact": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "priority_changed",
+          "effect_representation_changed"
+        ],
+        "details": {
+          "priority": {
+            "v1": 1,
+            "v2": 2
+          },
+          "effect": {
+            "v1": "EFFECT_QUICK_ATTACK",
+            "v2": "EFFECT_HIT"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 17,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 12,
+        "active_levelup_occurrences": 12,
+        "active_levelup_species": [
+          "Arcanine",
+          "ArcanineHisui",
+          "Arceus",
+          "DeoxysSpeed",
+          "Dragonite",
+          "Entei",
+          "Lucario",
+          "Raikou",
+          "Rayquaza",
+          "Regieleki",
+          "Suicune",
+          "Togekiss"
+        ],
+        "egg_species_count": 2,
+        "egg_species": [
+          "Dratini",
+          "Zigzagoon"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 5
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 252,
+      "constant": "MOVE_FAKE_OUT",
+      "name": "Fake Out",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "damage",
+        "mechanic_tags": [
+          "direct_damage",
+          "flinch",
+          "priority"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "damage_model",
+          "rationale": [
+            "damage baseline from effective power 40",
+            "priority premium +1"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_FAKE_OUT",
+          "effect_numeric_id": 158,
+          "power": 40,
+          "type": "TYPE_NORMAL",
+          "accuracy": 100,
+          "pp": 10,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_SELECTED",
+          "priority": 1,
+          "flags": [
+            "FLAG_PROTECT_AFFECTED",
+            "FLAG_MIRROR_MOVE_AFFECTED"
+          ],
+          "gen3_damage_class": "physical"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_FIRST_TURN_ONLY",
+        "power_expr": "40",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "100",
+        "pp_expr": "10",
+        "target_expr": "TARGET_SELECTED",
+        "priority_expr": "B_UPDATED_MOVE_DATA >= GEN_5 ? 3 : 1",
+        "category_expr": "DAMAGE_CATEGORY_PHYSICAL",
+        "additional_effects": [
+          {
+            "moveEffect": "MOVE_EFFECT_FLINCH",
+            "chance": "100"
+          }
+        ],
+        "properties": {
+          "makesContact": "B_UPDATED_MOVE_DATA >= GEN_4",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "priority_changed",
+          "effect_representation_changed",
+          "v2_additional_effects"
+        ],
+        "details": {
+          "priority": {
+            "v1": 1,
+            "v2": 3
+          },
+          "effect": {
+            "v1": "EFFECT_FAKE_OUT",
+            "v2": "EFFECT_FIRST_TURN_ONLY"
+          },
+          "additional_effects": [
+            {
+              "moveEffect": "MOVE_EFFECT_FLINCH",
+              "chance": "100"
+            }
+          ]
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 91,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 38,
+        "active_levelup_occurrences": 38,
+        "active_levelup_species": [
+          "Delcatty",
+          "Espurr",
+          "Glameow",
+          "Grimmsnarl",
+          "Hariyama",
+          "Hitmonchan",
+          "Hitmonlee",
+          "Hitmontop",
+          "Impidimp",
+          "IronHands",
+          "Kangaskhan",
+          "Liepard",
+          "Lombre",
+          "Ludicolo",
+          "Makuhita",
+          "MeowsticF",
+          "MeowsticM",
+          "Meowth",
+          "MeowthAlola",
+          "MeowthGalar",
+          "Mienfoo",
+          "Mienshao",
+          "Morgrem",
+          "Munkidori",
+          "Nuzleaf",
+          "Perrserker",
+          "Persian",
+          "PersianAlola",
+          "Purrloin",
+          "Purugly",
+          "Sableye",
+          "Shiftry",
+          "Skitty",
+          "Tinkatink",
+          "Tinkaton",
+          "Tinkatuff",
+          "Tyrogue",
+          "Zeraora"
+        ],
+        "egg_species_count": 27,
+        "egg_species": [
+          "Aipom",
+          "Buneary",
+          "Chimchar",
+          "Croagunk",
+          "Delibird",
+          "Grookey",
+          "Indeedee",
+          "IndeedeeF",
+          "Kecleon",
+          "Litten",
+          "Meditite",
+          "MimeJr",
+          "Morpeko",
+          "MrMime",
+          "MrMimeGalar",
+          "Pawmi",
+          "Pichu",
+          "Salandit",
+          "Scraggy",
+          "Seel",
+          "Skitty",
+          "Smoochum",
+          "Sneasel",
+          "SneaselHisui",
+          "Spinda",
+          "Squirtle",
+          "Togedemaru"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 1
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 258,
+      "constant": "MOVE_HAIL",
+      "name": "Hail",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "field",
+        "mechanic_tags": [
+          "weather"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "weather field control"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_HAIL",
+          "effect_numeric_id": 164,
+          "power": 0,
+          "type": "TYPE_ICE",
+          "accuracy": 0,
+          "pp": 10,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [
+            "FLAG_PROTECT_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_WEATHER",
+        "power_expr": "0",
+        "type_expr": "TYPE_ICE",
+        "accuracy_expr": "0",
+        "pp_expr": "10",
+        "target_expr": "TARGET_FIELD",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_SPD_UP_1 }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "argument": "{ .weatherType = (B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_SNOW) ? BATTLE_WEATHER_SNOW : BATTLE_WEATHER_HAIL }",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed",
+          "effect_representation_changed"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_FIELD"
+          },
+          "effect": {
+            "v1": "EFFECT_HAIL",
+            "v2": "EFFECT_WEATHER"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 182,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 9,
+        "active_levelup_occurrences": 9,
+        "active_levelup_species": [
+          "Amaura",
+          "Aurorus",
+          "Castform",
+          "Sealeo",
+          "Spheal",
+          "Vanillish",
+          "Vanillite",
+          "Vanilluxe",
+          "Walrein"
+        ],
+        "egg_species_count": 0,
+        "egg_species": [],
+        "is_current_tm": true,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 2
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 266,
+      "constant": "MOVE_FOLLOW_ME",
+      "name": "Follow Me",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "support",
+        "mechanic_tags": [
+          "doubles_support",
+          "priority",
+          "team_support"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "target-redirection support"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_FOLLOW_ME",
+          "effect_numeric_id": 172,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 100,
+          "pp": 20,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 3,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_FOLLOW_ME",
+        "power_expr": "0",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "20",
+        "target_expr": "TARGET_USER",
+        "priority_expr": "B_UPDATED_MOVE_DATA >= GEN_6 ? 2 : 3",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "metronomeBanned": "TRUE",
+          "copycatBanned": "TRUE",
+          "assistBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "accuracy_changed",
+          "priority_changed"
+        ],
+        "details": {
+          "accuracy": {
+            "v1": 100,
+            "v2": 0,
+            "delta": -100
+          },
+          "priority": {
+            "v1": 3,
+            "v2": 2
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 19,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 10,
+        "active_levelup_occurrences": 10,
+        "active_levelup_species": [
+          "Clefable",
+          "Clefairy",
+          "Furret",
+          "IndeedeeF",
+          "Maushold",
+          "Ogerpon",
+          "Sentret",
+          "Togekiss",
+          "Togepi",
+          "Togetic"
+        ],
+        "egg_species_count": 2,
+        "egg_species": [
+          "Pachirisu",
+          "Riolu"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 267,
+      "constant": "MOVE_NATURE_POWER",
+      "name": "Nature Power",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "utility",
+        "mechanic_tags": [
+          "move_call",
+          "random_outcome",
+          "special_case"
+        ],
+        "stamina_rules": [
+          "standard_attempt",
+          "called_move_caller_only"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "terrain-derived called move"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_NATURE_POWER",
+          "effect_numeric_id": 173,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 0,
+          "pp": 20,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_DEPENDS",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_NATURE_POWER",
+        "power_expr": "1",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "20",
+        "target_expr": "B_UPDATED_MOVE_FLAGS >= GEN_6 ? TARGET_SELECTED : TARGET_DEPENDS",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "metronomeBanned": "B_UPDATED_MOVE_FLAGS >= GEN_5",
+          "copycatBanned": "TRUE",
+          "sleepTalkBanned": "TRUE",
+          "instructBanned": "TRUE",
+          "encoreBanned": "(B_UPDATED_MOVE_FLAGS >= GEN_7 || B_UPDATED_MOVE_FLAGS < GEN_3)",
+          "assistBanned": "B_UPDATED_MOVE_FLAGS >= GEN_6",
+          "mimicBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "power_changed",
+          "target_changed"
+        ],
+        "details": {
+          "power": {
+            "v1": 0,
+            "v2": 1,
+            "delta": 1
+          },
+          "target": {
+            "v1": "TARGET_DEPENDS",
+            "v2": "TARGET_SELECTED"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 143,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 3,
+        "active_levelup_occurrences": 3,
+        "active_levelup_species": [
+          "Amaura",
+          "Aurorus",
+          "Xerneas"
+        ],
+        "egg_species_count": 12,
+        "egg_species": [
+          "Bulbasaur",
+          "Cherubi",
+          "Chikorita",
+          "Corsola",
+          "CorsolaGalar",
+          "Cyndaquil",
+          "Exeggcute",
+          "Grookey",
+          "Oddish",
+          "Sunkern",
+          "Tangela",
+          "Tropius"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 270,
+      "constant": "MOVE_HELPING_HAND",
+      "name": "Helping Hand",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 2,
+        "primary_role": "support",
+        "mechanic_tags": [
+          "doubles_support",
+          "priority",
+          "team_support"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "ally damage support"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_HELPING_HAND",
+          "effect_numeric_id": 176,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 100,
+          "pp": 20,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 5,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_HELPING_HAND",
+        "power_expr": "0",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "20",
+        "target_expr": "B_UPDATED_MOVE_DATA >= GEN_4 ? TARGET_ALLY : TARGET_USER",
+        "priority_expr": "5",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RESET_STATS }",
+          "ignoresProtect": "TRUE",
+          "ignoresSubstitute": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "metronomeBanned": "TRUE",
+          "copycatBanned": "TRUE",
+          "assistBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "accuracy_changed",
+          "target_changed"
+        ],
+        "details": {
+          "accuracy": {
+            "v1": 100,
+            "v2": 0,
+            "delta": -100
+          },
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_ALLY"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 609,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 85,
+        "active_levelup_occurrences": 85,
+        "active_levelup_species": [
+          "Alomomola",
+          "Arboliva",
+          "Arcanine",
+          "ArcanineHisui",
+          "Audino",
+          "Azumarill",
+          "Azurill",
+          "Blissey",
+          "Calyrex",
+          "CalyrexIce",
+          "CalyrexShadow",
+          "Chansey",
+          "Cherrim",
+          "Cherubi",
+          "Cinccino",
+          "Cobalion",
+          "Comfey",
+          "Cottonee",
+          "Dolliv",
+          "Eevee",
+          "Espeon",
+          "Flareon",
+          "Frosmoth",
+          "Furret",
+          "Gallade",
+          "Glaceon",
+          "Greavard",
+          "Growlithe",
+          "GrowlitheHisui",
+          "Herdier",
+          "Hitmonchan",
+          "Hitmonlee",
+          "Hitmontop",
+          "Houndstone",
+          "Illumise",
+          "IndeedeeF",
+          "IndeedeeM",
+          "IronBundle",
+          "IronLeaves",
+          "Jolteon",
+          "Keldeo",
+          "Latias",
+          "Latios",
+          "Leafeon",
+          "Leavanny",
+          "Lilligant",
+          "LilligantHisui",
+          "Lillipup",
+          "Lucario",
+          "Magearna",
+          "Marill",
+          "Maushold",
+          "MeowsticM",
+          "Minccino",
+          "Minun",
+          "Munkidori",
+          "Naganadel",
+          "Nidoking",
+          "Nidoqueen",
+          "NidoranF",
+          "NidoranM",
+          "Nidorina",
+          "Nidorino",
+          "Octillery",
+          "Oricorio",
+          "Petilil",
+          "Plusle",
+          "Poipole",
+          "Pyukumuku",
+          "Remoraid",
+          "Riolu",
+          "Sentret",
+          "Smoliv",
+          "Stoutland",
+          "Sylveon",
+          "Tandemaus",
+          "Tatsugiri",
+          "Terrakion",
+          "Tyrogue",
+          "Umbreon",
+          "Vaporeon",
+          "Virizion",
+          "Volbeat",
+          "Whimsicott",
+          "Wishiwashi"
+        ],
+        "egg_species_count": 20,
+        "egg_species": [
+          "Binacle",
+          "Buizel",
+          "Chansey",
+          "Chimchar",
+          "Clauncher",
+          "Dedenne",
+          "Happiny",
+          "Hoppip",
+          "Makuhita",
+          "Miltank",
+          "Munna",
+          "Shinx",
+          "Shroomish",
+          "Shuckle",
+          "Skitty",
+          "Solosis",
+          "Sunkern",
+          "Tyrogue",
+          "Woobat",
+          "Zigzagoon"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 300,
+      "constant": "MOVE_MUD_SPORT",
+      "name": "Mud Sport",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 1,
+        "primary_role": "field",
+        "mechanic_tags": [
+          "field_modifier"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "situational field modifier"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_MUD_SPORT",
+          "effect_numeric_id": 201,
+          "power": 0,
+          "type": "TYPE_GROUND",
+          "accuracy": 100,
+          "pp": 15,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_MUD_SPORT",
+        "power_expr": "0",
+        "type_expr": "TYPE_GROUND",
+        "accuracy_expr": "0",
+        "pp_expr": "15",
+        "target_expr": "TARGET_FIELD",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_SPDEF_UP_1 }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "skyBattleBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "accuracy_changed",
+          "target_changed"
+        ],
+        "details": {
+          "accuracy": {
+            "v1": 100,
+            "v2": 0,
+            "delta": -100
+          },
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_FIELD"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 75,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 0,
+        "active_levelup_occurrences": 0,
+        "active_levelup_species": [],
+        "egg_species_count": 22,
+        "egg_species": [
+          "Bidoof",
+          "Buneary",
+          "Clamperl",
+          "Corphish",
+          "Ducklett",
+          "Feebas",
+          "Froakie",
+          "Goldeen",
+          "Hawlucha",
+          "Luvdisc",
+          "Mantine",
+          "Mantyke",
+          "Panpour",
+          "Piplup",
+          "Slowpoke",
+          "Squirtle",
+          "Stantler",
+          "Totodile",
+          "Treecko",
+          "Trubbish",
+          "Tympole",
+          "Wooper"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 10
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 312,
+      "constant": "MOVE_AROMATHERAPY",
+      "name": "Aromatherapy",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 4,
+        "primary_role": "recovery",
+        "mechanic_tags": [
+          "recovery_status"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "party-wide status recovery"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_HEAL_BELL",
+          "effect_numeric_id": 102,
+          "power": 0,
+          "type": "TYPE_GRASS",
+          "accuracy": 0,
+          "pp": 5,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [
+            "FLAG_SNATCH_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_HEAL_BELL",
+        "power_expr": "0",
+        "type_expr": "TYPE_GRASS",
+        "accuracy_expr": "0",
+        "pp_expr": "5",
+        "target_expr": "TARGET_USER_AND_ALLY",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_RECOVER_HP }",
+          "snatchAffected": "TRUE",
+          "ignoresProtect": "TRUE",
+          "ignoresSubstitute": "B_UPDATED_MOVE_FLAGS < GEN_6",
+          "mirrorMoveBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_USER_AND_ALLY"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 60,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 12,
+        "active_levelup_occurrences": 12,
+        "active_levelup_species": [
+          "Aromatisse",
+          "Eldegoss",
+          "Gossifleur",
+          "Paras",
+          "Parasect",
+          "Roselia",
+          "Roserade",
+          "Slurpuff",
+          "Spritzee",
+          "Swirlix",
+          "TapuLele",
+          "Xerneas"
+        ],
+        "egg_species_count": 8,
+        "egg_species": [
+          "Chansey",
+          "Cherubi",
+          "Chikorita",
+          "Cleffa",
+          "Fomantis",
+          "Happiny",
+          "Hoppip",
+          "Illumise"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 1
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 336,
+      "constant": "MOVE_HOWL",
+      "name": "Howl",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 3,
+        "primary_role": "setup",
+        "mechanic_tags": [
+          "stat_boost_offense"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_move_override",
+          "rationale": [
+            "repeatable +1 Attack setup must drain Stamina"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_ATTACK_UP",
+          "effect_numeric_id": 10,
+          "power": 0,
+          "type": "TYPE_NORMAL",
+          "accuracy": 0,
+          "pp": 40,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [
+            "FLAG_SNATCH_AFFECTED"
+          ],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_STAT_CHANGE",
+        "power_expr": "0",
+        "type_expr": "TYPE_NORMAL",
+        "accuracy_expr": "0",
+        "pp_expr": "40",
+        "target_expr": "B_UPDATED_MOVE_DATA >= GEN_8 ? TARGET_USER_AND_ALLY : TARGET_USER",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [
+          {
+            "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+            "attack": "1"
+          }
+        ],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_ATK_UP_1 }",
+          "snatchAffected": "TRUE",
+          "ignoresProtect": "TRUE",
+          "ignoresSubstitute": "B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS",
+          "mirrorMoveBanned": "TRUE",
+          "soundMove": "B_UPDATED_MOVE_FLAGS >= GEN_8",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "target_changed",
+          "effect_representation_changed",
+          "v2_additional_effects"
+        ],
+        "details": {
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_USER_AND_ALLY"
+          },
+          "effect": {
+            "v1": "EFFECT_ATTACK_UP",
+            "v2": "EFFECT_STAT_CHANGE"
+          },
+          "additional_effects": [
+            {
+              "moveEffect": "STAT_CHANGE_EFFECT_PLUS",
+              "attack": "1"
+            }
+          ]
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 52,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 26,
+        "active_levelup_occurrences": 26,
+        "active_levelup_species": [
+          "Arcanine",
+          "ArcanineHisui",
+          "Braixen",
+          "Delphox",
+          "Electrike",
+          "Exploud",
+          "Fennekin",
+          "GougingFire",
+          "Growlithe",
+          "GrowlitheHisui",
+          "Houndoom",
+          "Houndour",
+          "Loudred",
+          "LycanrocDusk",
+          "LycanrocMidday",
+          "LycanrocMidnight",
+          "Manectric",
+          "Mightyena",
+          "Okidogi",
+          "Poochyena",
+          "Raikou",
+          "Rockruff",
+          "ScreamTail",
+          "Whismur",
+          "Zacian",
+          "Zamazenta"
+        ],
+        "egg_species_count": 11,
+        "egg_species": [
+          "Cyndaquil",
+          "Fidough",
+          "Greavard",
+          "Growlithe",
+          "Lillipup",
+          "Nickit",
+          "Numel",
+          "Shinx",
+          "Vulpix",
+          "VulpixAlola",
+          "Yamper"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    },
+    {
+      "numeric_id": 346,
+      "constant": "MOVE_WATER_SPORT",
+      "name": "Water Sport",
+      "review": {
+        "status": "REVIEW_REQUIRED",
+        "family": "TACTICAL_SEMANTICS",
+        "reason": "Refined migration classified this move as a material legacy mechanical change."
+      },
+      "legacy": {
+        "cost": 1,
+        "primary_role": "field",
+        "mechanic_tags": [
+          "field_modifier"
+        ],
+        "stamina_rules": [
+          "standard_attempt"
+        ],
+        "design": {
+          "status": "approved_v1",
+          "assignment_source": "explicit_non_damage_effect",
+          "rationale": [
+            "situational field modifier"
+          ],
+          "notes": ""
+        },
+        "source": {
+          "effect": "EFFECT_WATER_SPORT",
+          "effect_numeric_id": 210,
+          "power": 0,
+          "type": "TYPE_WATER",
+          "accuracy": 100,
+          "pp": 15,
+          "secondary_effect_chance": 0,
+          "target": "MOVE_TARGET_USER",
+          "priority": 0,
+          "flags": [],
+          "gen3_damage_class": "status"
+        }
+      },
+      "modern": {
+        "effect": "EFFECT_WATER_SPORT",
+        "power_expr": "0",
+        "type_expr": "TYPE_WATER",
+        "accuracy_expr": "0",
+        "pp_expr": "15",
+        "target_expr": "TARGET_FIELD",
+        "priority_expr": "0",
+        "category_expr": "DAMAGE_CATEGORY_STATUS",
+        "additional_effects": [],
+        "properties": {
+          "zMove": "{ .effect = Z_EFFECT_SPDEF_UP_1 }",
+          "ignoresProtect": "TRUE",
+          "mirrorMoveBanned": "TRUE",
+          "skyBattleBanned": "TRUE",
+          "validApprenticeMove": "TRUE"
+        }
+      },
+      "migration_diff": {
+        "changes": [
+          "accuracy_changed",
+          "target_changed"
+        ],
+        "details": {
+          "accuracy": {
+            "v1": 100,
+            "v2": 0,
+            "delta": -100
+          },
+          "target": {
+            "v1": "TARGET_USER",
+            "v2": "TARGET_FIELD"
+          }
+        },
+        "encoding_resolution": null,
+        "manual_encoding_decision": null
+      },
+      "campaign_context": {
+        "any_supported_game_species_count": 60,
+        "active_levelup_generation": 9,
+        "active_levelup_species_count": 1,
+        "active_levelup_occurrences": 1,
+        "active_levelup_species": [
+          "Panpour"
+        ],
+        "egg_species_count": 14,
+        "egg_species": [
+          "Azurill",
+          "Bidoof",
+          "Binacle",
+          "Froakie",
+          "Luvdisc",
+          "Mantine",
+          "Mantyke",
+          "Marill",
+          "Poliwag",
+          "Relicanth",
+          "Spheal",
+          "Totodile",
+          "Wingull",
+          "Wishiwashi"
+        ],
+        "is_current_tm": false,
+        "is_current_hm": false,
+        "explicit_frlg_trainer_move_count": 0
+      },
+      "decision": {
+        "status": "PENDING",
+        "approved_cost": null,
+        "cost_change": null,
+        "reasoning": [],
+        "review_notes": ""
+      }
+    }
+  ]
+}

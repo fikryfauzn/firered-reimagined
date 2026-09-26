@@ -1,0 +1,831 @@
+{
+  "schema": "firered-reimagined.stamina.legacy-review-decisions.v2",
+  "schema_version": 1,
+  "moves": {
+    "MOVE_ACID": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Modern secondary changes from Defense drop to SpDef drop.",
+        "40 BP and 10 percent secondary chance remain low-pressure.",
+        "Modernization does not materially change its Stamina tier."
+      ]
+    },
+    "MOVE_GROWTH": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Modern Growth raises both Attack and SpAtk rather than only SpAtk.",
+        "The move now supports physical, special, and mixed setup.",
+        "Broader guaranteed setup value warrants moving from cost 3 to 4."
+      ]
+    },
+    "MOVE_STRING_SHOT": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Modern String Shot lowers Speed by two stages rather than one.",
+        "The stronger deterministic tempo swing materially increases tactical value.",
+        "Raise from cost 3 to 4."
+      ]
+    },
+    "MOVE_SWEET_SCENT": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Modern Sweet Scent lowers Evasion by two stages rather than one.",
+        "The effect is stronger but remains indirect and situational.",
+        "Cost 3 remains sufficient."
+      ]
+    },
+    "MOVE_CRUNCH": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Modern Crunch lowers Defense rather than SpDef.",
+        "The new secondary synergizes better with its physical damage.",
+        "The 20 percent trigger is not sufficient to move an 80 BP move into cost 4."
+      ]
+    },
+    "MOVE_NEEDLE_ARM": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Primary profile remains 60 BP with a 30 percent flinch chance.",
+        "Loss of the historical Minimize interaction is peripheral to ordinary tactical value.",
+        "Retain cost 3."
+      ]
+    },
+    "MOVE_POISON_FANG": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Badly-poison chance increases from 30 percent to 50 percent.",
+        "Base power remains only 50 and the status rider is probabilistic.",
+        "Cost 3 already applies meaningful pressure and remains appropriate."
+      ]
+    },
+    "MOVE_ASTONISH": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Primary profile remains 30 BP with a 30 percent flinch chance.",
+        "Loss of the historical Minimize interaction does not materially alter normal use.",
+        "Retain cost 2."
+      ]
+    },
+    "MOVE_EXTRASENSORY": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Primary profile remains 80 BP with a 10 percent flinch chance.",
+        "Loss of the historical Minimize interaction is marginal.",
+        "Retain cost 3."
+      ]
+    },
+    "MOVE_VOLT_TACKLE": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Modern Volt Tackle adds a 10 percent paralysis chance.",
+        "It still carries substantial 33 percent recoil.",
+        "The added secondary does not justify moving an already costly recoil attack to cost 5."
+      ]
+    },
+    "MOVE_SURF": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_TELEPORT": {
+      "decision": "CHANGE",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_HAZE": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_BIDE": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_POISON_GAS": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_CURSE": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_CONVERSION_2": {
+      "decision": "CHANGE",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_COTTON_SPORE": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_PROTECT": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_SWEET_KISS": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_PERISH_SONG": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_DETECT": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_SANDSTORM": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_ENDURE": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_CHARM": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_HEAL_BELL": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_MOONLIGHT": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_RAIN_DANCE": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_SUNNY_DAY": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_EXTREME_SPEED": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_FAKE_OUT": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_HAIL": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_FOLLOW_ME": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_NATURE_POWER": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_HELPING_HAND": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_MUD_SPORT": {
+      "decision": "CHANGE",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_AROMATHERAPY": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_HOWL": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_WATER_SPORT": {
+      "decision": "CHANGE",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7B tactical-semantics audit."
+      ]
+    },
+    "MOVE_BEAT_UP": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_HIDDEN_POWER": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_SPIT_UP": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_VITAL_THROW": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_CHARGE": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_TAIL_GLOW": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_WHIRLWIND": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_ROAR": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_MIMIC": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_SOFT_BOILED": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_SPIDER_WEB": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_MIND_READER": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_FORESIGHT": {
+      "decision": "KEEP",
+      "approved_cost": 1,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_LOCK_ON": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_MEAN_LOOK": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_PAIN_SPLIT": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_ROLE_PLAY": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_WISH": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_ASSIST": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_INGRAIN": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_MAGIC_COAT": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_RECYCLE": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_YAWN": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_SKILL_SWAP": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_IMPRISON": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_REFRESH": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_GRUDGE": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_SNATCH": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_CAMOUFLAGE": {
+      "decision": "KEEP",
+      "approved_cost": 1,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_SLACK_OFF": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_ODOR_SLEUTH": {
+      "decision": "KEEP",
+      "approved_cost": 1,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_BLOCK": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C power-sentinel / accuracy-semantics audit."
+      ]
+    },
+    "MOVE_THRASH": {
+      "decision": "CHANGE",
+      "approved_cost": 6,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_PETAL_DANCE": {
+      "decision": "CHANGE",
+      "approved_cost": 6,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_FIRE_SPIN": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_SKULL_BASH": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_LEECH_LIFE": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_BUBBLE": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_FLASH": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_THIEF": {
+      "decision": "CHANGE",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_OUTRAGE": {
+      "decision": "CHANGE",
+      "approved_cost": 6,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_RAPID_SPIN": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_ROCK_SMASH": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_WHIRLPOOL": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_UPROAR": {
+      "decision": "CHANGE",
+      "approved_cost": 5,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_SAND_TOMB": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_COVET": {
+      "decision": "CHANGE",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_JUMP_KICK": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_DISABLE": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_HIGH_JUMP_KICK": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_FURY_CUTTER": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_FUTURE_SIGHT": {
+      "decision": "CHANGE",
+      "approved_cost": 5,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_KNOCK_OFF": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C transformative-upgrade audit."
+      ]
+    },
+    "MOVE_GLARE": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_ZAP_CANNON": {
+      "decision": "KEEP",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_LUSTER_PURGE": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_MIST_BALL": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_LEAF_BLADE": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_FLY": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_DIG": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_PSYWAVE": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_DIVE": {
+      "decision": "CHANGE",
+      "approved_cost": 4,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_DOOM_DESIRE": {
+      "decision": "CHANGE",
+      "approved_cost": 5,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_PIN_MISSILE": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_LICK": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_SMOG": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_SNORE": {
+      "decision": "KEEP",
+      "approved_cost": 1,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_GIGA_DRAIN": {
+      "decision": "KEEP",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_BULLET_SEED": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_ICICLE_SPEAR": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_VINE_WHIP": {
+      "decision": "KEEP",
+      "approved_cost": 1,
+      "reasoning": [
+        "Reviewed in 01D7C major-upgrade / ratio-only audit."
+      ]
+    },
+    "MOVE_BIND": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7D final legacy watchlist audit."
+      ]
+    },
+    "MOVE_WRAP": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7D final legacy watchlist audit."
+      ]
+    },
+    "MOVE_THUNDER": {
+      "decision": "KEEP",
+      "approved_cost": 5,
+      "reasoning": [
+        "Reviewed in 01D7D final legacy watchlist audit."
+      ]
+    },
+    "MOVE_CLAMP": {
+      "decision": "CHANGE",
+      "approved_cost": 3,
+      "reasoning": [
+        "Reviewed in 01D7D final legacy watchlist audit."
+      ]
+    },
+    "MOVE_SMELLING_SALTS": {
+      "decision": "KEEP",
+      "approved_cost": 2,
+      "reasoning": [
+        "Reviewed in 01D7D final legacy watchlist audit."
+      ]
+    }
+  }
+}
