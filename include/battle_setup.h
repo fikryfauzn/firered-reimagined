@@ -83,6 +83,7 @@ extern u16 gPartnerTrainerId;
 
 void BattleSetup_StartWildBattle(void);
 void BattleSetup_StartDoubleWildBattle(void);
+void BattleSetup_StartTacticalWildBattle(void);
 void BattleSetup_StartBattlePikeWildBattle(void);
 void BattleSetup_StartRoamerBattle(void);
 void StartWallyTutorialBattle(void);
@@ -96,6 +97,7 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void);
 enum BattleTransition GetWildBattleTransition(void);
 enum BattleTransition GetTrainerBattleTransition(void);
 bool32 ShouldUseTacticalDoubles(u16 trainerId);
+bool32 ShouldUseTacticalOpeningPair(u32 battleTypeFlags);
 enum BattleTransition GetSpecialBattleTransition(enum BattleTransitionGroup id);
 void ChooseStarter(void);
 void SetMapVarsToTrainerA(void);

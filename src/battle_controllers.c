@@ -488,6 +488,78 @@ bool32 ShouldUpdateTvData(enum BattlerId battler)
          || IsControllerLinkOpponent(battler));
 }
 
+bool32 ShouldRandomizePlayerOpeningPair(void)
+{
+    if (!(gBattleTypeFlags & BATTLE_TYPE_TACTICAL_OPENING_PAIR))
+        return FALSE;
+
+    if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
+        return FALSE;
+
+    if (gBattleTypeFlags & (
+        BATTLE_TYPE_LINK
+      | BATTLE_TYPE_MULTI
+      | BATTLE_TYPE_INGAME_PARTNER))
+    {
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+bool32 TrySelectRandomPlayerOpeningPair(u8 *leftPartyId, u8 *rightPartyId)
+{
+    u8 usablePartyIds[PARTY_SIZE];
+    u32 usableCount = 0;
+
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        if (IsValidForBattle(&gParties[B_TRAINER_PLAYER][i]))
+            usablePartyIds[usableCount++] = i;
+    }
+
+    if (usableCount < 2)
+        return FALSE;
+
+    // Every ordered pair is equally possible.
+    // For N usable Pokémon there are N * (N - 1) possible openings.
+    u32 pairChoice = RandomUniform(
+        RNG_TACTICAL_OPENING_PAIR,
+        0,
+        usableCount * (usableCount - 1) - 1
+    );
+
+    u32 leftIndex = pairChoice / (usableCount - 1);
+    u32 rightIndex = pairChoice % (usableCount - 1);
+
+    // rightIndex initially addresses an array with leftIndex removed.
+    // Convert it back to the original usablePartyIds index.
+    if (rightIndex >= leftIndex)
+        rightIndex++;
+
+    *leftPartyId = usablePartyIds[leftIndex];
+    *rightPartyId = usablePartyIds[rightIndex];
+
+    return TRUE;
+}
+
+bool32 TryApplyRandomPlayerOpeningPair(void)
+{
+    u8 leftPartyId;
+    u8 rightPartyId;
+
+    if (!ShouldRandomizePlayerOpeningPair())
+        return FALSE;
+
+    if (!TrySelectRandomPlayerOpeningPair(&leftPartyId, &rightPartyId))
+        return FALSE;
+
+    gBattlerPartyIndexes[B_BATTLER_0] = leftPartyId;
+    gBattlerPartyIndexes[B_BATTLER_2] = rightPartyId;
+
+    return TRUE;
+}
+
 static void SetBattlePartyIds(void)
 {
     if (!(gBattleTypeFlags & BATTLE_TYPE_MULTI))
@@ -536,6 +608,8 @@ static void SetBattlePartyIds(void)
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
             gBattlerPartyIndexes[1] = 0, gBattlerPartyIndexes[3] = 0;
+
+        TryApplyRandomPlayerOpeningPair();
     }
 }
 

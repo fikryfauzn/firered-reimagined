@@ -5,6 +5,9 @@
 #define WE_VANILLA_RANDOM           TRUE    // If TRUE, Pokémon can randomly spawn on tiles that can trigger wild encounters, as in vanilla.
 #define WE_FLAG_NO_ENCOUNTER        0       // If this flag is set, wild encounters will be disabled.
 
+// Tactical Wild Battles
+#define WE_TACTICAL_WILD_PACK_CHANCE   10 // % chance for a 5-Pokémon wild party.
+
 // Double Wild Battles
 #define WE_DOUBLE_WILD_CHANCE            0          // % chance of encountering two Pokémon in a Wild Encounter.
 #define WE_DOUBLE_WILD_REQUIRE_2_MONS    FALSE      // If set to TRUE, Wild Double Battles will default to Single Battles when the player only has 1 usable Pokémon, ignoring WE_DOUBLE_WILD_CHANCE and WE_FLAG_FORCE_DOUBLE_WILD.

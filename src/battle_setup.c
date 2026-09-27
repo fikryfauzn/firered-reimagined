@@ -73,7 +73,7 @@ enum TransitionType
 static void DoBattlePikeWildBattle(void);
 static void DoSafariBattle(void);
 static void DoGhostBattle(void);
-static void DoStandardWildBattle(bool32 isDouble);
+static void DoStandardWildBattle(bool32 isDouble, bool32 useTacticalOpeningPair);
 static void CB2_EndWildBattle(void);
 static void CB2_EndScriptedWildBattle(void);
 static void CB2_EndMarowakBattle(void);
@@ -342,12 +342,17 @@ void BattleSetup_StartWildBattle(void)
     else if (CheckSilphScopeInPokemonTower(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum))
         DoGhostBattle();
     else
-        DoStandardWildBattle(FALSE);
+        DoStandardWildBattle(FALSE, FALSE);
 }
 
 void BattleSetup_StartDoubleWildBattle(void)
 {
-    DoStandardWildBattle(TRUE);
+    DoStandardWildBattle(TRUE, FALSE);
+}
+
+void BattleSetup_StartTacticalWildBattle(void)
+{
+    DoStandardWildBattle(TRUE, TRUE);
 }
 
 void BattleSetup_StartMultiBattle(void)
@@ -393,7 +398,7 @@ void BattleSetup_StartBattlePikeWildBattle(void)
     DoBattlePikeWildBattle();
 }
 
-static void DoStandardWildBattle(bool32 isDouble)
+static void DoStandardWildBattle(bool32 isDouble, bool32 useTacticalOpeningPair)
 {
     LockPlayerFieldControls();
     FreezeObjectEvents();
@@ -411,6 +416,13 @@ static void DoStandardWildBattle(bool32 isDouble)
         VarSet(VAR_TEMP_E, 0);
         gBattleTypeFlags |= BATTLE_TYPE_PYRAMID;
     }
+
+    if (useTacticalOpeningPair
+     && (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_PYRAMID)) == 0)
+    {
+        gBattleTypeFlags |= BATTLE_TYPE_TACTICAL_OPENING_PAIR;
+    }
+
     CreateBattleStartTask(GetWildBattleTransition(), 0);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
@@ -903,6 +915,30 @@ enum BattleTransition GetWildBattleTransition(void)
         else
             return sBattleTransitionTable_Wild[transitionType][1];
     }
+}
+
+bool32 ShouldUseTacticalOpeningPair(u32 battleTypeFlags)
+{
+    const u32 requiredFlags =
+        BATTLE_TYPE_TRAINER
+      | BATTLE_TYPE_DOUBLE;
+
+    const u32 excludedFlags =
+        BATTLE_TYPE_LINK
+      | BATTLE_TYPE_MULTI
+      | BATTLE_TYPE_INGAME_PARTNER
+      | BATTLE_TYPE_FRONTIER
+      | BATTLE_TYPE_TRAINER_HILL
+      | BATTLE_TYPE_RECORDED
+      | BATTLE_TYPE_RECORDED_LINK
+      | BATTLE_TYPE_FIRST_BATTLE
+      | BATTLE_TYPE_SECRET_BASE
+      | BATTLE_TYPE_EREADER_TRAINER;
+
+    if ((battleTypeFlags & requiredFlags) != requiredFlags)
+        return FALSE;
+
+    return !(battleTypeFlags & excludedFlags);
 }
 
 bool32 ShouldUseTacticalDoubles(u16 trainerId)
@@ -1511,6 +1547,9 @@ void BattleSetup_StartTrainerBattle(void)
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
     }
 
+    if (ShouldUseTacticalOpeningPair(gBattleTypeFlags))
+        gBattleTypeFlags |= BATTLE_TYPE_TACTICAL_OPENING_PAIR;
+
     sNoOfPossibleTrainerRetScripts = gNoOfApproachingTrainers;
     gNoOfApproachingTrainers = 0;
     sShouldCheckTrainerBScript = FALSE;
@@ -1542,6 +1581,12 @@ static void CB2_EndDebugBattle(void)
 
 void BattleSetup_StartTrainerBattle_Debug(void)
 {
+    if (ShouldUseTacticalDoubles(TRAINER_BATTLE_PARAM.opponentA))
+        gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+
+    if (ShouldUseTacticalOpeningPair(gBattleTypeFlags))
+        gBattleTypeFlags |= BATTLE_TYPE_TACTICAL_OPENING_PAIR;
+
     sNoOfPossibleTrainerRetScripts = gNoOfApproachingTrainers;
     gNoOfApproachingTrainers = 0;
     sShouldCheckTrainerBScript = FALSE;
@@ -1664,6 +1709,9 @@ void BattleSetup_StartRematchBattle(void)
     if (ShouldUseTacticalDoubles(TRAINER_BATTLE_PARAM.opponentA))
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
     
+    if (ShouldUseTacticalOpeningPair(gBattleTypeFlags))
+        gBattleTypeFlags |= BATTLE_TYPE_TACTICAL_OPENING_PAIR;
+
     gMain.savedCallback = CB2_EndRematchBattle;
     DoTrainerBattle();
     ScriptContext_Stop();

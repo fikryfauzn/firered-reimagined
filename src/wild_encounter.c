@@ -510,12 +510,20 @@ static u8 PickWildMonNature(enum Species species)
     return GetSynchronizedNature(WILDMON_ORIGIN, species);
 }
 
+u8 ChooseTacticalWildPartySize(void)
+{
+    if (RandomPercentage(
+            RNG_TACTICAL_WILD_PACK,
+            WE_TACTICAL_WILD_PACK_CHANCE))
+        return 5;
+
+    return 2;
+}
+
 void CreateWildMon(enum Species species, u8 level)
 {
     ZeroEnemyPartyMons();
-    u32 personality = GetMonPersonality(species, GetSynchronizedGender(WILDMON_ORIGIN, species), PickWildMonNature(species), RANDOM_UNOWN_LETTER);
-    CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
-    GiveMonInitialMoveset(&gParties[B_TRAINER_OPPONENT_A][0]);
+    CreateWildMonInPartySlot(species, level, 0);
 }
 
 #ifdef BUGFIX
@@ -524,10 +532,40 @@ void CreateWildMon(enum Species species, u8 level)
 #define TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildPokemon, type, ability, ptr, count) TryGetAbilityInfluencedWildMonIndex(wildPokemon, type, ability, ptr)
 #endif
 
-bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPokemonArea area, u8 flags)
+void CreateWildMonInPartySlot(enum Species species, u8 level, u8 partyId)
+{
+    if (partyId >= PARTY_SIZE)
+        return;
+
+    u32 personality = GetMonPersonality(
+        species,
+        GetSynchronizedGender(WILDMON_ORIGIN, species),
+        PickWildMonNature(species),
+        RANDOM_UNOWN_LETTER
+    );
+
+    CreateMonWithIVs(
+        &gParties[B_TRAINER_OPPONENT_A][partyId],
+        species,
+        level,
+        personality,
+        OTID_STRUCT_PLAYER_ID,
+        USE_RANDOM_IVS
+    );
+
+    GiveMonInitialMoveset(
+        &gParties[B_TRAINER_OPPONENT_A][partyId]
+    );
+}
+
+static bool8 TryChooseWildMonData(
+    const struct WildPokemonInfo *wildMonInfo,
+    enum WildPokemonArea area,
+    u8 flags,
+    enum Species *species,
+    u8 *level)
 {
     u8 wildMonIndex = 0;
-    u8 level;
 
     switch (area)
     {
@@ -547,6 +585,7 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
 
         wildMonIndex = ChooseWildMonIndex_Land();
         break;
+
     case WILD_AREA_WATER:
         if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex, NUM_WATER_MONS_ENCOUNTER_SLOTS))
             break;
@@ -563,22 +602,318 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
 
         wildMonIndex = ChooseWildMonIndex_Water();
         break;
+
     case WILD_AREA_ROCKS:
         wildMonIndex = ChooseWildMonIndex_Rocks();
         break;
+
     default:
     case WILD_AREA_FISHING:
     case WILD_AREA_HIDDEN:
         break;
     }
 
-    level = ChooseWildMonLevel(wildMonInfo->wildPokemon, wildMonIndex, area);
-    if (flags & WILD_CHECK_REPEL && !IsWildLevelAllowedByRepel(level))
-        return FALSE;
-    if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
+    *level = ChooseWildMonLevel(
+        wildMonInfo->wildPokemon,
+        wildMonIndex,
+        area
+    );
+
+    if (flags & WILD_CHECK_REPEL
+     && !IsWildLevelAllowedByRepel(*level))
         return FALSE;
 
-    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS
+     && flags & WILD_CHECK_KEEN_EYE
+     && !IsAbilityAllowingEncounter(*level))
+        return FALSE;
+
+    *species = wildMonInfo->wildPokemon[wildMonIndex].species;
+
+    return TRUE;
+}
+
+static u32 GetTacticalWildSlotCount(enum WildPokemonArea area)
+{
+    switch (area)
+    {
+    case WILD_AREA_LAND:
+        return NUM_LAND_MONS_ENCOUNTER_SLOTS;
+    case WILD_AREA_WATER:
+        return NUM_WATER_MONS_ENCOUNTER_SLOTS;
+    case WILD_AREA_ROCKS:
+        return NUM_ROCK_SMASH_MONS_ENCOUNTER_SLOTS;
+    default:
+        return 0;
+    }
+}
+
+static u16 GetTacticalWildSlotWeight(enum WildPokemonArea area, u32 slot)
+{
+    switch (area)
+    {
+    case WILD_AREA_LAND:
+        switch (slot)
+        {
+        case 0:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_0;
+        case 1:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_1
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_0;
+        case 2:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_2
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_1;
+        case 3:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_3
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_2;
+        case 4:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_4
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_3;
+        case 5:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_5
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_4;
+        case 6:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_6
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_5;
+        case 7:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_7
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_6;
+        case 8:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_8
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_7;
+        case 9:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_9
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_8;
+        case 10:
+            return ENCOUNTER_CHANCE_LAND_MONS_SLOT_10
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_9;
+        case 11:
+            return ENCOUNTER_CHANCE_LAND_MONS_TOTAL
+                 - ENCOUNTER_CHANCE_LAND_MONS_SLOT_10;
+        }
+        break;
+
+    case WILD_AREA_WATER:
+        switch (slot)
+        {
+        case 0:
+            return ENCOUNTER_CHANCE_WATER_MONS_SLOT_0;
+        case 1:
+            return ENCOUNTER_CHANCE_WATER_MONS_SLOT_1
+                 - ENCOUNTER_CHANCE_WATER_MONS_SLOT_0;
+        case 2:
+            return ENCOUNTER_CHANCE_WATER_MONS_SLOT_2
+                 - ENCOUNTER_CHANCE_WATER_MONS_SLOT_1;
+        case 3:
+            return ENCOUNTER_CHANCE_WATER_MONS_SLOT_3
+                 - ENCOUNTER_CHANCE_WATER_MONS_SLOT_2;
+        case 4:
+            return ENCOUNTER_CHANCE_WATER_MONS_TOTAL
+                 - ENCOUNTER_CHANCE_WATER_MONS_SLOT_3;
+        }
+        break;
+
+    case WILD_AREA_ROCKS:
+        switch (slot)
+        {
+        case 0:
+            return ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_0;
+        case 1:
+            return ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_1
+                 - ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_0;
+        case 2:
+            return ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_2
+                 - ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_1;
+        case 3:
+            return ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_3
+                 - ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_2;
+        case 4:
+            return ENCOUNTER_CHANCE_ROCK_SMASH_MONS_TOTAL
+                 - ENCOUNTER_CHANCE_ROCK_SMASH_MONS_SLOT_3;
+        }
+        break;
+
+    default:
+        break;
+    }
+
+    return 0;
+}
+
+bool8 TryChooseDistinctTacticalWildMonIndex(
+    const struct WildPokemonInfo *wildMonInfo,
+    enum WildPokemonArea area,
+    const enum Species *usedSpecies,
+    u8 usedCount,
+    u8 *wildMonIndex)
+{
+    u8 eligibleIndexes[NUM_LAND_MONS_ENCOUNTER_SLOTS];
+    u16 eligibleWeights[NUM_LAND_MONS_ENCOUNTER_SLOTS];
+    u32 eligibleCount = 0;
+    u32 weightSum = 0;
+    u32 slotCount = GetTacticalWildSlotCount(area);
+
+    for (u32 slot = 0; slot < slotCount; slot++)
+    {
+        enum Species species = wildMonInfo->wildPokemon[slot].species;
+        bool32 alreadyUsed = FALSE;
+
+        for (u32 i = 0; i < usedCount; i++)
+        {
+            if (species == usedSpecies[i])
+            {
+                alreadyUsed = TRUE;
+                break;
+            }
+        }
+
+        if (alreadyUsed == TRUE)
+            continue;
+
+        u16 weight = GetTacticalWildSlotWeight(area, slot);
+
+        if (weight == 0)
+            continue;
+
+        eligibleIndexes[eligibleCount] = slot;
+        eligibleWeights[eligibleCount] = weight;
+        weightSum += weight;
+        eligibleCount++;
+    }
+
+    if (eligibleCount == 0)
+        return FALSE;
+
+    u32 choice = RandomWeightedArray(
+        RNG_TACTICAL_WILD_DIVERSITY,
+        weightSum,
+        eligibleCount,
+        eligibleWeights
+    );
+
+    *wildMonIndex = eligibleIndexes[choice];
+
+    return TRUE;
+}
+
+bool8 GenerateTacticalWildParty(
+    const struct WildPokemonInfo *wildMonInfo,
+    enum WildPokemonArea area,
+    u8 flags,
+    u8 partySize)
+{
+    enum Species species;
+    enum Species usedSpecies[PARTY_SIZE];
+    u8 level;
+    u8 usedCount = 0;
+
+    if (partySize != 2 && partySize != 5)
+        return FALSE;
+
+    // The first member uses the normal encounter-selection rules and
+    // determines whether Repel / Keen Eye allow the encounter at all.
+    if (!TryChooseWildMonData(
+            wildMonInfo,
+            area,
+            flags,
+            &species,
+            &level))
+    {
+        return FALSE;
+    }
+
+    ZeroEnemyPartyMons();
+
+    CreateWildMonInPartySlot(
+        species,
+        level,
+        0
+    );
+
+    usedSpecies[usedCount++] = species;
+
+    for (u32 partyId = 1; partyId < partySize; partyId++)
+    {
+        u8 wildMonIndex;
+
+        // Large packs prioritize local species diversity.
+        // Ordinary 2-mon encounters continue using independent draws.
+        if (partySize == 5
+         && TryChooseDistinctTacticalWildMonIndex(
+                wildMonInfo,
+                area,
+                usedSpecies,
+                usedCount,
+                &wildMonIndex))
+        {
+            species = wildMonInfo->wildPokemon[wildMonIndex].species;
+            level = ChooseWildMonLevel(
+                wildMonInfo->wildPokemon,
+                wildMonIndex,
+                area
+            );
+        }
+        else
+        {
+            // Either this is an ordinary 2-mon encounter, or every
+            // distinct local species has already appeared in the pack.
+            if (!TryChooseWildMonData(
+                    wildMonInfo,
+                    area,
+                    0,
+                    &species,
+                    &level))
+            {
+                ZeroEnemyPartyMons();
+                return FALSE;
+            }
+        }
+
+        CreateWildMonInPartySlot(
+            species,
+            level,
+            partyId
+        );
+
+        usedSpecies[usedCount++] = species;
+    }
+
+    return TRUE;
+}
+
+bool8 TryGenerateTacticalWildEncounter(
+    const struct WildPokemonInfo *wildMonInfo,
+    enum WildPokemonArea area,
+    u8 flags)
+{
+    return GenerateTacticalWildParty(
+        wildMonInfo,
+        area,
+        flags,
+        ChooseTacticalWildPartySize()
+    );
+}
+
+bool8 TryGenerateWildMon(
+    const struct WildPokemonInfo *wildMonInfo,
+    enum WildPokemonArea area,
+    u8 flags)
+{
+    enum Species species;
+    u8 level;
+
+    if (!TryChooseWildMonData(
+            wildMonInfo,
+            area,
+            flags,
+            &species,
+            &level))
+    {
+        return FALSE;
+    }
+
+    CreateWildMon(species, level);
+
     return TRUE;
 }
 
@@ -738,20 +1073,13 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
                     return TRUE;
                 }
 
-                // try a regular wild land encounter
-                if (TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                // Tactical ordinary wild land encounter.
+                if (TryGenerateTacticalWildEncounter(
+                        gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo,
+                        WILD_AREA_LAND,
+                        WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE))
                 {
-                    if (TryDoDoubleWildBattle())
-                    {
-                        struct Pokemon mon1 = gParties[B_TRAINER_OPPONENT_A][0];
-                        TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE);
-                        gParties[B_TRAINER_OPPONENT_A][1] = mon1;
-                        BattleSetup_StartDoubleWildBattle();
-                    }
-                    else
-                    {
-                        BattleSetup_StartWildBattle();
-                    }
+                    BattleSetup_StartTacticalWildBattle();
                     return TRUE;
                 }
 
@@ -783,20 +1111,13 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
             }
             else // try a regular surfing encounter
             {
-                if (TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+                if (TryGenerateTacticalWildEncounter(
+                        gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo,
+                        WILD_AREA_WATER,
+                        WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE))
                 {
                     gIsSurfingEncounter = TRUE;
-                    if (TryDoDoubleWildBattle())
-                    {
-                        struct Pokemon mon1 = gParties[B_TRAINER_OPPONENT_A][0];
-                        TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_KEEN_EYE);
-                        gParties[B_TRAINER_OPPONENT_A][1] = mon1;
-                        BattleSetup_StartDoubleWildBattle();
-                    }
-                    else
-                    {
-                        BattleSetup_StartWildBattle();
-                    }
+                    BattleSetup_StartTacticalWildBattle();
                     return TRUE;
                 }
 
@@ -824,20 +1145,13 @@ void RockSmashWildEncounter(void)
             gSpecialVar_Result = FALSE;
         }
         else if (WildEncounterCheck(wildPokemonInfo->encounterRate, TRUE) == TRUE
-         && TryGenerateWildMon(wildPokemonInfo, WILD_AREA_ROCKS, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
+         && TryGenerateTacticalWildEncounter(
+                wildPokemonInfo,
+                WILD_AREA_ROCKS,
+                WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE))
         {
-            if (TryDoDoubleWildBattle())
-            {
-                struct Pokemon mon1 = gParties[B_TRAINER_OPPONENT_A][0];
-                TryGenerateWildMon(wildPokemonInfo, WILD_AREA_ROCKS, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE);
-                gParties[B_TRAINER_OPPONENT_A][1] = mon1;
-                BattleSetup_StartDoubleWildBattle();
-                gSpecialVar_Result = TRUE;
-            }
-            else {
-                BattleSetup_StartWildBattle();
-                gSpecialVar_Result = TRUE;
-            }
+            BattleSetup_StartTacticalWildBattle();
+            gSpecialVar_Result = TRUE;
         }
         else
         {
