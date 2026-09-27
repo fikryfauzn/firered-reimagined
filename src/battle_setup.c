@@ -31,6 +31,7 @@
 #include "metatile_behavior.h"
 #include "mirage_tower.h"
 #include "palette.h"
+#include "pokemon_storage_system.h"
 #include "random.h"
 #include "safari_zone.h"
 #include "script.h"
@@ -904,6 +905,17 @@ enum BattleTransition GetWildBattleTransition(void)
     }
 }
 
+bool32 ShouldUseTacticalDoubles(u16 trainerId)
+{
+    if (GetTrainerBattleType(trainerId) == TRAINER_BATTLE_TYPE_DOUBLES)
+        return TRUE;
+
+    if (GetTrainerPartySizeFromId(trainerId) < 2)
+        return FALSE;
+
+    return CountPartyAliveNonEggMonsExcept(PARTY_SIZE) >= 2;
+}
+
 enum BattleTransition GetTrainerBattleTransition(void)
 {
     u8 minPartyCount = 1;
@@ -926,15 +938,10 @@ enum BattleTransition GetTrainerBattleTransition(void)
         || trainerClass == TRAINER_CLASS_AQUA_ADMIN)
         return B_TRANSITION_AQUA;
 
-    switch (GetTrainerBattleType(trainerId))
-    {
-    case TRAINER_BATTLE_TYPE_SINGLES:
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+        minPartyCount = 2; // Double battles always have at least 2 active Pokémon.
+    else
         minPartyCount = 1;
-        break;
-    case TRAINER_BATTLE_TYPE_DOUBLES:
-        minPartyCount = 2; // double battles always at least have 2 Pokémon.
-        break;
-    }
 
     transitionType = GetBattleTransitionTypeByMap();
     enemyLevel = GetSumOfEnemyPartyLevel(trainerId, minPartyCount);
@@ -1499,7 +1506,7 @@ void BattleSetup_StartTrainerBattle(void)
 
         SetHillTrainerFlag();
     }
-    else if (GetTrainerBattleType(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_BATTLE_TYPE_DOUBLES)
+    else if (ShouldUseTacticalDoubles(TRAINER_BATTLE_PARAM.opponentA))
     {
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
     }
@@ -1654,7 +1661,7 @@ static void CB2_EndRematchBattle(void)
 void BattleSetup_StartRematchBattle(void)
 {
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
-    if (GetTrainerBattleType(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_BATTLE_TYPE_DOUBLES)
+    if (ShouldUseTacticalDoubles(TRAINER_BATTLE_PARAM.opponentA))
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
     
     gMain.savedCallback = CB2_EndRematchBattle;

@@ -95,6 +95,7 @@ void StartRegiBattle(void);
 enum BattleEnvironments BattleSetup_GetEnvironmentId(void);
 enum BattleTransition GetWildBattleTransition(void);
 enum BattleTransition GetTrainerBattleTransition(void);
+bool32 ShouldUseTacticalDoubles(u16 trainerId);
 enum BattleTransition GetSpecialBattleTransition(enum BattleTransitionGroup id);
 void ChooseStarter(void);
 void SetMapVarsToTrainerA(void);
