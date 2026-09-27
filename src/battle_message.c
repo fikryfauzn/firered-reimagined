@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_stamina.h"
 #include "battle_anim.h"
 #include "battle_ai_record.h"
 #include "battle_controllers.h"
@@ -415,6 +416,8 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_FAINTINTHREE]                         = COMPOUND_STRING("All Pokémon that heard the song will faint in three turns!"),
     [STRINGID_NOPPLEFT]                             = COMPOUND_STRING("There's no PP left for this move!\p"), //not in gen 5+
     [STRINGID_BUTNOPPLEFT]                          = COMPOUND_STRING("But there was no PP left for the move!"),
+    [STRINGID_NOTENOUGHSTAMINA]                     = COMPOUND_STRING("There's not enough Stamina for this move!\p"),
+    [STRINGID_BUTNOTENOUGHSTAMINA]                  = COMPOUND_STRING("But there wasn't enough Stamina for the move!"),
     [STRINGID_PLAYERUSEDITEM]                       = COMPOUND_STRING("You used {B_LAST_ITEM}!"),
     [STRINGID_TRAINERBLOCKEDBALL]                   = COMPOUND_STRING("The Trainer blocked your Poké Ball!"),
     [STRINGID_DONTBEATHIEF]                         = COMPOUND_STRING("Don't be a thief!"),
@@ -1476,6 +1479,8 @@ const u8 gText_BattleMenu[] = _("Battle{CLEAR_TO 56}Bag\nPokémon{CLEAR_TO 56}Ru
 const u8 gText_SafariZoneMenu[] = _("Ball{CLEAR_TO 56}{POKEBLOCK}\nGo Near{CLEAR_TO 56}Run");
 const u8 gText_SafariZoneMenuFrlg[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW 13 14 15}BALL{CLEAR_TO 56}BAIT\nROCK{CLEAR_TO 56}RUN");
 const u8 gText_MoveInterfacePP[] = _("PP ");
+const u8 gText_MoveInterfaceStamina[] = _("STAMINA");
+const u8 gText_MoveInterfaceStaminaCost[] = _(" C");
 const u8 gText_MoveInterfaceType[] = _("TYPE/");
 const u8 gText_MoveInterfacePPType[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}PP\nTYPE/");
 const u8 gText_MoveInterfaceDynamicColors[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}");
@@ -3934,11 +3939,22 @@ void SetPPNumbersPaletteInMoveSelection(enum BattlerId battler)
     const u16 *palPtr = gPPTextPalette;
     u8 var;
 
-    if (!gBattleStruct->zmove.viewing)
-        var = GetCurrentPPToMaxPPState(chooseMoveStruct->currentPP[gMoveSelectionCursor[battler]],
-                         chooseMoveStruct->maxPP[gMoveSelectionCursor[battler]]);
+    if (IsBattlerStaminaEnabled(battler))
+    {
+        var = GetCurrentPPToMaxPPState(
+            gBattleStruct->playerStamina,
+            BATTLE_STAMINA_MAX);
+    }
+    else if (!gBattleStruct->zmove.viewing)
+    {
+        var = GetCurrentPPToMaxPPState(
+            chooseMoveStruct->currentPP[gMoveSelectionCursor[battler]],
+            chooseMoveStruct->maxPP[gMoveSelectionCursor[battler]]);
+    }
     else
+    {
         var = 3;
+    }
 
     gPlttBufferUnfaded[BG_PLTT_ID(5) + 12] = palPtr[(var * 2) + 0];
     gPlttBufferUnfaded[BG_PLTT_ID(5) + 11] = palPtr[(var * 2) + 1];

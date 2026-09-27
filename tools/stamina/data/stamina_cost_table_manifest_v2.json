@@ -1,0 +1,35 @@
+{
+  "schema": "firered_stamina_cost_table_manifest_v2",
+  "schema_version": 2,
+  "status": "PASS",
+  "move_count": 848,
+  "runtime_bound": "MOVES_COUNT",
+  "sources": {
+    "canonical_dataset": "tools/stamina/data/stamina_moves_v2.json",
+    "move_constants": "include/constants/moves.h"
+  },
+  "hashes": {
+    "canonical_dataset_sha256": "ec355916ba9247c9b998a10a4d76d161fad2875421474151bd229cfc7ac194b7",
+    "moves_h_sha256": "d86e4d5d5b94b838625a9d1c5c5bbce2e57556a171d66028eab1993f4fa44200",
+    "generated_header_sha256": "19bd270114e3c0f6071c9234213bf8a2ebb5b761a5c29eb2f3e1bb67997dd758"
+  },
+  "cost_distribution": {
+    "0": 2,
+    "1": 41,
+    "2": 136,
+    "3": 319,
+    "4": 251,
+    "5": 91,
+    "6": 8
+  },
+  "checks": [
+    "canonical roster contains 848 entries",
+    "canonical IDs cover exactly 0..847",
+    "current MOVES_COUNT is 848",
+    "all canonical constants compile against current moves.h",
+    "all current numeric IDs match frozen canonical IDs",
+    "runtime table has exactly 848 explicit initializers",
+    "MOVE_NONE and MOVE_STRUGGLE cost 0",
+    "no runtime default is required for ordinary moves"
+  ]
+}

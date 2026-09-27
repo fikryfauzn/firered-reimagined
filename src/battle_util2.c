@@ -40,6 +40,7 @@ void AllocateBattleResources(void)
         InitTrainerHillBattleStruct();
 
     gBattleStruct = AllocZeroed(sizeof(*gBattleStruct));
+    gBattleStruct->playerStamina = BATTLE_STAMINA_MAX;
     gAiBattleData = AllocZeroed(sizeof(*gAiBattleData));
     gAiThinkingStruct = AllocZeroed(sizeof(*gAiThinkingStruct));
     gAiLogicData = AllocZeroed(sizeof(*gAiLogicData));

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_stamina.h"
 #include "battle_anim.h"
 #include "battle_ai_main.h"
 #include "battle_ai_record.h"
@@ -3627,6 +3628,8 @@ bool32 EndTurnEvents(void) // Called from Battle Script
         SetBattleCallback(RunTurnActionsFunctions);
         return FALSE;
     }
+
+    RegeneratePlayerStamina();
 
     if (gBattleResults.battleTurnCounter < 0xFF)
     {

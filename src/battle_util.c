@@ -6,6 +6,7 @@
 #include "battle_environment.h"
 #include "battle_pyramid.h"
 #include "battle_util.h"
+#include "battle_stamina.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
 #include "battle_setup.h"
@@ -1583,7 +1584,8 @@ u32 TrySetCantSelectMoveBattleScript(enum BattlerId battler)
             limitations++;
     }
 
-    if (gBattleMons[battler].pp[moveId] == 0)
+    if (!IsBattlerStaminaEnabled(battler)
+     && gBattleMons[battler].pp[moveId] == 0)
     {
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         {
@@ -1592,6 +1594,19 @@ u32 TrySetCantSelectMoveBattleScript(enum BattlerId battler)
         else
         {
             gSelectionBattleScripts[battler] = BattleScript_SelectingMoveWithNoPP;
+            limitations++;
+        }
+    }
+
+    if (!CanBattlerAffordMoveStamina(battler, move))
+    {
+        if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
+        {
+            gProtectStructs[battler].palaceUnableToUseMove = TRUE;
+        }
+        else
+        {
+            gSelectionBattleScripts[battler] = BattleScript_SelectingMoveWithNotEnoughStamina;
             limitations++;
         }
     }
@@ -1630,8 +1645,14 @@ u32 CheckMoveLimitations(enum BattlerId battler, u8 unusableMoves, u32 check)
         // No move
         if (check & MOVE_LIMITATION_ZEROMOVE && move == MOVE_NONE)
             unusableMoves |= 1u << i;
-        // No PP
-        else if (check & MOVE_LIMITATION_PP && gBattleMons[battler].pp[i] == 0)
+        // No PP (opponents and non-Stamina battle modes only)
+        else if (check & MOVE_LIMITATION_PP
+              && !IsBattlerStaminaEnabled(battler)
+              && gBattleMons[battler].pp[i] == 0)
+            unusableMoves |= 1u << i;
+        // Not enough shared player-side Stamina
+        else if (check & MOVE_LIMITATION_STAMINA
+              && !CanBattlerAffordMoveStamina(battler, move))
             unusableMoves |= 1u << i;
         // Placeholder
         else if (check & MOVE_LIMITATION_PLACEHOLDER && moveEffect == EFFECT_PLACEHOLDER)

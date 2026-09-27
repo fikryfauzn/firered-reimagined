@@ -1,6 +1,9 @@
 #ifndef GUARD_CONSTANTS_BATTLE_H
 #define GUARD_CONSTANTS_BATTLE_H
 
+#define BATTLE_STAMINA_MAX    6
+#define BATTLE_STAMINA_REGEN  2
+
 #include "constants/moves.h"
 
 /*

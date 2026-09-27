@@ -3634,6 +3634,15 @@ BattleScript_SelectingMoveWithNoPP::
 	printselectionstring STRINGID_NOPPLEFT
 	endselectionscript
 
+BattleScript_SelectingMoveWithNotEnoughStamina::
+	printselectionstring STRINGID_NOTENOUGHSTAMINA
+	endselectionscript
+
+BattleScript_NotEnoughStaminaForMove::
+	printstring STRINGID_BUTNOTENOUGHSTAMINA
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
 BattleScript_NoPPForMove::
 	printattackstring
 	pause B_WAIT_TIME_SHORT

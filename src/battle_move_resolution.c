@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_stamina.h"
 #include "battle_arena.h"
 #include "battle_environment.h"
 #include "battle_hold_effects.h"
@@ -252,7 +253,8 @@ static enum CancelerResult CancelerObedience(struct BattleCalcValues *cv)
 
 static enum CancelerResult CancelerPowerPoints(struct BattleCalcValues *cv)
 {
-    if (gBattleMons[cv->battlerAtk].pp[gCurrMovePos] == 0
+    if (!IsBattlerStaminaEnabled(cv->battlerAtk)
+     && gBattleMons[cv->battlerAtk].pp[gCurrMovePos] == 0
      && cv->move != MOVE_STRUGGLE
      && !gSpecialStatuses[cv->battlerAtk].dancerUsedMove
      && !gBattleMons[cv->battlerAtk].volatiles.multipleTurns)
@@ -1004,52 +1006,79 @@ static enum CancelerResult CancelerPPDeduction(struct BattleCalcValues *cv)
      || cv->move == MOVE_STRUGGLE)
         return CANCELER_RESULT_SUCCESS;
 
-    s32 ppToDeduct = 1;
-    enum MoveTarget moveTarget = GetBattlerMoveTargetType(cv->battlerAtk, cv->move);
     u32 movePosition = gCurrMovePos;
 
     if (gBattleStruct->submoveAnnouncement == SUBMOVE_SUCCESS)
         movePosition = gChosenMovePos;
 
-    if (IsSpreadMove(moveTarget)
-     || moveTarget == TARGET_ALL_BATTLERS
-     || moveTarget == TARGET_FIELD
-     || MoveForcesPressure(cv->move))
-    {
-        for (u32 i = 0; i < gBattlersCount; i++)
-        {
-            if (!IsBattlerAlly(i, cv->battlerAtk))
-                ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
-        }
-    }
-    else if (moveTarget != TARGET_OPPONENTS_FIELD)
-    {
-        if (cv->battlerAtk != cv->battlerDef && GetBattlerAbility(cv->battlerDef) == ABILITY_PRESSURE)
-             ppToDeduct++;
-    }
-
-    // For item Metronome, echoed voice
+    // For item Metronome, Echoed Voice.
     if (cv->move != gLastResultingMoves[cv->battlerAtk] || gBattleStruct->unableToUseMove)
         gBattleMons[cv->battlerAtk].volatiles.metronomeItemCounter = 0;
 
-    if (gBattleMons[cv->battlerAtk].pp[movePosition] > ppToDeduct)
-        gBattleMons[cv->battlerAtk].pp[movePosition] -= ppToDeduct;
+    if (IsBattlerStaminaEnabled(cv->battlerAtk))
+    {
+        enum Move staminaMove = gBattleStruct->baseMove;
+
+        // Called moves consume the caller's Stamina cost, not the
+        // generated/called result. At this point baseMove has already
+        // been replaced by the called move, so recover the caller from
+        // its originally chosen moveslot.
+        if (gBattleStruct->submoveAnnouncement == SUBMOVE_SUCCESS)
+            staminaMove = gBattleMons[cv->battlerAtk].moves[gChosenMovePos];
+
+        // Selection-time affordability can become stale in doubles
+        // because both battlers share one pool. The spend itself is
+        // therefore the authoritative execution-time affordability
+        // check and must never underflow.
+        if (!TrySpendBattlerStamina(cv->battlerAtk, staminaMove))
+        {
+            gBattleStruct->moveResultFlags[cv->battlerDef] |= MOVE_RESULT_MISSED;
+            gBattlescriptCurrInstr = BattleScript_NotEnoughStaminaForMove;
+            return CANCELER_RESULT_FAILURE;
+        }
+    }
     else
-        gBattleMons[cv->battlerAtk].pp[movePosition] = 0;
+    {
+        s32 ppToDeduct = 1;
+        enum MoveTarget moveTarget = GetBattlerMoveTargetType(cv->battlerAtk, cv->move);
+
+        if (IsSpreadMove(moveTarget)
+         || moveTarget == TARGET_ALL_BATTLERS
+         || moveTarget == TARGET_FIELD
+         || MoveForcesPressure(cv->move))
+        {
+            for (u32 i = 0; i < gBattlersCount; i++)
+            {
+                if (!IsBattlerAlly(i, cv->battlerAtk))
+                    ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
+            }
+        }
+        else if (moveTarget != TARGET_OPPONENTS_FIELD)
+        {
+            if (cv->battlerAtk != cv->battlerDef
+             && GetBattlerAbility(cv->battlerDef) == ABILITY_PRESSURE)
+                ppToDeduct++;
+        }
+
+        if (gBattleMons[cv->battlerAtk].pp[movePosition] > ppToDeduct)
+            gBattleMons[cv->battlerAtk].pp[movePosition] -= ppToDeduct;
+        else
+            gBattleMons[cv->battlerAtk].pp[movePosition] = 0;
+
+        if (MOVE_IS_PERMANENT(cv->battlerAtk, movePosition))
+        {
+            BtlController_EmitSetMonData(
+                cv->battlerAtk,
+                B_COMM_TO_CONTROLLER,
+                REQUEST_PPMOVE1_BATTLE + movePosition,
+                0,
+                sizeof(gBattleMons[cv->battlerAtk].pp[movePosition]),
+                &gBattleMons[cv->battlerAtk].pp[movePosition]);
+            MarkBattlerForControllerExec(cv->battlerAtk);
+        }
+    }
 
     gLastMoves[cv->battlerAtk] = gChosenMove;
-
-    if (MOVE_IS_PERMANENT(cv->battlerAtk, movePosition))
-    {
-        BtlController_EmitSetMonData(
-            cv->battlerAtk,
-            B_COMM_TO_CONTROLLER,
-            REQUEST_PPMOVE1_BATTLE + movePosition,
-            0,
-            sizeof(gBattleMons[cv->battlerAtk].pp[movePosition]),
-            &gBattleMons[cv->battlerAtk].pp[movePosition]);
-        MarkBattlerForControllerExec(cv->battlerAtk);
-    }
 
     if (gBattleStruct->submoveAnnouncement != SUBMOVE_NO_EFFECT)
     {
@@ -1059,8 +1088,9 @@ static enum CancelerResult CancelerPPDeduction(struct BattleCalcValues *cv)
             gBattlescriptCurrInstr = BattleScript_ButItFailed;
             return CANCELER_RESULT_FAILURE;
         }
-        else if (CancelerVolatileBlocked(cv) == CANCELER_RESULT_FAILURE) // Check Gravity/Heal Block/Throat Chop for Submove
+        else if (CancelerVolatileBlocked(cv) == CANCELER_RESULT_FAILURE)
         {
+            // Check Gravity / Heal Block / Throat Chop for Submove.
             gBattleStruct->submoveAnnouncement = SUBMOVE_NO_EFFECT;
             return CANCELER_RESULT_FAILURE;
         }
@@ -1070,14 +1100,19 @@ static enum CancelerResult CancelerPPDeduction(struct BattleCalcValues *cv)
             gBattleScripting.animTurn = 0;
             gBattleScripting.animTargetsHit = 0;
 
-            // Possibly better to just move type setting and redirection to attackcanceler as a new case at this point
-            SetTypeBeforeUsingMove(cv->move, cv->battlerAtk, cv->abilities[cv->battlerAtk], cv->holdEffects[cv->battlerAtk]);
+            // Possibly better to just move type setting and redirection
+            // to attackcanceler as a new case at this point.
+            SetTypeBeforeUsingMove(
+                cv->move,
+                cv->battlerAtk,
+                cv->abilities[cv->battlerAtk],
+                cv->holdEffects[cv->battlerAtk]);
             gBattlescriptCurrInstr = GetMoveBattleScript(cv->move);
             return CANCELER_RESULT_RUN_SCRIPT_AND_INCREMENT;
         }
     }
 
-    return CANCELER_RESULT_RUN_SCRIPT_AND_INCREMENT; // Apply power point change
+    return CANCELER_RESULT_RUN_SCRIPT_AND_INCREMENT;
 }
 
 // We don't have clear data on where this belongs to but I assume it should at least be checked before Protean

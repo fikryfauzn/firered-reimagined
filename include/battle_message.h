@@ -277,6 +277,8 @@ extern const u8 gText_BattleMenu[];
 extern const u8 gText_SafariZoneMenu[];
 extern const u8 gText_SafariZoneMenuFrlg[];
 extern const u8 gText_MoveInterfacePP[];
+extern const u8 gText_MoveInterfaceStamina[];
+extern const u8 gText_MoveInterfaceStaminaCost[];
 extern const u8 gText_MoveInterfaceType[];
 extern const u8 gText_MoveInterfacePPType[];
 extern const u8 gText_MoveInterfaceDynamicColors[];

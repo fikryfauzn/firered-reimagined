@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_stamina.h"
 #include "battle_anim.h"
 #include "battle_arena.h"
 #include "battle_controllers.h"
@@ -714,7 +715,11 @@ void HandleInputChooseMove(enum BattlerId battler)
             if (moveTarget == TARGET_USER_OR_ALLY && IsBattlerAlive(partner))
                 canSelectTarget = 1;
 
-            if (moveInfo->currentPP[gMoveSelectionCursor[battler]] == 0)
+            if ((!IsBattlerStaminaEnabled(battler)
+              && moveInfo->currentPP[gMoveSelectionCursor[battler]] == 0)
+             || !CanBattlerAffordMoveStamina(
+                    battler,
+                    moveInfo->moves[gMoveSelectionCursor[battler]]))
             {
                 canSelectTarget = 0;
             }
@@ -1659,22 +1664,77 @@ static void MoveSelectionDisplayMoveNames(enum BattlerId battler)
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
+        u8 *text = gDisplayedStringBattle;
+        enum Move move = moveInfo->moves[i];
+
         MoveSelectionDestroyCursorAt(i);
-        if (IsGimmickSelected(battler, GIMMICK_DYNAMAX) || GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
-            StringCopy(gDisplayedStringBattle, GetMoveName(GetMaxMove(battler, moveInfo->moves[i])));
+
+        // Stamina: grey moves whose underlying ordinary move cannot
+        // currently be afforded. This is display-only; hard rejection
+        // remains in the battle-selection/execution logic.
+        if (move != MOVE_NONE
+         && IsBattlerStaminaEnabled(battler)
+         && !CanBattlerAffordMoveStamina(battler, move))
+        {
+            *(text++) = EXT_CTRL_CODE_BEGIN;
+            *(text++) = EXT_CTRL_CODE_TEXT_COLORS;
+            *(text++) = TEXT_COLOR_LIGHT_GRAY;
+            *(text++) = TEXT_COLOR_DARK_GRAY;
+            *(text++) = TEXT_DYNAMIC_COLOR_5;
+        }
+
+        if (IsGimmickSelected(battler, GIMMICK_DYNAMAX)
+         || GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
+        {
+            StringCopy(
+                text,
+                GetMoveName(GetMaxMove(battler, move)));
+        }
         else
-            StringCopy(gDisplayedStringBattle, GetMoveName(moveInfo->moves[i]));
-        // Prints on windows B_WIN_MOVE_NAME_1, B_WIN_MOVE_NAME_2, B_WIN_MOVE_NAME_3, B_WIN_MOVE_NAME_4
-        BattlePutTextOnWindow(gDisplayedStringBattle, i + B_WIN_MOVE_NAME_1);
-        if (moveInfo->moves[i] != MOVE_NONE)
+        {
+            StringCopy(
+                text,
+                GetMoveName(move));
+        }
+
+        // Prints on windows B_WIN_MOVE_NAME_1,
+        // B_WIN_MOVE_NAME_2, B_WIN_MOVE_NAME_3,
+        // B_WIN_MOVE_NAME_4.
+        BattlePutTextOnWindow(
+            gDisplayedStringBattle,
+            i + B_WIN_MOVE_NAME_1);
+
+        if (move != MOVE_NONE)
             gNumberOfMovesToChoose++;
     }
 }
 
 static void MoveSelectionDisplayPPString(enum BattlerId battler)
 {
-    StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
-    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP);
+    u8 *end;
+
+    if (IsBattlerStaminaEnabled(battler))
+    {
+        end = StringCopy(
+            gDisplayedStringBattle,
+            gText_MoveInterfaceStamina);
+
+        PrependFontIdToFit(
+            gDisplayedStringBattle,
+            end,
+            FONT_NARROW,
+            WindowWidthPx(B_WIN_PP));
+    }
+    else
+    {
+        StringCopy(
+            gDisplayedStringBattle,
+            gText_MoveInterfacePP);
+    }
+
+    BattlePutTextOnWindow(
+        gDisplayedStringBattle,
+        B_WIN_PP);
 }
 
 static void MoveSelectionDisplayPPNumber(enum BattlerId battler)
@@ -1687,11 +1747,39 @@ static void MoveSelectionDisplayPPNumber(enum BattlerId battler)
 
     SetPPNumbersPaletteInMoveSelection(battler);
     moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
-    txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPP[gMoveSelectionCursor[battler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
-    *(txtPtr)++ = CHAR_SLASH;
-    ConvertIntToDecimalStringN(txtPtr, moveInfo->maxPP[gMoveSelectionCursor[battler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
 
-    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
+    if (IsBattlerStaminaEnabled(battler))
+    {
+        txtPtr = ConvertIntToDecimalStringN(
+            gDisplayedStringBattle,
+            gBattleStruct->playerStamina,
+            STR_CONV_MODE_RIGHT_ALIGN,
+            1);
+        *(txtPtr)++ = CHAR_SLASH;
+        ConvertIntToDecimalStringN(
+            txtPtr,
+            BATTLE_STAMINA_MAX,
+            STR_CONV_MODE_RIGHT_ALIGN,
+            1);
+    }
+    else
+    {
+        txtPtr = ConvertIntToDecimalStringN(
+            gDisplayedStringBattle,
+            moveInfo->currentPP[gMoveSelectionCursor[battler]],
+            STR_CONV_MODE_RIGHT_ALIGN,
+            2);
+        *(txtPtr)++ = CHAR_SLASH;
+        ConvertIntToDecimalStringN(
+            txtPtr,
+            moveInfo->maxPP[gMoveSelectionCursor[battler]],
+            STR_CONV_MODE_RIGHT_ALIGN,
+            2);
+    }
+
+    BattlePutTextOnWindow(
+        gDisplayedStringBattle,
+        B_WIN_PP_REMAINING);
 }
 
 static void MoveSelectionDisplayMoveType(enum BattlerId battler)
@@ -1699,7 +1787,11 @@ static void MoveSelectionDisplayMoveType(enum BattlerId battler)
     u8 *txtPtr, *end;
     enum Species speciesId = gBattleMons[battler].species;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
-    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
+    if (IsBattlerStaminaEnabled(battler))
+        txtPtr = gDisplayedStringBattle;
+    else
+        txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
+
     enum Move move = moveInfo->moves[gMoveSelectionCursor[battler]];
     enum Type type = GetMoveType(move);
     enum BattleMoveEffects effect = GetMoveEffect(move);
@@ -1734,8 +1826,26 @@ static void MoveSelectionDisplayMoveType(enum BattlerId battler)
     }
     end = StringCopy(txtPtr, gTypesInfo[type].name);
 
-    PrependFontIdToFit(txtPtr, end, FONT_NORMAL, WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
-    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
+    if (IsBattlerStaminaEnabled(battler))
+    {
+        end = StringCopy(
+            end,
+            gText_MoveInterfaceStaminaCost);
+        end = ConvertIntToDecimalStringN(
+            end,
+            GetMoveStaminaCost(move),
+            STR_CONV_MODE_LEFT_ALIGN,
+            1);
+    }
+
+    PrependFontIdToFit(
+        txtPtr,
+        end,
+        FONT_NORMAL,
+        WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
+    BattlePutTextOnWindow(
+        gDisplayedStringBattle,
+        B_WIN_MOVE_TYPE);
 }
 
 static void TryMoveSelectionDisplayMoveDescription(enum BattlerId battler)
@@ -2438,7 +2548,10 @@ static void MoveSelectionDisplayMoveEffectiveness(u32 foeEffectiveness, enum Bat
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
     u8 *txtPtr;
 
-    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
+    if (IsBattlerStaminaEnabled(battler))
+        txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceStamina);
+    else
+        txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
 
     if (!IsBattleMoveStatus(moveInfo->moves[gMoveSelectionCursor[battler]]))
     {

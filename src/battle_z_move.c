@@ -1,6 +1,7 @@
 #include "global.h"
 #include "malloc.h"
 #include "battle.h"
+#include "battle_stamina.h"
 #include "pokemon.h"
 #include "battle_ai_record.h"
 #include "battle_controllers.h"
@@ -375,6 +376,39 @@ bool32 MoveSelectionDisplayZMove(enum Move zmove, enum BattlerId battler)
             ZMoveSelectionDisplayPower(move, zmove);
             StringCopy(gDisplayedStringBattle, GetMoveName(zmove));
         }
+        // Stamina: the visible Z-move name is transformed, but
+        // affordability is based on the selected ordinary move.
+        if (IsBattlerStaminaEnabled(battler))
+        {
+            struct ChooseMoveStruct *moveInfo =
+                (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+            enum Move baseMove =
+                moveInfo->moves[gMoveSelectionCursor[battler]];
+
+            if (baseMove != MOVE_NONE
+             && !CanBattlerAffordMoveStamina(battler, baseMove))
+            {
+                u8 *text;
+
+                // Preserve the already-built transformed Z-move name,
+                // then prepend per-string disabled colors.
+                StringCopy(
+                    gStringVar4,
+                    gDisplayedStringBattle);
+
+                text = gDisplayedStringBattle;
+                *(text++) = EXT_CTRL_CODE_BEGIN;
+                *(text++) = EXT_CTRL_CODE_TEXT_COLORS;
+                *(text++) = TEXT_COLOR_LIGHT_GRAY;
+                *(text++) = TEXT_COLOR_DARK_GRAY;
+                *(text++) = TEXT_DYNAMIC_COLOR_5;
+
+                StringCopy(
+                    text,
+                    gStringVar4);
+            }
+        }
+
         BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_NAME_1);
 
         ZMoveSelectionDisplayPpNumber(battler);
@@ -410,25 +444,81 @@ static void ZMoveSelectionDisplayPpNumber(enum BattlerId battler)
         return;
 
     SetPPNumbersPaletteInMoveSelection(battler);
-    txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, 1, STR_CONV_MODE_RIGHT_ALIGN, 2);
-    *(txtPtr)++ = CHAR_SLASH;
-    ConvertIntToDecimalStringN(txtPtr, 1, STR_CONV_MODE_RIGHT_ALIGN, 2);
-    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
+
+    if (IsBattlerStaminaEnabled(battler))
+    {
+        txtPtr = ConvertIntToDecimalStringN(
+            gDisplayedStringBattle,
+            gBattleStruct->playerStamina,
+            STR_CONV_MODE_RIGHT_ALIGN,
+            1);
+        *(txtPtr)++ = CHAR_SLASH;
+        ConvertIntToDecimalStringN(
+            txtPtr,
+            BATTLE_STAMINA_MAX,
+            STR_CONV_MODE_RIGHT_ALIGN,
+            1);
+    }
+    else
+    {
+        txtPtr = ConvertIntToDecimalStringN(
+            gDisplayedStringBattle,
+            1,
+            STR_CONV_MODE_RIGHT_ALIGN,
+            2);
+        *(txtPtr)++ = CHAR_SLASH;
+        ConvertIntToDecimalStringN(
+            txtPtr,
+            1,
+            STR_CONV_MODE_RIGHT_ALIGN,
+            2);
+    }
+
+    BattlePutTextOnWindow(
+        gDisplayedStringBattle,
+        B_WIN_PP_REMAINING);
 }
 
 static void ZMoveSelectionDisplayMoveType(enum Move zMove, enum BattlerId battler)
 {
     u8 *txtPtr, *end;
     enum Type zMoveType = GetBattleMoveType(zMove);
+    struct ChooseMoveStruct *moveInfo =
+        (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+    enum Move baseMove =
+        moveInfo->moves[gMoveSelectionCursor[battler]];
 
-    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
+    txtPtr = StringCopy(
+        gDisplayedStringBattle,
+        gText_MoveInterfaceType);
     *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
     *(txtPtr)++ = EXT_CTRL_CODE_FONT;
     *(txtPtr)++ = FONT_NORMAL;
 
-    end = StringCopy(txtPtr, gTypesInfo[zMoveType].name);
-    PrependFontIdToFit(txtPtr, end, FONT_NORMAL, WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
-    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
+    end = StringCopy(
+        txtPtr,
+        gTypesInfo[zMoveType].name);
+
+    if (IsBattlerStaminaEnabled(battler))
+    {
+        end = StringCopy(
+            end,
+            gText_MoveInterfaceStaminaCost);
+        end = ConvertIntToDecimalStringN(
+            end,
+            GetMoveStaminaCost(baseMove),
+            STR_CONV_MODE_LEFT_ALIGN,
+            1);
+    }
+
+    PrependFontIdToFit(
+        txtPtr,
+        end,
+        FONT_NORMAL,
+        WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
+    BattlePutTextOnWindow(
+        gDisplayedStringBattle,
+        B_WIN_MOVE_TYPE);
 }
 
 #define Z_EFFECT_BS_LENGTH  5

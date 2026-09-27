@@ -92,6 +92,8 @@ extern const u8 BattleScript_RemoveHazards[];
 extern const u8 BattleScript_MonTookFutureAttack[];
 extern const u8 BattleScript_NoMovesLeft[];
 extern const u8 BattleScript_SelectingMoveWithNoPP[];
+extern const u8 BattleScript_SelectingMoveWithNotEnoughStamina[];
+extern const u8 BattleScript_NotEnoughStaminaForMove[];
 extern const u8 BattleScript_NoPPForMove[];
 extern const u8 BattleScript_SelectingTormentedMove[];
 extern const u8 BattleScript_MoveUsedIsTormented[];
